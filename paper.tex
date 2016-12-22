@@ -1,0 +1,32 @@
+\documentclass[11pt]{article}
+\usepackage[round]{natbib}
+\usepackage[margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{url}
+
+\begin{document}
+\title{nse: Computation of Numerical Standard Errors in R}
+\author{David Ardia\\
+Institute of Financial Analysis, University of Neuch\^atel, Switzerland\\
+D\'epartement de Finance, Assurance et Immobilier, Universit\'e Laval, Qu\'ebec, Canada
+\and
+Keven Bluteau\\
+Institute of Financial Analysis, University of Neuch\^atel, Switzerland\\
+}
+%\date{}
+	
+\maketitle
+
+\section*{Summary}
+
+nse is an R package \citep{R} for computing the numerical standard errors, an estimate of the
+standard deviation of a simulation result, if the simulation experiment were to be repeated
+many times. The package currently implements more than thirty estimators, including 
+batch means estimators \citep[][Section~3.2]{Geyer1992}, initial sequence estimators \citet[][Equation~3.3]{Geyer1992}, spectrum at zero estimators \citep{HeidelbergerWelch1981,FlegalJones2010}, heteroskedasticity and autocorrelation 
+consistent (HAC) kernel estimators \citep{NeweyWest1987,Andrews1991,AndrewsMonahan1992,NeweyWest1994,Hirukawa2010}, and bootstrap estimators \citet{PolitisRomano1992,PolitisRomano1994,PolitisWhite2004}. 
+A simulation study relying on the package is proposed in \citet{ArdiaEtAl2016}. The latest version of the package is available at \url{https://github.com/keblu/nse}.
+
+\bibliographystyle{plainnat}
+\bibliography{paper}
+	
+\end{document}
