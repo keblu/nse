@@ -1,3 +1,5 @@
+Changes in Version 1-00.12
+  o Update info
 Changes in Version 1-00.11
   o Fixed AR(p) prewhitening
   o AR or ARIMA approximation for Andrews method
