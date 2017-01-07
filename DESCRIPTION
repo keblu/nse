@@ -1,9 +1,9 @@
 Package: nse
-Version: 1-00.12
-Date: 2016-12-31
+Version: 1-00.13
+Date: 2017-01-08
 Title: Numerical Standard Errors Computation in R
 Authors@R: c(person("David", "Ardia", role = c("aut"),
-             email = "David.Ardia@unine.ch"),
+             email = "david.ardia.ch@gmail.com"),
              person("Keven", "Bluteau", role = c("aut", "cre"),
              email = "Keven.Bluteau@unine.ch"))
 Author: David Ardia [aut]
@@ -16,3 +16,4 @@ Imports: Rcpp (>= 0.12.0), coda, mcmc, np, sandwich, sapa, mcmcse
 LinkingTo: Rcpp
 NeedsCompilation: yes
 RoxygenNote: 5.0.1
+Suggests: testthat

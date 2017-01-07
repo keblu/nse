@@ -2,14 +2,14 @@
 % Please edit documentation in R/nse.R
 \name{nse.nw}
 \alias{nse.nw}
-\title{Newey-West NSE estimators.}
+\title{Newey-West NSE estimators}
 \usage{
 nse.nw(x, lag.prewhite = 0)
 }
 \arguments{
 \item{x}{A numeric vector or matrix.}
 
-\item{lag.prewhite}{Prewhite the serie before analysis (integer or NULL, i.e. automatic selection)}
+\item{lag.prewhite}{Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).}
 }
 \value{
 The variance estimator in the univariate case or the variance-covariance matrix 
@@ -17,8 +17,9 @@ estimator in the multivariate case.
 }
 \description{
 Calculate the variance of the mean with the Newey West (1987, 1994) HAC estimator.
-
-This is a wrapper around \link[sandwich]{lrvar} from the sandwich package.
+}
+\note{
+This is a wrapper around \code{\link[sandwich]{lrvar}} from the sandwich package.
 }
 \examples{
 n    = 1000

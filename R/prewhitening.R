@@ -1,5 +1,5 @@
 
-#' Function to perform AR prewithening
+## Function to perform AR prewithening
 f.prewhite = function(x, ar.order = 1) {
   
   if (!is.null(ar.order)) {
@@ -20,12 +20,12 @@ f.prewhite = function(x, ar.order = 1) {
     stop("AR prewhitening of estimating functions failed")
   } 
     
-  ar.resid = as.vector(na.omit(ar.fit$resid))
+  ar.resid = as.vector(stats::na.omit(ar.fit$resid))
   ar.param = as.vector(ar.fit$ar)
   ar.order = as.numeric(ar.fit$order)
   
-  v.x = var(x)
-  v.e = var(ar.resid)
+  v.x = stats::var(x)
+  v.e = stats::var(ar.resid)
   
   scale = 1
   if (ar.order == 1) {

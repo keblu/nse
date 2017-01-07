@@ -2,7 +2,7 @@
 % Please edit documentation in R/nse.R
 \name{nse.hiruk}
 \alias{nse.hiruk}
-\title{Hirukawa NSE estimators.}
+\title{Hirukawa NSE estimators}
 \usage{
 nse.hiruk(x, type = c("bartlett", "parzen"), lag.prewhite = 0)
 }
@@ -11,7 +11,7 @@ nse.hiruk(x, type = c("bartlett", "parzen"), lag.prewhite = 0)
 
 \item{type}{The type of kernel used c("Bartlett","Parzen").}
 
-\item{lag.prewhite}{Prewhite the serie before analysis (integer or NULL, i.e. automatic selection)}
+\item{lag.prewhite}{Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).}
 }
 \value{
 The variance estimator.
@@ -21,7 +21,7 @@ Calculate the variance of the mean with the kernel based variance estimator
 by Andrews (1991) using Hirukawa (2010) automatic bandwidth estimator.
 }
 \details{
-This is a wrapper around \link[sandwich]{lrvar} from the sandwich package 
+This is a wrapper around \code{\link[sandwich]{lrvar}} from the sandwich package 
 and use Hirukawa (2010) automatic bandwidth estimator.
 }
 \examples{
@@ -43,12 +43,12 @@ nse.hiruk(x = x, type = "parzen", lag.prewhite = NULL)
 
 }
 \references{
-Zeileis, Achim. "Econometric computing with HC and HAC covariance matrix estimators." (2004).
-
 Andrews, Donald WK. "Heteroskedasticity and autocorrelation consistent covariance 
 matrix estimation." Econometrica: Journal of the Econometric Society 59.03 (1991): 817-858.
 
 Hirukawa, Masayuki. "A two-stage plug-in bandwidth selection and its implementation 
 for covariance estimation." Econometric Theory 26.03 (2010): 710-743.
+
+Zeileis, Achim. "Econometric computing with HC and HAC covariance matrix estimators." (2004).
 }
 

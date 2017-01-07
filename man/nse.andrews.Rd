@@ -2,7 +2,7 @@
 % Please edit documentation in R/nse.R
 \name{nse.andrews}
 \alias{nse.andrews}
-\title{Andrews NSE estimators.}
+\title{Andrews NSE estimators}
 \usage{
 nse.andrews(x, type = c("bartlett", "parzen", "tukey", "qs", "trunc"),
   lag.prewhite = 0, approx = c("AR(1)", "ARMA(1,1)"))
@@ -12,7 +12,7 @@ nse.andrews(x, type = c("bartlett", "parzen", "tukey", "qs", "trunc"),
 
 \item{type}{The type of kernel used c("bartlett","parzen","qs","trunc","tukey").}
 
-\item{lag.prewhite}{Prewhite the serie before analysis (integer or NULL, i.e. automatic selection)}
+\item{lag.prewhite}{Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).}
 
 \item{approx}{Andrews approximation c("AR(1)", "ARMA(1,1)")}
 }
@@ -22,8 +22,8 @@ The variance estimator in the univariate case or the variance-covariance matrix 
 \description{
 Calculate the variance of the mean with the kernel based variance estimator indtroduced by Andrews (1991).
 }
-\details{
-This is a wrapper around \link[sandwich]{lrvar} from the sandwich package and use Andrews (1991) automatic bandwidth estimator.
+\note{
+This is a wrapper around \code{\link[sandwich]{lrvar}} from the sandwich package and use Andrews (1991) automatic bandwidth estimator.
 }
 \examples{
 n    = 1000
@@ -55,12 +55,13 @@ nse.andrews(x = x, type = "trunc", lag.prewhite = 1)
 nse.andrews(x = x, type = "trunc", lag.prewhite = NULL)
 }
 \references{
-Zeileis, Achim. "Econometric computing with HC and HAC covariance matrix estimators." (2004).
-
 Andrews, Donald WK. "Heteroskedasticity and autocorrelation consistent 
 covariance matrix estimation." Econometrica: Journal of the Econometric Society 59.03 (1991): 817-858.
 
 Newey, Whitney K., and Kenneth D. West. "A simple, positive semi-definite, 
-heteroskedasticity and autocorrelationconsistent covariance matrix.", Econometrica: Journal of the Econometric Society 55.03 (1987) : 703-708.
+heteroskedasticity and autocorrelationconsistent 
+covariance matrix.", Econometrica 55.03 (1987) : 703-708.
+
+Zeileis, Achim. "Econometric computing with HC and HAC covariance matrix estimators." (2004).
 }
 

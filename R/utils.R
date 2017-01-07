@@ -1,12 +1,12 @@
 
-#' Function to check if x is of good dimension
+## Function to check if x is of good dimension
 f.error.multivariate = function(x){
   if (!is.vector(x) && dim(x)[2] != 1) {
     stop("this function only handle univariate time-series")
   }
 }
 
-#' Function to convert nse type into sandwich type
+## Function to convert nse type into sandwich type
 f.type.sandwich = function(type.in) {
   type.in = type.in[1]
   if (type.in == "bartlett") {

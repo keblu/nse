@@ -1,6 +1,5 @@
-#' Estimation of the generalized derivative of spectral density
-#' at the origin with the Bartlett kernel
-#
+# Estimation of the generalized derivative of spectral density
+# at the origin with the Bartlett kernel
 .f.bartlett = function(g, st, q) {
 
   size = length(g)

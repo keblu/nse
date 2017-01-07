@@ -51,7 +51,7 @@
   # function to optimize
   FUN = function(x) bandwidth.solve(y, alpha ,q, k1, intk2, intx2k2, x, kernel)
   # optimization
-  optimalBandwidth = optimize(f = FUN, lower = 4, upper =  n)
+  optimalBandwidth = stats::optimize(f = FUN, lower = 4, upper =  n)
   out = optimalBandwidth$minimum
   return(out)
 }

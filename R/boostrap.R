@@ -9,7 +9,7 @@ h.boot.sample <-
 
 .f.bootstrap <- function(x, nb = 1, statistic = NULL, b = NULL, type, ...)
 {
-  y <- embed(x, 1)
+  y <- stats::embed(x, 1)
   if(is.null(statistic)) {
     n = NROW(y)
     boot <- matrix(y, nrow=n, ncol=nb)

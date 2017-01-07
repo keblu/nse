@@ -2,7 +2,7 @@
 % Please edit documentation in R/nse.R
 \name{nse.geyer}
 \alias{nse.geyer}
-\title{Variance of sample mean of functional of reversible Markov chain using methods of Geyer (1992).}
+\title{Variance of sample mean of functional of reversible Markov chain using methods of Geyer (1992)}
 \usage{
 nse.geyer(x, type = c("iseq", "bm", "obm", "iseq.bm"), nbatch = 30,
   iseq.type = c("pos", "dec", "con"))
@@ -18,14 +18,14 @@ nse.geyer(x, type = c("iseq", "bm", "obm", "iseq.bm"), nbatch = 30,
 and nonincreasing, and ("con") nonnegative, nonincreasing, and convex. The default value is "pos".}
 }
 \value{
-The variance estimator in the univariate case or the v
-ariance-covariance matrix estimator in the multivariate case.
+The variance estimator in the univariate case or the variance-covariance 
+matrix estimator in the multivariate case.
 }
 \description{
 Calculate Geyer (1992) NSE estimator.
 }
-\details{
-The type "iseq" is a wrapper around \link[mcmc]{initseq} from the 
+\note{
+The type "iseq" is a wrapper around \code{\link[mcmc]{initseq}} from the 
 MCMC package and gives the positive intial sequence estimator.
  The type "bm" is the batch mean estimator.
  The type "obm" is the overlapping batch mean estimator.

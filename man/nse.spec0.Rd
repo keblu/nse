@@ -2,7 +2,7 @@
 % Please edit documentation in R/nse.R
 \name{nse.spec0}
 \alias{nse.spec0}
-\title{The spectral density at zero.}
+\title{The spectral density at zero}
 \usage{
 nse.spec0(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"),
   lag.prewhite = 0)
@@ -10,9 +10,9 @@ nse.spec0(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"),
 \arguments{
 \item{x}{A numeric vector.}
 
-\item{type}{A character string denoting the method to use in estimating the spectral density function}
+\item{type}{A character string denoting the method to use in estimating the spectral density function.}
 
-\item{lag.prewhite}{Prewhite the serie before analysis (integer or NULL, i.e. automatic selection)}
+\item{lag.prewhite}{Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).}
 }
 \value{
 The variance estimator.
@@ -20,8 +20,9 @@ The variance estimator.
 \description{
 Calculate the variance of the mean with the spectrum at zero estimator.
 }
-\details{
-This is a wrapper around \link[coda]{spectrum0.ar} from the CODA package and \link[mcmcse]{mcse}from the mcmcse package.
+\note{
+This is a wrapper around \code{\link[coda]{spectrum0.ar}} from the CODA package 
+and \code{\link[mcmcse]{mcse}} from the mcmcse package.
 }
 \examples{
 n    = 1000
@@ -56,11 +57,8 @@ nse.spec0(x = x, type = "tukey", lag.prewhite = NULL)
 Plummer, Martyn, et al. "CODA: Convergence diagnosis and output analysis 
 for MCMC." R news 6.1 (2006): 7-11.
 
-D.B. Percival and A. Walden "Spectral Analysis for Physical Applications: 
+Percival, D.B. and A. Walden "Spectral Analysis for Physical Applications: 
 Multitaper and Conventional Univariate Techniques". Cambridge University Press (1993).
-
-Barbour, A. J. and R. L. Parker (2014), "psd: Adaptive, sine multitaper power spectral 
-density estimation for R", Computers & Geosciences Volume 63 February 2014 : 1-8
 
 James M. Flegal, John Hughes and Dootika Vats. (17-08-2015). mcmcse: Monte Carlo 
 Standard Errors for MCMC. R package version 1.1-2. Riverside, CA and Minneapolis, MN.
