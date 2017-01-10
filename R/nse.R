@@ -1,5 +1,82 @@
-#'  Variance of sample mean of functional of reversible Markov chain using methods of Geyer (1992)
-#' @description Calculate Geyer (1992) NSE estimator.
+#' @name nse
+#' @docType package
+#' @title Computation of Numerical Standard Errors in R
+#' @description \code{nse} is an \R package for computing the numerical standard errors, an estimate 
+#' of the standard deviation of a simulation result, if the simulation experiment were to be repeated 
+#' many times. The package currently implements more than thirty estimators, including batch means 
+#' estimators (Geyer, 1992, Section 3.2), initial sequence estimators Geyer (1992, Equation 3.3), 
+#' spectrum at zero estimators (Heidelberger and Welch, 1981; Flegal and Jones, 2010), heteroskedasticity 
+#' and autocorrelation consistent (HAC) kernel estimators (Newey and West, 1987; Andrews, 1991; Andrews and 
+#' Monahan, 1992; Newey and West, 1994; Hirukawa, 2010), and bootstrap estimators Politis and 
+#' Romano (1992, 1994); Politis and White (2004). The full set of estimators are described in 
+#' Ardia et al. (2016). 
+#' 
+#' @section Functions:
+#' \itemize{
+#' \item \code{\link{nse.geyer}}: Geyer NSE estimator.
+#' \item \code{\link{nse.spec0}}: Spectral density at zero NSE estimator.
+#' \item \code{\link{nse.nw}}: Newey-West NSE estimator.
+#' \item \code{\link{nse.andrews}}: Andrews NSE estimator.
+#' \item \code{\link{nse.hiruk}}: Hirukawa NSE estimator.
+#' \item \code{\link{nse.boot}}: Bootstrap NSE estimator.
+#' }
+#' 
+#' @section Update:
+#' The latest version of the package is available at \url{https://github.com/keblu/nse}.
+#' @author David Ardia and Keven Bluteau
+#' @references 
+#' Andrews, D.W.K. (1991). 
+#' Heteroskedasticity and autocorrelation consistent covariance matrix estimation. 
+#' \emph{Econometrica} \bold{59}(3), pp.817--858. \doi{10.2307/2938229}.
+#' 
+#' Andrews, D.W.K, Monahan, J.C. (1992).
+#' An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator. 
+#' \emph{Econometrica} \bold{60}(4), pp.953--966. \doi{10.2307/2951574}.
+#' 
+#' Ardia, D., Bluteau, K., Hoogerheide, L. (2016).
+#' Comparison of multiple methods for computing numerical standard errors: An extensive Monte Carlo study. 
+#' Working paper. \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2741587}.
+#' 
+#' Flegal, J.M., Hughes, J., Vats D. (2010). 
+#' Batch means and spectral variance estimators in Markov chain Monte Carlo.
+#' \emph{Annals of Statistics} \bold{38}(2), pp.1034--1070. \doi{10.1214/09-aos735}.
+#' 
+#' Geyer, C.J. (1992). 
+#' Practical Markov chain Monte Carlo. 
+#' \emph{Statistical Science} \bold{7}(4), pp.473--483.
+#' 
+#' Heidelberger, P., Welch, Peter D. (1981).
+#' A spectral method for confidence interval generation and run length control in simulations. 
+#' \emph{Communications of the ACM} \bold{24}(4), pp.233--245. \doi{10.1145/358598.358630}.
+#' 
+#' Hirukawa, M. (2010). 
+#' A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
+#' \emph{Econometric Theory}, \bold{26}(3), pp.710--743. \doi{10.1017/s0266466609990089}.
+#' 
+#' Newey, W.K., West, K.D. (1987).
+#' A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
+#' \emph{Econometrica} \bold{55}(3), pp.703--708. \doi{10.2307/1913610}.
+#' 
+#' Newey, W.K., West, K.D. (1994) .
+#' Automatic lag selection in covariance matrix estimation.
+#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{doi: 10.3386/t0144}
+#' 
+#' Politis, D.N., Romano, and J.P. (1992).
+#' A circular block-resampling procedure for stationary data.
+#' In \emph{Exploring the limits of bootstrap}, John Wiley & Sons, pp.263--270.
+#' 
+#' Politis, D.N., Romano, and J.P. (1994). 
+#' The stationary bootstrap.
+#' \emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303--1313. \doi{10.2307/2290993}.
+#' 
+#' Politis, D.N., White, H. (2004).
+#' Automatic block-length selection for the dependent bootstrap.
+#' \emph{Econometric Reviews} \bold{23}(1), pp.53--70. \doi{10.1081/etc-120028836}.
+NULL
+
+#' @name nse.geyer
+#' @title Geyer NSE estimator
+#' @description Calculate the variance of sample mean with the method of Geyer (1992).
 #' @note  The type "iseq" is a wrapper around \code{\link[mcmc]{initseq}} from the 
 #' MCMC package and gives the positive intial sequence estimator.
 #'  The type "bm" is the batch mean estimator.
@@ -11,8 +88,11 @@
 #' @param iseq.type constraints on function, ("pos") nonnegative, ("dec") nonnegative 
 #' and nonincreasing, and ("con") nonnegative, nonincreasing, and convex. The default value is "pos".
 #' @import mcmc
+#' @author David Ardia and Keven Bluteau
 #' @references 
-#' Geyer, Charles J. "Practical markov chain monte carlo." Statistical Science (1992): 473-483.
+#' Geyer, C.J. (1992). 
+#' Practical Markov chain Monte Carlo. 
+#' \emph{Statistical Science} \bold{7}(4), pp.473--483.
 #' @return  The variance estimator in the univariate case or the variance-covariance 
 #' matrix estimator in the multivariate case.
 #' @examples
@@ -30,8 +110,8 @@
 #' nse.geyer(x = x, type = "iseq.bm", iseq.type = "con")
 #'  
 #'@export
-nse.geyer = function(x, type = c("iseq", "bm", "obm", "iseq.bm"), nbatch = 30, iseq.type = c("pos", "dec", "con")) {
-  
+nse.geyer = function(x, type = c("iseq", "bm", "obm", "iseq.bm"), 
+                     nbatch = 30, iseq.type = c("pos", "dec", "con")) {
   if (is.vector(x)) {
     x = matrix(x,ncol = 1)
   }
@@ -59,7 +139,8 @@ nse.geyer = function(x, type = c("iseq", "bm", "obm", "iseq.bm"), nbatch = 30, i
     
     ncol  = dim(x)[2]
     x     = as.data.frame(x)
-    batch = matrix(unlist(lapply(split(x, ceiling(seq_along(x[,1]) / (n / nbatch))), FUN = function(x) colMeans(x))), ncol = ncol,byrow = TRUE)
+    batch = matrix(unlist(lapply(split(x, ceiling(seq_along(x[,1]) / (n / nbatch))), 
+                                 FUN = function(x) colMeans(x))), ncol = ncol,byrow = TRUE)
     out   = stats::var(x = batch) / (nbatch - 1)
     
     if (is.matrix(out) && dim(out) == c(1,1)) {
@@ -96,7 +177,8 @@ nse.geyer = function(x, type = c("iseq", "bm", "obm", "iseq.bm"), nbatch = 30, i
   return(out)
 }
 
-#' The spectral density at zero
+#' @name nse.spec0
+#' @title Spectral density at zero NSE estimator
 #' @description Calculate the variance of the mean with the spectrum at zero estimator.
 #' @note  This is a wrapper around \code{\link[coda]{spectrum0.ar}} from the CODA package 
 #' and \code{\link[mcmcse]{mcse}} from the mcmcse package.
@@ -105,14 +187,10 @@ nse.geyer = function(x, type = c("iseq", "bm", "obm", "iseq.bm"), nbatch = 30, i
 #' @param lag.prewhite Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).
 #' @return The variance estimator.
 #' @references 
-#' Plummer, Martyn, et al. "CODA: Convergence diagnosis and output analysis 
-#' for MCMC." R news 6.1 (2006): 7-11.
-#' 
-#' Percival, D.B. and A. Walden "Spectral Analysis for Physical Applications: 
-#' Multitaper and Conventional Univariate Techniques". Cambridge University Press (1993).
-#' 
-#' James M. Flegal, John Hughes and Dootika Vats. (17-08-2015). mcmcse: Monte Carlo 
-#' Standard Errors for MCMC. R package version 1.1-2. Riverside, CA and Minneapolis, MN.
+#' Flegal, J.M., Hughes, J., Vats D. (2010). 
+#' Batch means and spectral variance estimators in Markov chain Monte Carlo.
+#' \emph{Annals of Statistics} \bold{38}(2), pp.1034--1070. \doi{10.1214/09-aos735}.
+#' @author David Ardia and Keven Bluteau
 #' @import coda sapa mcmcse
 #' @examples 
 #' n    = 1000
@@ -178,26 +256,23 @@ nse.spec0 = function(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"), lag.
   return(out)
 }
 
-#' Newey-West NSE estimators
+#' @name nse.nw
+#' @title Newey-West NSE estimator
 #' @description Calculate the variance of the mean with the Newey West (1987, 1994) HAC estimator.
 #' @note This is a wrapper around \code{\link[sandwich]{lrvar}} from the sandwich package.
 #' @param x A numeric vector or matrix.
 #' @param lag.prewhite Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).
 #' @return The variance estimator in the univariate case or the variance-covariance matrix 
 #' estimator in the multivariate case.
+#' @author David Ardia and Keven Bluteau
 #' @references 
-#' Andrews, Donald WK. "Heteroskedasticity and autocorrelation consistent covariance 
-#' matrix estimation." Econometrica: Journal of the Econometric Society 59.03 (1991): 817-858.
+#' Newey, W.K., West, K.D. (1987).
+#' A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
+#' \emph{Econometrica} \bold{55}(3), pp.703--708. \doi{10.2307/1913610}.
 #' 
-#' Newey, Whitney K., and Kenneth D. West. "A simple, positive semi-definite, 
-#' heteroskedasticity and autocorrelationconsistent covariance matrix.", Econometrica: Journal of 
-#' the Econometric Society 55.03 (1987) : 703-708.
-#' 
-#' Newey, Whitney K., and Kenneth D. West. "Automatic lag selection in covariance 
-#' matrix estimation." The Review of Economic Studies 61.4 (1994): 631-653.
-#' 
-#' Zeileis, Achim. "Econometric computing with HC and HAC 
-#' covariance matrix estimators." (2004).
+#' Newey, W.K., West, K.D. (1994) .
+#' Automatic lag selection in covariance matrix estimation.
+#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{doi: 10.3386/t0144}
 #' @import sandwich
 #' @examples 
 #' n    = 1000
@@ -220,7 +295,8 @@ nse.nw <- function(x, lag.prewhite = 0) {
   return(out)
 }
 
-#' Andrews NSE estimators
+#' @name nse.andrews
+#' @title Andrews NSE estimator
 #' @description Calculate the variance of the mean with the kernel based variance estimator indtroduced by Andrews (1991).
 #' @note  This is a wrapper around \code{\link[sandwich]{lrvar}} from the sandwich package and use Andrews (1991) automatic bandwidth estimator.
 #' @param x A numeric vector or matrix.
@@ -229,14 +305,21 @@ nse.nw <- function(x, lag.prewhite = 0) {
 #' @param approx Andrews approximation c("AR(1)", "ARMA(1,1)")
 #' @return The variance estimator in the univariate case or the variance-covariance matrix estimator in the multivariate case.
 #' @references 
-#' Andrews, Donald WK. "Heteroskedasticity and autocorrelation consistent 
-#' covariance matrix estimation." Econometrica: Journal of the Econometric Society 59.03 (1991): 817-858.
+#' Andrews, D.W.K. (1991).
+#' Heteroskedasticity and autocorrelation consistent covariance matrix estimation. 
+#' \emph{Econometrica} \bold{59}(3), pp.817--858. \doi{10.2307/2938229}.
 #' 
-#' Newey, Whitney K., and Kenneth D. West. "A simple, positive semi-definite, 
-#' heteroskedasticity and autocorrelationconsistent 
-#' covariance matrix.", Econometrica 55.03 (1987) : 703-708.
+#' Andrews, D.W.K, Monahan, J.C. (1992).
+#' An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator. 
+#' \emph{Econometrica} \bold{60}(4), pp.953--966. \doi{10.2307/2951574}.
+#' Newey, W.K., West, K.D. (1987).
+#' A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
+#' \emph{Econometrica} \bold{55}(3), pp.703--708. \doi{10.2307/1913610}.
 #' 
-#' Zeileis, Achim. "Econometric computing with HC and HAC covariance matrix estimators." (2004).
+#' Newey, W.K., West, K.D. (1994) .
+#' Automatic lag selection in covariance matrix estimation.
+#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{doi: 10.3386/t0144}
+#' @author David Ardia and Keven Bluteau
 #' @import sandwich
 #' @examples 
 #' n    = 1000
@@ -276,7 +359,8 @@ nse.andrews <- function(x, type = c("bartlett", "parzen", "tukey", "qs", "trunc"
   return(out)
 }
 
-#' Hirukawa NSE estimators  
+#' @name nse.hiruk
+#' @title Hirukawa NSE estimator
 #' @description Calculate the variance of the mean with the kernel based variance estimator 
 #' by Andrews (1991) using Hirukawa (2010) automatic bandwidth estimator.
 #' @details This is a wrapper around \code{\link[sandwich]{lrvar}} from the sandwich package 
@@ -284,14 +368,11 @@ nse.andrews <- function(x, type = c("bartlett", "parzen", "tukey", "qs", "trunc"
 #' @param x A numeric vector.
 #' @param lag.prewhite Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).
 #' @param type The type of kernel used c("Bartlett","Parzen").
+#' @author David Ardia and Keven Bluteau
 #' @references 
-#' Andrews, Donald WK. "Heteroskedasticity and autocorrelation consistent covariance 
-#' matrix estimation." Econometrica: Journal of the Econometric Society 59.03 (1991): 817-858.
-#' 
-#' Hirukawa, Masayuki. "A two-stage plug-in bandwidth selection and its implementation 
-#' for covariance estimation." Econometric Theory 26.03 (2010): 710-743.
-#'
-#' Zeileis, Achim. "Econometric computing with HC and HAC covariance matrix estimators." (2004).
+#' Hirukawa, M. (2010). 
+#' A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
+#' \emph{Econometric Theory}, \bold{26}(3), pp.710--743. \doi{10.1017/s0266466609990089}.
 #' @import sandwich
 #' @return The variance estimator.
 #' @examples
@@ -323,7 +404,8 @@ nse.hiruk <- function(x, type = c("bartlett", "parzen"), lag.prewhite = 0) {
   return(out)
 }
 
-#' Bootstrap NSE estimators
+#' @name nse.boot
+#' @title Bootstrap NSE estimator
 #' @description Calculate the variance of the mean with a bootstrap variance estimator.
 #' @note  Use the automatic blocksize in \code{\link[np]{b.star}} from th np package which is based 
 #' on Politis and White (2004) and Patton and al (2009). 
@@ -336,22 +418,19 @@ nse.hiruk <- function(x, type = c("bartlett", "parzen"), lag.prewhite = 0) {
 #' @param lag.prewhite Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).
 #' @return The variance estimator in the univariate case or the variance-covariance matrix 
 #' estimator in the multivariate case.
+#' @author David Ardia and Keven Bluteau
 #' @references 
-#' Hayfield, Tristen, and Jeffrey S. Racine. "Nonparametric econometrics: The np 
-#' package." Journal of statistical software 27.5 (2008): 1-32.
-#'
-#' Patton, Andrew, Dimitris N. Politis, and Halbert White. "Correction to "Automatic 
-#' block-length selection for the dependent bootstrap" by D. Politis 
-#' and H. White." Econometric Reviews 28.4 (2009): 372-375.
+#' Politis, D.N., Romano, and J.P. (1992).
+#' A circular block-resampling procedure for stationary data.
+#' In \emph{Exploring the limits of bootstrap}, John Wiley & Sons, pp.263--270.
 #' 
-#' Politis, Dimitris N., and Joseph P. Romano. "A circular block-resampling procedure 
-#' for stationary data." Exploring the limits of bootstrap (1992): 263-270.
+#' Politis, D.N., Romano, and J.P. (1994). 
+#' The stationary bootstrap.
+#' \emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303--1313. \doi{10.2307/2290993}.
 #' 
-#' Politis, Dimitris N., and Joseph P. Romano. "The stationary bootstrap." Journal of 
-#' the American Statistical association 89.428 (1994): 1303-1313.
-#' 
-#' Politis, Dimitris N., and Halbert White. "Automatic block-length selection for the 
-#' dependent bootstrap." Econometric Reviews 23.1 (2004): 53-70.
+#' Politis, D.N., White, H. (2004).
+#' Automatic block-length selection for the dependent bootstrap.
+#' \emph{Econometric Reviews} \bold{23}(1), pp.53--70. \doi{10.1081/etc-120028836}.
 #' @import np Rcpp stats
 #' @useDynLib nse
 #' @importFrom Rcpp evalCpp   

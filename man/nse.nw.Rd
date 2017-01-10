@@ -2,7 +2,7 @@
 % Please edit documentation in R/nse.R
 \name{nse.nw}
 \alias{nse.nw}
-\title{Newey-West NSE estimators}
+\title{Newey-West NSE estimator}
 \usage{
 nse.nw(x, lag.prewhite = 0)
 }
@@ -34,18 +34,16 @@ nse.nw(x = x, lag.prewhite = 0)
 nse.nw(x = x, lag.prewhite = 1)
 nse.nw(x = x, lag.prewhite = NULL)
 }
+\author{
+David Ardia and Keven Bluteau
+}
 \references{
-Andrews, Donald WK. "Heteroskedasticity and autocorrelation consistent covariance 
-matrix estimation." Econometrica: Journal of the Econometric Society 59.03 (1991): 817-858.
+Newey, W.K., West, K.D. (1987).
+A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
+\emph{Econometrica} \bold{55}(3), pp.703--708. \doi{10.2307/1913610}.
 
-Newey, Whitney K., and Kenneth D. West. "A simple, positive semi-definite, 
-heteroskedasticity and autocorrelationconsistent covariance matrix.", Econometrica: Journal of 
-the Econometric Society 55.03 (1987) : 703-708.
-
-Newey, Whitney K., and Kenneth D. West. "Automatic lag selection in covariance 
-matrix estimation." The Review of Economic Studies 61.4 (1994): 631-653.
-
-Zeileis, Achim. "Econometric computing with HC and HAC 
-covariance matrix estimators." (2004).
+Newey, W.K., West, K.D. (1994) .
+Automatic lag selection in covariance matrix estimation.
+\emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{doi: 10.3386/t0144}
 }
 

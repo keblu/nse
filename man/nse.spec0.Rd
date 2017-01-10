@@ -2,7 +2,7 @@
 % Please edit documentation in R/nse.R
 \name{nse.spec0}
 \alias{nse.spec0}
-\title{The spectral density at zero}
+\title{Spectral density at zero NSE estimator}
 \usage{
 nse.spec0(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"),
   lag.prewhite = 0)
@@ -53,14 +53,12 @@ nse.spec0(x = x, type = "tukey", lag.prewhite = 1)
 nse.spec0(x = x, type = "tukey", lag.prewhite = NULL)
  
 }
+\author{
+David Ardia and Keven Bluteau
+}
 \references{
-Plummer, Martyn, et al. "CODA: Convergence diagnosis and output analysis 
-for MCMC." R news 6.1 (2006): 7-11.
-
-Percival, D.B. and A. Walden "Spectral Analysis for Physical Applications: 
-Multitaper and Conventional Univariate Techniques". Cambridge University Press (1993).
-
-James M. Flegal, John Hughes and Dootika Vats. (17-08-2015). mcmcse: Monte Carlo 
-Standard Errors for MCMC. R package version 1.1-2. Riverside, CA and Minneapolis, MN.
+Flegal, J.M., Hughes, J., Vats D. (2010). 
+Batch means and spectral variance estimators in Markov chain Monte Carlo.
+\emph{Annals of Statistics} \bold{38}(2), pp.1034--1070. \doi{10.1214/09-aos735}.
 }
 

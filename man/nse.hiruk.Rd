@@ -2,7 +2,7 @@
 % Please edit documentation in R/nse.R
 \name{nse.hiruk}
 \alias{nse.hiruk}
-\title{Hirukawa NSE estimators}
+\title{Hirukawa NSE estimator}
 \usage{
 nse.hiruk(x, type = c("bartlett", "parzen"), lag.prewhite = 0)
 }
@@ -42,13 +42,12 @@ nse.hiruk(x = x, type = "parzen", lag.prewhite = 1)
 nse.hiruk(x = x, type = "parzen", lag.prewhite = NULL)
 
 }
+\author{
+David Ardia and Keven Bluteau
+}
 \references{
-Andrews, Donald WK. "Heteroskedasticity and autocorrelation consistent covariance 
-matrix estimation." Econometrica: Journal of the Econometric Society 59.03 (1991): 817-858.
-
-Hirukawa, Masayuki. "A two-stage plug-in bandwidth selection and its implementation 
-for covariance estimation." Econometric Theory 26.03 (2010): 710-743.
-
-Zeileis, Achim. "Econometric computing with HC and HAC covariance matrix estimators." (2004).
+Hirukawa, M. (2010). 
+A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
+\emph{Econometric Theory}, \bold{26}(3), pp.710--743. \doi{10.1017/s0266466609990089}.
 }
 

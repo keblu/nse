@@ -2,7 +2,7 @@
 % Please edit documentation in R/nse.R
 \name{nse.geyer}
 \alias{nse.geyer}
-\title{Variance of sample mean of functional of reversible Markov chain using methods of Geyer (1992)}
+\title{Geyer NSE estimator}
 \usage{
 nse.geyer(x, type = c("iseq", "bm", "obm", "iseq.bm"), nbatch = 30,
   iseq.type = c("pos", "dec", "con"))
@@ -22,7 +22,7 @@ The variance estimator in the univariate case or the variance-covariance
 matrix estimator in the multivariate case.
 }
 \description{
-Calculate Geyer (1992) NSE estimator.
+Calculate the variance of sample mean with the method of Geyer (1992).
 }
 \note{
 The type "iseq" is a wrapper around \code{\link[mcmc]{initseq}} from the 
@@ -44,7 +44,12 @@ nse.geyer(x = x, type = "iseq", iseq.type = "pos")
 nse.geyer(x = x, type = "iseq.bm", iseq.type = "con")
  
 }
+\author{
+David Ardia and Keven Bluteau
+}
 \references{
-Geyer, Charles J. "Practical markov chain monte carlo." Statistical Science (1992): 473-483.
+Geyer, C.J. (1992). 
+Practical Markov chain Monte Carlo. 
+\emph{Statistical Science} \bold{7}(4), pp.473--483.
 }
 

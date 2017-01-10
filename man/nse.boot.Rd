@@ -2,7 +2,7 @@
 % Please edit documentation in R/nse.R
 \name{nse.boot}
 \alias{nse.boot}
-\title{Bootstrap NSE estimators}
+\title{Bootstrap NSE estimator}
 \usage{
 nse.boot(x, nb, type = c("stationary", "circular"), b = NULL,
   lag.prewhite = 0)
@@ -58,21 +58,20 @@ nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = 0)
 nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = 1)
 nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = NULL)
 }
+\author{
+David Ardia and Keven Bluteau
+}
 \references{
-Hayfield, Tristen, and Jeffrey S. Racine. "Nonparametric econometrics: The np 
-package." Journal of statistical software 27.5 (2008): 1-32.
+Politis, D.N., Romano, and J.P. (1992).
+A circular block-resampling procedure for stationary data.
+In \emph{Exploring the limits of bootstrap}, John Wiley & Sons, pp.263--270.
 
-Patton, Andrew, Dimitris N. Politis, and Halbert White. "Correction to "Automatic 
-block-length selection for the dependent bootstrap" by D. Politis 
-and H. White." Econometric Reviews 28.4 (2009): 372-375.
+Politis, D.N., Romano, and J.P. (1994). 
+The stationary bootstrap.
+\emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303--1313. \doi{10.2307/2290993}.
 
-Politis, Dimitris N., and Joseph P. Romano. "A circular block-resampling procedure 
-for stationary data." Exploring the limits of bootstrap (1992): 263-270.
-
-Politis, Dimitris N., and Joseph P. Romano. "The stationary bootstrap." Journal of 
-the American Statistical association 89.428 (1994): 1303-1313.
-
-Politis, Dimitris N., and Halbert White. "Automatic block-length selection for the 
-dependent bootstrap." Econometric Reviews 23.1 (2004): 53-70.
+Politis, D.N., White, H. (2004).
+Automatic block-length selection for the dependent bootstrap.
+\emph{Econometric Reviews} \bold{23}(1), pp.53--70. \doi{10.1081/etc-120028836}.
 }
 
