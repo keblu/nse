@@ -1,6 +1,6 @@
 ---
 title: 'nse: Computation of Numerical Standard Errors in R'
-date: "10 January 2017"
+date: "11 January 2017"
 tags:
 - nse
 - numerical standard error
@@ -26,7 +26,7 @@ more than thirty NSE estimators, including batch means estimators, initial seque
 estimators, spectrum at zero estimators, heteroskedasticity and autocorrelation 
 consistent (HAC) kernel estimators and bootstrap estimators. 
 
-The full set of methods available in the package is summarized in @ArdiaEtAl2016 together with 
+The full set of methods available in the package is summarized in [Ardia et al. (2016)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2741587) together with 
 several examples of applications of NSE in econometrics and finance.
 
 The latest version of the package is available at 'https://github.com/keblu/nse'.
