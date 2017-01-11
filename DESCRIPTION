@@ -9,8 +9,8 @@ Authors@R: c(person("David", "Ardia", role = c("aut"),
 Author: David Ardia [aut]
         Keven Bluteau [aut, cre],
 Maintainer: Keven Bluteau <Keven.Bluteau@unine.ch>
-Description: Offers mutliple ways to calculate numerical standard errors (NSE) of
-    univariate (or multivariate in some cases) time series.
+Description: Offers mutliple ways to calculate numerical the standard error (NSE) of
+    univariate time series.
 License: GPL (>= 2)
 Imports: Rcpp (>= 0.12.0), coda, mcmc, np, sandwich, sapa, mcmcse
 LinkingTo: Rcpp
