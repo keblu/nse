@@ -2,34 +2,31 @@
 % Please edit documentation in R/nse.R
 \name{nse.boot}
 \alias{nse.boot}
-\title{Bootstrap NSE estimator}
+\title{Bootstrap estimator}
 \usage{
 nse.boot(x, nb, type = c("stationary", "circular"), b = NULL,
   lag.prewhite = 0)
 }
 \arguments{
-\item{x}{A numeric vector or a matrix.}
+\item{x}{A numeric vector.}
 
 \item{nb}{The number of bootstrap replications.}
 
-\item{type}{The bootstrap schemes c("stationary","circular").}
+\item{type}{The bootstrap scheme used, among \code{"stationary"} and \code{"circular"}. Default is \code{type = "stationary"}.}
 
-\item{b}{the block length. If NULL automatic block length selection.}
+\item{b}{The block length for the block bootstrap. If \code{NULL} automatic block length selection. Default is \code{b = NULL}.}
 
-\item{lag.prewhite}{Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).}
+\item{lag.prewhite}{Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
 }
 \value{
-The variance estimator in the univariate case or the variance-covariance matrix 
-estimator in the multivariate case.
+The NSE estimator.
 }
 \description{
-Calculate the variance of the mean with a bootstrap variance estimator.
+Calculate the numerical standard error with bootstrap estimator.
 }
 \note{
-Use the automatic blocksize in \code{\link[np]{b.star}} from th np package which is based 
-on Politis and White (2004) and Patton and al (2009). 
-Two bootstrap schemes are available; The stationary bootstrap of Politis and Romano  (1994)
-and the circular bootstrap of Politis and Romano (1992).
+\code{nse.boot} uses \code{\link[np]{b.star}} of the \code{\link{np}} package 
+for the optimal block length selection.
 }
 \examples{
  

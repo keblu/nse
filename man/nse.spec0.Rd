@@ -2,7 +2,7 @@
 % Please edit documentation in R/nse.R
 \name{nse.spec0}
 \alias{nse.spec0}
-\title{Spectral density at zero NSE estimator}
+\title{Spectral density at zero estimator}
 \usage{
 nse.spec0(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"),
   lag.prewhite = 0)
@@ -10,19 +10,22 @@ nse.spec0(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"),
 \arguments{
 \item{x}{A numeric vector.}
 
-\item{type}{A character string denoting the method to use in estimating the spectral density function.}
+\item{type}{Method to use in estimating the spectral density function, among \code{"ar"}, \code{"glm"}, \code{"wosa"}, \code{"tukey"} and \code{"bartlett"}. See *Details*. 
+Default is \code{type = "ar"}.}
 
-\item{lag.prewhite}{Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).}
+\item{lag.prewhite}{Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
 }
 \value{
-The variance estimator.
+The NSE estimator.
 }
 \description{
-Calculate the variance of the mean with the spectrum at zero estimator.
+Calculate the numerical standard error with the spectrum at zero estimator.
+}
+\details{
+The method \code{"ar"} estimates the spectral density using an autoregressive model, \code{"glm"} using a generelized linear model, \code{"wosa"} using the Welch's Overlapped Segment averaging nonparametric approach, \code{"tukey"} using Tukey-Hanning window and \code{"bartlett"} using the Bartlett window.
 }
 \note{
-This is a wrapper around \code{\link[coda]{spectrum0.ar}} from the CODA package 
-and \code{\link[mcmcse]{mcse}} from the mcmcse package.
+\code{nse.spec0} relies on the packages \code{\link{coda}}, \code{\link{mcmcse}} and \code{\link{sapa}}; see the documentation of these packages for more details.
 }
 \examples{
 n    = 1000
@@ -51,7 +54,6 @@ nse.spec0(x = x, type = "bartlett", lag.prewhite = NULL)
 nse.spec0(x = x, type = "tukey", lag.prewhite = 0)
 nse.spec0(x = x, type = "tukey", lag.prewhite = 1)
 nse.spec0(x = x, type = "tukey", lag.prewhite = NULL)
- 
 }
 \author{
 David Ardia and Keven Bluteau

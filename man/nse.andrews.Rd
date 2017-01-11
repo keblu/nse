@@ -2,28 +2,29 @@
 % Please edit documentation in R/nse.R
 \name{nse.andrews}
 \alias{nse.andrews}
-\title{Andrews NSE estimator}
+\title{Andrews estimator}
 \usage{
 nse.andrews(x, type = c("bartlett", "parzen", "tukey", "qs", "trunc"),
   lag.prewhite = 0, approx = c("AR(1)", "ARMA(1,1)"))
 }
 \arguments{
-\item{x}{A numeric vector or matrix.}
+\item{x}{A numeric vector.}
 
-\item{type}{The type of kernel used c("bartlett","parzen","qs","trunc","tukey").}
+\item{type}{The type of kernel used among which \code{"bartlett"}, \code{"parzen"}, \code{"qs"}, \code{"trunc"} and \code{"tukey"}. Default is \code{type = "bartlett"}.}
 
-\item{lag.prewhite}{Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).}
+\item{lag.prewhite}{Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
 
-\item{approx}{Andrews approximation c("AR(1)", "ARMA(1,1)")}
+\item{approx}{Andrews approximation, either \code{"AR(1)"} or \code{"ARMA(1,1)"}. Default is \code{approx = "AR(1)"}.}
 }
 \value{
-The variance estimator in the univariate case or the variance-covariance matrix estimator in the multivariate case.
+The NSE estimator.
 }
 \description{
-Calculate the variance of the mean with the kernel based variance estimator indtroduced by Andrews (1991).
+Calculate the numerical standard error with the kernel 
+based variance estimator by Andrews (1991).
 }
 \note{
-This is a wrapper around \code{\link[sandwich]{lrvar}} from the sandwich package and use Andrews (1991) automatic bandwidth estimator.
+\code{nse.andrews} is a wrapper around \code{\link[sandwich]{lrvar}} from the \code{\link{sandwich}} package and uses Andrews (1991) automatic bandwidth estimator. See the documentation of \code{\link{sandwich}} for details.
 }
 \examples{
 n    = 1000

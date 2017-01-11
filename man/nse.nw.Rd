@@ -2,24 +2,24 @@
 % Please edit documentation in R/nse.R
 \name{nse.nw}
 \alias{nse.nw}
-\title{Newey-West NSE estimator}
+\title{Newey-West estimator}
 \usage{
 nse.nw(x, lag.prewhite = 0)
 }
 \arguments{
-\item{x}{A numeric vector or matrix.}
+\item{x}{A numeric vector}
 
-\item{lag.prewhite}{Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).}
+\item{lag.prewhite}{Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
 }
 \value{
-The variance estimator in the univariate case or the variance-covariance matrix 
-estimator in the multivariate case.
+The NSE estimator.
 }
 \description{
-Calculate the variance of the mean with the Newey West (1987, 1994) HAC estimator.
+Calculate the numerical standard error with the Newey West (1987, 1994) HAC estimator.
 }
 \note{
-This is a wrapper around \code{\link[sandwich]{lrvar}} from the sandwich package.
+\code{nse.nw} is a wrapper around \code{\link[sandwich]{lrvar}} from 
+the \code{\link{sandwich}} package. See the documentation of \code{\link{sandwich}} for details.
 }
 \examples{
 n    = 1000

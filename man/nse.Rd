@@ -6,15 +6,20 @@
 \alias{nse-package}
 \title{Computation of Numerical Standard Errors in R}
 \description{
-\code{nse} is an \R package for computing the numerical standard errors, an estimate 
+\code{nse} is an \R package for computing the numerical standard error (NSE), an estimate 
 of the standard deviation of a simulation result, if the simulation experiment were to be repeated 
-many times. The package currently implements more than thirty estimators, including batch means 
+many times. TThe package provides a set of wrappers around several R packages, which give access to 
+more than thirty NSE estimators, including batch means 
 estimators (Geyer, 1992, Section 3.2), initial sequence estimators Geyer (1992, Equation 3.3), 
 spectrum at zero estimators (Heidelberger and Welch, 1981; Flegal and Jones, 2010), heteroskedasticity 
 and autocorrelation consistent (HAC) kernel estimators (Newey and West, 1987; Andrews, 1991; Andrews and 
 Monahan, 1992; Newey and West, 1994; Hirukawa, 2010), and bootstrap estimators Politis and 
 Romano (1992, 1994); Politis and White (2004). The full set of estimators are described in 
 Ardia et al. (2016).
+}
+\note{
+Functions rely on the packages \code{\link{coda}}, \code{\link{mcmc}}, 
+\code{\link{mcmcse}}, \code{\link{np}}, \code{\link{sandwich}} and \code{\link{sapa}}.
 }
 \section{Functions}{
 
@@ -26,11 +31,6 @@ Ardia et al. (2016).
 \item \code{\link{nse.hiruk}}: Hirukawa NSE estimator.
 \item \code{\link{nse.boot}}: Bootstrap NSE estimator.
 }
-}
-
-\section{Update}{
-
-The latest version of the package is available at \url{https://github.com/keblu/nse}.
 }
 \author{
 David Ardia and Keven Bluteau
@@ -62,7 +62,7 @@ A spectral method for confidence interval generation and run length control in s
 
 Hirukawa, M. (2010). 
 A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
-\emph{Econometric Theory}, \bold{26}(3), pp.710--743. \doi{10.1017/s0266466609990089}.
+\emph{Econometric Theory} \bold{26}(3), pp.710--743. \doi{10.1017/s0266466609990089}.
 
 Newey, W.K., West, K.D. (1987).
 A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 

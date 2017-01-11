@@ -1,9 +1,10 @@
 #' @name nse
 #' @docType package
 #' @title Computation of Numerical Standard Errors in R
-#' @description \code{nse} is an \R package for computing the numerical standard errors, an estimate 
+#' @description \code{nse} is an \R package for computing the numerical standard error (NSE), an estimate 
 #' of the standard deviation of a simulation result, if the simulation experiment were to be repeated 
-#' many times. The package currently implements more than thirty estimators, including batch means 
+#' many times. TThe package provides a set of wrappers around several R packages, which give access to 
+#' more than thirty NSE estimators, including batch means 
 #' estimators (Geyer, 1992, Section 3.2), initial sequence estimators Geyer (1992, Equation 3.3), 
 #' spectrum at zero estimators (Heidelberger and Welch, 1981; Flegal and Jones, 2010), heteroskedasticity 
 #' and autocorrelation consistent (HAC) kernel estimators (Newey and West, 1987; Andrews, 1991; Andrews and 
@@ -20,10 +21,9 @@
 #' \item \code{\link{nse.hiruk}}: Hirukawa NSE estimator.
 #' \item \code{\link{nse.boot}}: Bootstrap NSE estimator.
 #' }
-#' 
-#' @section Update:
-#' The latest version of the package is available at \url{https://github.com/keblu/nse}.
 #' @author David Ardia and Keven Bluteau
+#' @note Functions rely on the packages \code{\link{coda}}, \code{\link{mcmc}}, 
+#' \code{\link{mcmcse}}, \code{\link{np}}, \code{\link{sandwich}} and \code{\link{sapa}}. 
 #' @references 
 #' Andrews, D.W.K. (1991). 
 #' Heteroskedasticity and autocorrelation consistent covariance matrix estimation. 
@@ -51,7 +51,7 @@
 #' 
 #' Hirukawa, M. (2010). 
 #' A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
-#' \emph{Econometric Theory}, \bold{26}(3), pp.710--743. \doi{10.1017/s0266466609990089}.
+#' \emph{Econometric Theory} \bold{26}(3), pp.710--743. \doi{10.1017/s0266466609990089}.
 #' 
 #' Newey, W.K., West, K.D. (1987).
 #' A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
@@ -72,29 +72,30 @@
 #' Politis, D.N., White, H. (2004).
 #' Automatic block-length selection for the dependent bootstrap.
 #' \emph{Econometric Reviews} \bold{23}(1), pp.53--70. \doi{10.1081/etc-120028836}.
+#' @import coda mcmc mcmcse np sandwich sapa 
 NULL
 
 #' @name nse.geyer
-#' @title Geyer NSE estimator
-#' @description Calculate the variance of sample mean with the method of Geyer (1992).
-#' @note  The type "iseq" is a wrapper around \code{\link[mcmc]{initseq}} from the 
-#' MCMC package and gives the positive intial sequence estimator.
-#'  The type "bm" is the batch mean estimator.
-#'  The type "obm" is the overlapping batch mean estimator.
-#'  The type "iseq.bm" is a combinaison of the two.
-#' @param x A numeric vector or a matrix(only for type "bm").
-#' @param type The type c("iseq","bm","obm","iseq.bm").
-#' @param nbatch An optional parameter for the type m and iseq.bm.
-#' @param iseq.type constraints on function, ("pos") nonnegative, ("dec") nonnegative 
-#' and nonincreasing, and ("con") nonnegative, nonincreasing, and convex. The default value is "pos".
-#' @import mcmc
+#' @title Geyer estimator
+#' @description Calculate the numerical standard error with the method of Geyer (1992).
+#' @param x A numeric vector.
+#' @param type The type which can be either \code{"iseq"}, \code{"bm"}, \code{"obm"} or \code{"iseq.bm"}. 
+#' See *Details*. Default is \code{type = "iseq"}.
+#' @param nbatch Number of batches when \code{type = "bm"} and \code{type = "iseq.bm"}. Default is \code{nbatch = 30}.
+#' @param iseq.type Constraints on function: \code{"pos"} for nonnegative, \code{"dec"} for nonnegative 
+#' and nonincreasing, and \code{"con"} for nonnegative, nonincreasing, and convex. Default is \code{iseq.type = "pos"}.
+#' @details The type \code{"iseq"} gives the positive intial sequence estimator, \code{"bm"} is the batch mean estimator, 
+#' \code{"obm"} is the overlapping batch mean estimator and \code{"iseq.bm"} is a combinaison of \code{"iseq"} and \code{"bm"}.
+#' @return  The NSE estimator.
+#' @note \code{nse.geyer} relies on the packages \code{\link{mcmc}} and \code{\link{mcmcse}}; see 
+#' the documentation of these packages for more details. 
 #' @author David Ardia and Keven Bluteau
 #' @references 
 #' Geyer, C.J. (1992). 
 #' Practical Markov chain Monte Carlo. 
 #' \emph{Statistical Science} \bold{7}(4), pp.473--483.
-#' @return  The variance estimator in the univariate case or the variance-covariance 
-#' matrix estimator in the multivariate case.
+#' @export
+#' @import mcmc mcmcse
 #' @examples
 #' n    = 1000
 #' ar   = 0.9
@@ -108,13 +109,12 @@ NULL
 #' nse.geyer(x = x, type = "obm", nbatch = 30)
 #' nse.geyer(x = x, type = "iseq", iseq.type = "pos")
 #' nse.geyer(x = x, type = "iseq.bm", iseq.type = "con")
-#'  
-#'@export
 nse.geyer = function(x, type = c("iseq", "bm", "obm", "iseq.bm"), 
                      nbatch = 30, iseq.type = c("pos", "dec", "con")) {
   if (is.vector(x)) {
-    x = matrix(x,ncol = 1)
+    x = matrix(data = x, ncol = 1)
   }
+  f.error.multivariate(x)
   n = dim(x)[1]
   
   type = type[1]  
@@ -174,24 +174,29 @@ nse.geyer = function(x, type = c("iseq", "bm", "obm", "iseq.bm"),
     stop("Invalid type : must be of type c('iseq','bm','iseq.bm')")
   }
   out = unname(out)
+  # nse from variance
+  out = sqrt(out)
+  out = as.numeric(out)
   return(out)
 }
 
 #' @name nse.spec0
-#' @title Spectral density at zero NSE estimator
-#' @description Calculate the variance of the mean with the spectrum at zero estimator.
-#' @note  This is a wrapper around \code{\link[coda]{spectrum0.ar}} from the CODA package 
-#' and \code{\link[mcmcse]{mcse}} from the mcmcse package.
+#' @title Spectral density at zero estimator
+#' @description Calculate the numerical standard error with the spectrum at zero estimator.
 #' @param x A numeric vector.
-#' @param type A character string denoting the method to use in estimating the spectral density function.
-#' @param lag.prewhite Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).
-#' @return The variance estimator.
+#' @param type Method to use in estimating the spectral density function, among \code{"ar"}, \code{"glm"}, \code{"wosa"}, \code{"tukey"} and \code{"bartlett"}. See *Details*. 
+#' Default is \code{type = "ar"}.
+#' @param lag.prewhite Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
+#' @details The method \code{"ar"} estimates the spectral density using an autoregressive model, \code{"glm"} using a generelized linear model, \code{"wosa"} using the Welch's Overlapped Segment averaging nonparametric approach, \code{"tukey"} using Tukey-Hanning window and \code{"bartlett"} using the Bartlett window.
+#' @note \code{nse.spec0} relies on the packages \code{\link{coda}}, \code{\link{mcmcse}} and \code{\link{sapa}}; see the documentation of these packages for more details. 
+#' @return The NSE estimator.
 #' @references 
 #' Flegal, J.M., Hughes, J., Vats D. (2010). 
 #' Batch means and spectral variance estimators in Markov chain Monte Carlo.
 #' \emph{Annals of Statistics} \bold{38}(2), pp.1034--1070. \doi{10.1214/09-aos735}.
 #' @author David Ardia and Keven Bluteau
-#' @import coda sapa mcmcse
+#' @import coda mcmcse sapa
+#' @export
 #' @examples 
 #' n    = 1000
 #' ar   = 0.9
@@ -219,14 +224,13 @@ nse.geyer = function(x, type = c("iseq", "bm", "obm", "iseq.bm"),
 #' nse.spec0(x = x, type = "tukey", lag.prewhite = 0)
 #' nse.spec0(x = x, type = "tukey", lag.prewhite = 1)
 #' nse.spec0(x = x, type = "tukey", lag.prewhite = NULL)
-#'  
-#'@export
 nse.spec0 = function(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"), lag.prewhite = 0) {
   
   scale = 1
   if (is.vector(x)){
-    x = matrix(x,ncol = 1)
+    x = matrix(data = x, ncol = 1)
   }
+  # DA for simplicity, we currently consider univariate time series but could extend later
   f.error.multivariate(x)
   
   n = dim(x)[1]
@@ -242,10 +246,12 @@ nse.spec0 = function(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"), lag.
   }else if (type == "wosa") {
     spec0 = sapa::SDF(x, method = "wosa", single.sided = TRUE)[1]
   }else if (type == "tukey") {
-    out = as.vector((mcmcse::mcse(x, method = "tukey")$se)^2) * scale
+    out = as.numeric((mcmcse::mcse(x, method = "tukey")$se)^2 * scale)
+    out = sqrt(out)
     return(out)
   }else if (type == "bartlett") {
-    out = as.vector((mcmcse::mcse(x, method = "bartlett")$se)^2) * scale
+    out = as.numeric((mcmcse::mcse(x, method = "bartlett")$se)^2 * scale)
+    out = sqrt(out)
     return(out)
   }else {
     stop("Invalid type : must be one of c('ar','bartlett','wosa','tukey')")
@@ -253,17 +259,20 @@ nse.spec0 = function(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"), lag.
   spec0 = spec0 * scale
   out   = spec0 / n
   out   = unname(out)
+  # nse
+  out = sqrt(out)
+  out = as.numeric(out)
   return(out)
 }
 
 #' @name nse.nw
-#' @title Newey-West NSE estimator
-#' @description Calculate the variance of the mean with the Newey West (1987, 1994) HAC estimator.
-#' @note This is a wrapper around \code{\link[sandwich]{lrvar}} from the sandwich package.
-#' @param x A numeric vector or matrix.
-#' @param lag.prewhite Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).
-#' @return The variance estimator in the univariate case or the variance-covariance matrix 
-#' estimator in the multivariate case.
+#' @title Newey-West estimator
+#' @description Calculate the numerical standard error with the Newey West (1987, 1994) HAC estimator.
+#' @param x A numeric vector
+#' @param lag.prewhite Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
+#' @return The NSE estimator.
+#' @note \code{nse.nw} is a wrapper around \code{\link[sandwich]{lrvar}} from 
+#' the \code{\link{sandwich}} package. See the documentation of \code{\link{sandwich}} for details.
 #' @author David Ardia and Keven Bluteau
 #' @references 
 #' Newey, W.K., West, K.D. (1987).
@@ -274,6 +283,7 @@ nse.spec0 = function(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"), lag.
 #' Automatic lag selection in covariance matrix estimation.
 #' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{doi: 10.3386/t0144}
 #' @import sandwich
+#' @export
 #' @examples 
 #' n    = 1000
 #' ar   = 0.9
@@ -286,24 +296,29 @@ nse.spec0 = function(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"), lag.
 #' nse.nw(x = x, lag.prewhite = 0)
 #' nse.nw(x = x, lag.prewhite = 1)
 #' nse.nw(x = x, lag.prewhite = NULL)
-#'@export
 nse.nw <- function(x, lag.prewhite = 0) {
+  f.error.multivariate(x)
   tmp = f.prewhite(x, ar.order = lag.prewhite) 
   lag.prewhite = tmp$ar.order
   out = sandwich::lrvar(x = x, type = "Newey-West", prewhite = lag.prewhite, adjust = TRUE)
   out = unname(out)
+  # nse
+  out = sqrt(out)
+  out = as.numeric(out)
   return(out)
 }
 
 #' @name nse.andrews
-#' @title Andrews NSE estimator
-#' @description Calculate the variance of the mean with the kernel based variance estimator indtroduced by Andrews (1991).
-#' @note  This is a wrapper around \code{\link[sandwich]{lrvar}} from the sandwich package and use Andrews (1991) automatic bandwidth estimator.
-#' @param x A numeric vector or matrix.
-#' @param type The type of kernel used c("bartlett","parzen","qs","trunc","tukey").
-#' @param lag.prewhite Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).
-#' @param approx Andrews approximation c("AR(1)", "ARMA(1,1)")
-#' @return The variance estimator in the univariate case or the variance-covariance matrix estimator in the multivariate case.
+#' @title Andrews estimator
+#' @description Calculate the numerical standard error with the kernel 
+#' based variance estimator by Andrews (1991).
+#' @param x A numeric vector.
+#' @param type The type of kernel used among which \code{"bartlett"}, \code{"parzen"}, \code{"qs"}, \code{"trunc"} and \code{"tukey"}. Default is \code{type = "bartlett"}.
+#' @param lag.prewhite Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
+#' @param approx Andrews approximation, either \code{"AR(1)"} or \code{"ARMA(1,1)"}. Default is \code{approx = "AR(1)"}.
+#' @return The NSE estimator.
+#' @note \code{nse.andrews} is a wrapper around \code{\link[sandwich]{lrvar}} from the \code{\link{sandwich}} package and uses Andrews (1991) automatic bandwidth estimator. See the documentation of \code{\link{sandwich}} for details.
+#' @author David Ardia and Keven Bluteau
 #' @references 
 #' Andrews, D.W.K. (1991).
 #' Heteroskedasticity and autocorrelation consistent covariance matrix estimation. 
@@ -319,8 +334,8 @@ nse.nw <- function(x, lag.prewhite = 0) {
 #' Newey, W.K., West, K.D. (1994) .
 #' Automatic lag selection in covariance matrix estimation.
 #' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{doi: 10.3386/t0144}
-#' @author David Ardia and Keven Bluteau
 #' @import sandwich
+#' @export
 #' @examples 
 #' n    = 1000
 #' ar   = 0.9
@@ -349,32 +364,37 @@ nse.nw <- function(x, lag.prewhite = 0) {
 #'nse.andrews(x = x, type = "trunc", lag.prewhite = 0)
 #'nse.andrews(x = x, type = "trunc", lag.prewhite = 1)
 #'nse.andrews(x = x, type = "trunc", lag.prewhite = NULL)
-#'@export
 nse.andrews <- function(x, type = c("bartlett", "parzen", "tukey", "qs", "trunc"), lag.prewhite = 0, approx = c("AR(1)", "ARMA(1,1)")) {
+  f.error.multivariate(x)
   tmp = f.prewhite(x, ar.order = lag.prewhite) 
   lag.prewhite = tmp$ar.order
   type.sandwich = f.type.sandwich(type.in = type)
   out = sandwich::lrvar(x = x, type = "Andrews", prewhite = lag.prewhite, adjust = TRUE, kernel = type.sandwich, approx = approx)
   out = unname(out)
+  # nse
+  out = sqrt(out)
+  out = as.numeric(out)
   return(out)
 }
 
 #' @name nse.hiruk
-#' @title Hirukawa NSE estimator
-#' @description Calculate the variance of the mean with the kernel based variance estimator 
+#' @title Hirukawa estimator
+#' @description Calculate the numerical standard error with the kernel based variance estimator 
 #' by Andrews (1991) using Hirukawa (2010) automatic bandwidth estimator.
-#' @details This is a wrapper around \code{\link[sandwich]{lrvar}} from the sandwich package 
-#' and use Hirukawa (2010) automatic bandwidth estimator.
 #' @param x A numeric vector.
-#' @param lag.prewhite Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).
-#' @param type The type of kernel used c("Bartlett","Parzen").
+#' @param lag.prewhite Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
+#' @param type The type of kernel used among \code{"bartlett"} and \code{"parzen"}. Default is \code{type = "Bartlett"}. 
+#' @return The NSE estimator.
+#' @note \code{nse.hiruk} is a wrapper around \code{\link[sandwich]{lrvar}} from 
+#' the \code{\link{sandwich}} package and uses Hirukawa (2010) bandwidth estimator. 
+#' See the documentation of \code{\link{sandwich}} for details.
 #' @author David Ardia and Keven Bluteau
 #' @references 
 #' Hirukawa, M. (2010). 
 #' A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
-#' \emph{Econometric Theory}, \bold{26}(3), pp.710--743. \doi{10.1017/s0266466609990089}.
+#' \emph{Econometric Theory} \bold{26}(3), pp.710--743. \doi{10.1017/s0266466609990089}.
 #' @import sandwich
-#' @return The variance estimator.
+#' @export
 #' @examples
 #' n    = 1000
 #' ar   = 0.9
@@ -391,8 +411,6 @@ nse.andrews <- function(x, type = c("bartlett", "parzen", "tukey", "qs", "trunc"
 #' nse.hiruk(x = x, type = "parzen", lag.prewhite = 0)
 #' nse.hiruk(x = x, type = "parzen", lag.prewhite = 1)
 #' nse.hiruk(x = x, type = "parzen", lag.prewhite = NULL)
-#' 
-#'@export
 nse.hiruk <- function(x, type = c("bartlett", "parzen"), lag.prewhite = 0) {
   f.error.multivariate(x)
   tmp = f.prewhite(x, ar.order = lag.prewhite) 
@@ -401,23 +419,23 @@ nse.hiruk <- function(x, type = c("bartlett", "parzen"), lag.prewhite = 0) {
   type.sandwich = f.type.sandwich(type.in = type)
   out = sandwich::lrvar(x = x, type = "Andrews", prewhite = lag.prewhite, adjust = TRUE, kernel = type.sandwich, bw = bandwidth)
   out = unname(out)
+  # nse
+  out = sqrt(out)
+  out = as.numeric(out)
   return(out)
 }
 
 #' @name nse.boot
-#' @title Bootstrap NSE estimator
-#' @description Calculate the variance of the mean with a bootstrap variance estimator.
-#' @note  Use the automatic blocksize in \code{\link[np]{b.star}} from th np package which is based 
-#' on Politis and White (2004) and Patton and al (2009). 
-#' Two bootstrap schemes are available; The stationary bootstrap of Politis and Romano  (1994)
-#' and the circular bootstrap of Politis and Romano (1992).
-#' @param x  A numeric vector or a matrix.
+#' @title Bootstrap estimator
+#' @description Calculate the numerical standard error with bootstrap estimator.
+#' @param x  A numeric vector.
 #' @param nb The number of bootstrap replications.
-#' @param type The bootstrap schemes c("stationary","circular").
-#' @param b the block length. If NULL automatic block length selection.
-#' @param lag.prewhite Prewhite the serie before analysis (integer or NULL, i.e. automatic selection).
-#' @return The variance estimator in the univariate case or the variance-covariance matrix 
-#' estimator in the multivariate case.
+#' @param type The bootstrap scheme used, among \code{"stationary"} and \code{"circular"}. Default is \code{type = "stationary"}.
+#' @param b The block length for the block bootstrap. If \code{NULL} automatic block length selection. Default is \code{b = NULL}.
+#' @param lag.prewhite Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
+#' @return The NSE estimator.
+#' @note \code{nse.boot} uses \code{\link[np]{b.star}} of the \code{\link{np}} package 
+#' for the optimal block length selection. 
 #' @author David Ardia and Keven Bluteau
 #' @references 
 #' Politis, D.N., Romano, and J.P. (1992).
@@ -434,6 +452,7 @@ nse.hiruk <- function(x, type = c("bartlett", "parzen"), lag.prewhite = 0) {
 #' @import np Rcpp stats
 #' @useDynLib nse
 #' @importFrom Rcpp evalCpp   
+#' @export
 #' @examples  
 #' n    = 1000
 #' ar   = 0.9
@@ -459,9 +478,8 @@ nse.hiruk <- function(x, type = c("bartlett", "parzen"), lag.prewhite = 0) {
 #' nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = 0)
 #' nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = 1)
 #' nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = NULL)
-#'@export
 nse.boot <- function(x, nb, type = c("stationary", "circular"), b = NULL, lag.prewhite = 0){
-  
+  f.error.multivariate(x)
   x = as.vector(x)
   
   # prewhiteneing
@@ -479,8 +497,12 @@ nse.boot <- function(x, nb, type = c("stationary", "circular"), b = NULL, lag.pr
     }
   }
   
-  out = scale * stats::var(f.bootstrap(x = x, nb = nb, statistic = colMeans, b = b, type = type)$statistic)
+  out = scale * stats::var(f.bootstrap(x = x, nb = nb, 
+                                       statistic = colMeans, b = b, type = type)$statistic)
   out = as.vector(out)
   out = unname(out)
+  # nse 
+  out = sqrt(out)
+  out = as.numeric(out)
   return(out)
 }
