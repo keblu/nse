@@ -6,8 +6,8 @@ Authors@R: c(person("David", "Ardia", role = c("aut"),
              email = "david.ardia.ch@gmail.com"),
              person("Keven", "Bluteau", role = c("aut", "cre"),
              email = "Keven.Bluteau@unine.ch"))
-Author: David Ardia [aut]
-        Keven Bluteau [aut, cre],
+Author: David Ardia [aut],
+        Keven Bluteau [aut, cre]
 Maintainer: Keven Bluteau <Keven.Bluteau@unine.ch>
 Description: Offers mutliple ways to calculate numerical the standard error (NSE) of
     univariate time series.

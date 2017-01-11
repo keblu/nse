@@ -70,7 +70,7 @@ A simple, positive semi-definite, heteroskedasticity and autocorrelationconsiste
 
 Newey, W.K., West, K.D. (1994) .
 Automatic lag selection in covariance matrix estimation.
-\emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{doi: 10.3386/t0144}
+\emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{10.3386/t0144}
 
 Politis, D.N., Romano, and J.P. (1992).
 A circular block-resampling procedure for stationary data.

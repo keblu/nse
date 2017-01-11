@@ -59,7 +59,7 @@
 #' 
 #' Newey, W.K., West, K.D. (1994) .
 #' Automatic lag selection in covariance matrix estimation.
-#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{doi: 10.3386/t0144}
+#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{10.3386/t0144}
 #' 
 #' Politis, D.N., Romano, and J.P. (1992).
 #' A circular block-resampling procedure for stationary data.
@@ -281,7 +281,7 @@ nse.spec0 = function(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"), lag.
 #' 
 #' Newey, W.K., West, K.D. (1994) .
 #' Automatic lag selection in covariance matrix estimation.
-#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{doi: 10.3386/t0144}
+#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{10.3386/t0144}
 #' @import sandwich
 #' @export
 #' @examples 
@@ -333,7 +333,7 @@ nse.nw <- function(x, lag.prewhite = 0) {
 #' 
 #' Newey, W.K., West, K.D. (1994) .
 #' Automatic lag selection in covariance matrix estimation.
-#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{doi: 10.3386/t0144}
+#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{10.3386/t0144}
 #' @import sandwich
 #' @export
 #' @examples 
