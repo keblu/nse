@@ -1,6 +1,6 @@
 Package: nse
-Version: 1-00.15
-Date: 2017-01-11
+Version: 1-00.16
+Date: 2017-01-20
 Title: Numerical Standard Errors Computation in R
 Authors@R: c(person("David", "Ardia", role = c("aut"),
              email = "david.ardia.ch@gmail.com"),

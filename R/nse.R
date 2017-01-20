@@ -3,7 +3,7 @@
 #' @title Computation of Numerical Standard Errors in R
 #' @description \code{nse} is an \R package for computing the numerical standard error (NSE), an estimate 
 #' of the standard deviation of a simulation result, if the simulation experiment were to be repeated 
-#' many times. TThe package provides a set of wrappers around several R packages, which give access to 
+#' many times. The package provides a set of wrappers around several R packages, which give access to 
 #' more than thirty NSE estimators, including batch means 
 #' estimators (Geyer, 1992, Section 3.2), initial sequence estimators Geyer (1992, Equation 3.3), 
 #' spectrum at zero estimators (Heidelberger and Welch, 1981; Flegal and Jones, 2010), heteroskedasticity 
@@ -27,19 +27,23 @@
 #' @references 
 #' Andrews, D.W.K. (1991). 
 #' Heteroskedasticity and autocorrelation consistent covariance matrix estimation. 
-#' \emph{Econometrica} \bold{59}(3), pp.817--858. \doi{10.2307/2938229}.
+#' \emph{Econometrica} \bold{59}(3), pp.817--858. 
+#' \doi{10.2307/2938229}
 #' 
 #' Andrews, D.W.K, Monahan, J.C. (1992).
 #' An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator. 
-#' \emph{Econometrica} \bold{60}(4), pp.953--966. \doi{10.2307/2951574}.
+#' \emph{Econometrica} \bold{60}(4), pp.953--966. 
+#' \doi{10.2307/2951574}
 #' 
 #' Ardia, D., Bluteau, K., Hoogerheide, L. (2016).
-#' Comparison of multiple methods for computing numerical standard errors: An extensive Monte Carlo study. 
-#' Working paper. \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2741587}.
+#' \emph{Comparison of multiple methods for computing numerical standard errors: An extensive Monte Carlo study}. 
+#' Working paper. 
+#' \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2741587}
 #' 
 #' Flegal, J.M., Hughes, J., Vats D. (2010). 
 #' Batch means and spectral variance estimators in Markov chain Monte Carlo.
-#' \emph{Annals of Statistics} \bold{38}(2), pp.1034--1070. \doi{10.1214/09-aos735}.
+#' \emph{Annals of Statistics} \bold{38}(2), pp.1034--1070. 
+#' \doi{10.1214/09-aos735}
 #' 
 #' Geyer, C.J. (1992). 
 #' Practical Markov chain Monte Carlo. 
@@ -47,19 +51,23 @@
 #' 
 #' Heidelberger, P., Welch, Peter D. (1981).
 #' A spectral method for confidence interval generation and run length control in simulations. 
-#' \emph{Communications of the ACM} \bold{24}(4), pp.233--245. \doi{10.1145/358598.358630}.
+#' \emph{Communications of the ACM} \bold{24}(4), pp.233--245. 
+#' \doi{10.1145/358598.358630}
 #' 
 #' Hirukawa, M. (2010). 
 #' A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
-#' \emph{Econometric Theory} \bold{26}(3), pp.710--743. \doi{10.1017/s0266466609990089}.
+#' \emph{Econometric Theory} \bold{26}(3), pp.710--743. 
+#' \doi{10.1017/s0266466609990089}
 #' 
 #' Newey, W.K., West, K.D. (1987).
 #' A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
-#' \emph{Econometrica} \bold{55}(3), pp.703--708. \doi{10.2307/1913610}.
+#' \emph{Econometrica} \bold{55}(3), pp.703--708. 
+#' \doi{10.2307/1913610}
 #' 
 #' Newey, W.K., West, K.D. (1994) .
 #' Automatic lag selection in covariance matrix estimation.
-#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{10.3386/t0144}
+#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. 
+#' \doi{10.3386/t0144}
 #' 
 #' Politis, D.N., Romano, and J.P. (1992).
 #' A circular block-resampling procedure for stationary data.
@@ -67,17 +75,19 @@
 #' 
 #' Politis, D.N., Romano, and J.P. (1994). 
 #' The stationary bootstrap.
-#' \emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303--1313. \doi{10.2307/2290993}.
+#' \emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303--1313. 
+#' \doi{10.2307/2290993}
 #' 
 #' Politis, D.N., White, H. (2004).
 #' Automatic block-length selection for the dependent bootstrap.
-#' \emph{Econometric Reviews} \bold{23}(1), pp.53--70. \doi{10.1081/etc-120028836}.
+#' \emph{Econometric Reviews} \bold{23}(1), pp.53--70. 
+#' \doi{10.1081/etc-120028836}
 #' @import coda mcmc mcmcse np sandwich sapa 
 NULL
 
 #' @name nse.geyer
 #' @title Geyer estimator
-#' @description Calculate the numerical standard error with the method of Geyer (1992).
+#' @description Function which calculates the numerical standard error with the method of Geyer (1992).
 #' @param x A numeric vector.
 #' @param type The type which can be either \code{"iseq"}, \code{"bm"}, \code{"obm"} or \code{"iseq.bm"}. 
 #' See *Details*. Default is \code{type = "iseq"}.
@@ -85,7 +95,7 @@ NULL
 #' @param iseq.type Constraints on function: \code{"pos"} for nonnegative, \code{"dec"} for nonnegative 
 #' and nonincreasing, and \code{"con"} for nonnegative, nonincreasing, and convex. Default is \code{iseq.type = "pos"}.
 #' @details The type \code{"iseq"} gives the positive intial sequence estimator, \code{"bm"} is the batch mean estimator, 
-#' \code{"obm"} is the overlapping batch mean estimator and \code{"iseq.bm"} is a combinaison of \code{"iseq"} and \code{"bm"}.
+#' \code{"obm"} is the overlapping batch mean estimator and \code{"iseq.bm"} is a combination of \code{"iseq"} and \code{"bm"}.
 #' @return  The NSE estimator.
 #' @note \code{nse.geyer} relies on the packages \code{\link{mcmc}} and \code{\link{mcmcse}}; see 
 #' the documentation of these packages for more details. 
@@ -182,18 +192,19 @@ nse.geyer = function(x, type = c("iseq", "bm", "obm", "iseq.bm"),
 
 #' @name nse.spec0
 #' @title Spectral density at zero estimator
-#' @description Calculate the numerical standard error with the spectrum at zero estimator.
+#' @description Function which calculates the numerical standard error with the spectrum at zero estimator.
 #' @param x A numeric vector.
 #' @param type Method to use in estimating the spectral density function, among \code{"ar"}, \code{"glm"}, \code{"wosa"}, \code{"tukey"} and \code{"bartlett"}. See *Details*. 
 #' Default is \code{type = "ar"}.
-#' @param lag.prewhite Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
+#' @param lag.prewhite Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
 #' @details The method \code{"ar"} estimates the spectral density using an autoregressive model, \code{"glm"} using a generelized linear model, \code{"wosa"} using the Welch's Overlapped Segment averaging nonparametric approach, \code{"tukey"} using Tukey-Hanning window and \code{"bartlett"} using the Bartlett window.
 #' @note \code{nse.spec0} relies on the packages \code{\link{coda}}, \code{\link{mcmcse}} and \code{\link{sapa}}; see the documentation of these packages for more details. 
 #' @return The NSE estimator.
 #' @references 
 #' Flegal, J.M., Hughes, J., Vats D. (2010). 
 #' Batch means and spectral variance estimators in Markov chain Monte Carlo.
-#' \emph{Annals of Statistics} \bold{38}(2), pp.1034--1070. \doi{10.1214/09-aos735}.
+#' \emph{Annals of Statistics} \bold{38}(2), pp.1034--1070. 
+#' \doi{10.1214/09-aos735}
 #' @author David Ardia and Keven Bluteau
 #' @import coda mcmcse sapa
 #' @export
@@ -267,9 +278,9 @@ nse.spec0 = function(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"), lag.
 
 #' @name nse.nw
 #' @title Newey-West estimator
-#' @description Calculate the numerical standard error with the Newey West (1987, 1994) HAC estimator.
+#' @description Function which calculates the numerical standard error with the Newey West (1987, 1994) HAC estimator.
 #' @param x A numeric vector
-#' @param lag.prewhite Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
+#' @param lag.prewhite Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
 #' @return The NSE estimator.
 #' @note \code{nse.nw} is a wrapper around \code{\link[sandwich]{lrvar}} from 
 #' the \code{\link{sandwich}} package. See the documentation of \code{\link{sandwich}} for details.
@@ -277,11 +288,13 @@ nse.spec0 = function(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"), lag.
 #' @references 
 #' Newey, W.K., West, K.D. (1987).
 #' A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
-#' \emph{Econometrica} \bold{55}(3), pp.703--708. \doi{10.2307/1913610}.
+#' \emph{Econometrica} \bold{55}(3), pp.703--708. 
+#' \doi{10.2307/1913610}
 #' 
 #' Newey, W.K., West, K.D. (1994) .
 #' Automatic lag selection in covariance matrix estimation.
-#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{10.3386/t0144}
+#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. 
+#' \doi{10.3386/t0144}
 #' @import sandwich
 #' @export
 #' @examples 
@@ -310,11 +323,11 @@ nse.nw <- function(x, lag.prewhite = 0) {
 
 #' @name nse.andrews
 #' @title Andrews estimator
-#' @description Calculate the numerical standard error with the kernel 
+#' @description Function which calculates the numerical standard error with the kernel 
 #' based variance estimator by Andrews (1991).
 #' @param x A numeric vector.
 #' @param type The type of kernel used among which \code{"bartlett"}, \code{"parzen"}, \code{"qs"}, \code{"trunc"} and \code{"tukey"}. Default is \code{type = "bartlett"}.
-#' @param lag.prewhite Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
+#' @param lag.prewhite Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
 #' @param approx Andrews approximation, either \code{"AR(1)"} or \code{"ARMA(1,1)"}. Default is \code{approx = "AR(1)"}.
 #' @return The NSE estimator.
 #' @note \code{nse.andrews} is a wrapper around \code{\link[sandwich]{lrvar}} from the \code{\link{sandwich}} package and uses Andrews (1991) automatic bandwidth estimator. See the documentation of \code{\link{sandwich}} for details.
@@ -322,18 +335,23 @@ nse.nw <- function(x, lag.prewhite = 0) {
 #' @references 
 #' Andrews, D.W.K. (1991).
 #' Heteroskedasticity and autocorrelation consistent covariance matrix estimation. 
-#' \emph{Econometrica} \bold{59}(3), pp.817--858. \doi{10.2307/2938229}.
+#' \emph{Econometrica} \bold{59}(3), pp.817--858. 
+#' \doi{10.2307/2938229}
 #' 
 #' Andrews, D.W.K, Monahan, J.C. (1992).
 #' An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator. 
-#' \emph{Econometrica} \bold{60}(4), pp.953--966. \doi{10.2307/2951574}.
+#' \emph{Econometrica} \bold{60}(4), pp.953--966. 
+#' \doi{10.2307/2951574}
+#' 
 #' Newey, W.K., West, K.D. (1987).
 #' A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
-#' \emph{Econometrica} \bold{55}(3), pp.703--708. \doi{10.2307/1913610}.
+#' \emph{Econometrica} \bold{55}(3), pp.703--708. 
+#' \doi{10.2307/1913610}
 #' 
 #' Newey, W.K., West, K.D. (1994) .
 #' Automatic lag selection in covariance matrix estimation.
-#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{10.3386/t0144}
+#' \emph{Review of Economic Studies} \bold{61}(4), pp.631--653. 
+#' \doi{10.3386/t0144}
 #' @import sandwich
 #' @export
 #' @examples 
@@ -379,10 +397,10 @@ nse.andrews <- function(x, type = c("bartlett", "parzen", "tukey", "qs", "trunc"
 
 #' @name nse.hiruk
 #' @title Hirukawa estimator
-#' @description Calculate the numerical standard error with the kernel based variance estimator 
+#' @description Function which calculates the numerical standard error with the kernel based variance estimator 
 #' by Andrews (1991) using Hirukawa (2010) automatic bandwidth estimator.
 #' @param x A numeric vector.
-#' @param lag.prewhite Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
+#' @param lag.prewhite Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
 #' @param type The type of kernel used among \code{"bartlett"} and \code{"parzen"}. Default is \code{type = "Bartlett"}. 
 #' @return The NSE estimator.
 #' @note \code{nse.hiruk} is a wrapper around \code{\link[sandwich]{lrvar}} from 
@@ -392,7 +410,8 @@ nse.andrews <- function(x, type = c("bartlett", "parzen", "tukey", "qs", "trunc"
 #' @references 
 #' Hirukawa, M. (2010). 
 #' A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
-#' \emph{Econometric Theory} \bold{26}(3), pp.710--743. \doi{10.1017/s0266466609990089}.
+#' \emph{Econometric Theory} \bold{26}(3), pp.710--743. 
+#' \doi{10.1017/s0266466609990089}
 #' @import sandwich
 #' @export
 #' @examples
@@ -427,12 +446,12 @@ nse.hiruk <- function(x, type = c("bartlett", "parzen"), lag.prewhite = 0) {
 
 #' @name nse.boot
 #' @title Bootstrap estimator
-#' @description Calculate the numerical standard error with bootstrap estimator.
+#' @description Function which calculates the numerical standard error with bootstrap estimator.
 #' @param x  A numeric vector.
 #' @param nb The number of bootstrap replications.
 #' @param type The bootstrap scheme used, among \code{"stationary"} and \code{"circular"}. Default is \code{type = "stationary"}.
 #' @param b The block length for the block bootstrap. If \code{NULL} automatic block length selection. Default is \code{b = NULL}.
-#' @param lag.prewhite Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
+#' @param lag.prewhite Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
 #' @return The NSE estimator.
 #' @note \code{nse.boot} uses \code{\link[np]{b.star}} of the \code{\link{np}} package 
 #' for the optimal block length selection. 
@@ -444,11 +463,13 @@ nse.hiruk <- function(x, type = c("bartlett", "parzen"), lag.prewhite = 0) {
 #' 
 #' Politis, D.N., Romano, and J.P. (1994). 
 #' The stationary bootstrap.
-#' \emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303--1313. \doi{10.2307/2290993}.
+#' \emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303--1313. 
+#' \doi{10.2307/2290993}
 #' 
 #' Politis, D.N., White, H. (2004).
 #' Automatic block-length selection for the dependent bootstrap.
-#' \emph{Econometric Reviews} \bold{23}(1), pp.53--70. \doi{10.1081/etc-120028836}.
+#' \emph{Econometric Reviews} \bold{23}(1), pp.53--70. 
+#' \doi{10.1081/etc-120028836}
 #' @import np Rcpp stats
 #' @useDynLib nse
 #' @importFrom Rcpp evalCpp   

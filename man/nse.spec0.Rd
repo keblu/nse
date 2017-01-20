@@ -13,13 +13,13 @@ nse.spec0(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"),
 \item{type}{Method to use in estimating the spectral density function, among \code{"ar"}, \code{"glm"}, \code{"wosa"}, \code{"tukey"} and \code{"bartlett"}. See *Details*. 
 Default is \code{type = "ar"}.}
 
-\item{lag.prewhite}{Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
+\item{lag.prewhite}{Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
 }
 \value{
 The NSE estimator.
 }
 \description{
-Calculate the numerical standard error with the spectrum at zero estimator.
+Function which calculates the numerical standard error with the spectrum at zero estimator.
 }
 \details{
 The method \code{"ar"} estimates the spectral density using an autoregressive model, \code{"glm"} using a generelized linear model, \code{"wosa"} using the Welch's Overlapped Segment averaging nonparametric approach, \code{"tukey"} using Tukey-Hanning window and \code{"bartlett"} using the Bartlett window.
@@ -61,6 +61,7 @@ David Ardia and Keven Bluteau
 \references{
 Flegal, J.M., Hughes, J., Vats D. (2010). 
 Batch means and spectral variance estimators in Markov chain Monte Carlo.
-\emph{Annals of Statistics} \bold{38}(2), pp.1034--1070. \doi{10.1214/09-aos735}.
+\emph{Annals of Statistics} \bold{38}(2), pp.1034--1070. 
+\doi{10.1214/09-aos735}
 }
 

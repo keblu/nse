@@ -16,13 +16,13 @@ nse.boot(x, nb, type = c("stationary", "circular"), b = NULL,
 
 \item{b}{The block length for the block bootstrap. If \code{NULL} automatic block length selection. Default is \code{b = NULL}.}
 
-\item{lag.prewhite}{Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
+\item{lag.prewhite}{Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
 }
 \value{
 The NSE estimator.
 }
 \description{
-Calculate the numerical standard error with bootstrap estimator.
+Function which calculates the numerical standard error with bootstrap estimator.
 }
 \note{
 \code{nse.boot} uses \code{\link[np]{b.star}} of the \code{\link{np}} package 
@@ -65,10 +65,12 @@ In \emph{Exploring the limits of bootstrap}, John Wiley & Sons, pp.263--270.
 
 Politis, D.N., Romano, and J.P. (1994). 
 The stationary bootstrap.
-\emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303--1313. \doi{10.2307/2290993}.
+\emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303--1313. 
+\doi{10.2307/2290993}
 
 Politis, D.N., White, H. (2004).
 Automatic block-length selection for the dependent bootstrap.
-\emph{Econometric Reviews} \bold{23}(1), pp.53--70. \doi{10.1081/etc-120028836}.
+\emph{Econometric Reviews} \bold{23}(1), pp.53--70. 
+\doi{10.1081/etc-120028836}
 }
 

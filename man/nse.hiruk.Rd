@@ -11,13 +11,13 @@ nse.hiruk(x, type = c("bartlett", "parzen"), lag.prewhite = 0)
 
 \item{type}{The type of kernel used among \code{"bartlett"} and \code{"parzen"}. Default is \code{type = "Bartlett"}.}
 
-\item{lag.prewhite}{Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
+\item{lag.prewhite}{Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
 }
 \value{
 The NSE estimator.
 }
 \description{
-Calculate the numerical standard error with the kernel based variance estimator 
+Function which calculates the numerical standard error with the kernel based variance estimator 
 by Andrews (1991) using Hirukawa (2010) automatic bandwidth estimator.
 }
 \note{
@@ -48,6 +48,7 @@ David Ardia and Keven Bluteau
 \references{
 Hirukawa, M. (2010). 
 A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
-\emph{Econometric Theory} \bold{26}(3), pp.710--743. \doi{10.1017/s0266466609990089}.
+\emph{Econometric Theory} \bold{26}(3), pp.710--743. 
+\doi{10.1017/s0266466609990089}
 }
 

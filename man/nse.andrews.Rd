@@ -12,7 +12,7 @@ nse.andrews(x, type = c("bartlett", "parzen", "tukey", "qs", "trunc"),
 
 \item{type}{The type of kernel used among which \code{"bartlett"}, \code{"parzen"}, \code{"qs"}, \code{"trunc"} and \code{"tukey"}. Default is \code{type = "bartlett"}.}
 
-\item{lag.prewhite}{Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
+\item{lag.prewhite}{Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
 
 \item{approx}{Andrews approximation, either \code{"AR(1)"} or \code{"ARMA(1,1)"}. Default is \code{approx = "AR(1)"}.}
 }
@@ -20,7 +20,7 @@ nse.andrews(x, type = c("bartlett", "parzen", "tukey", "qs", "trunc"),
 The NSE estimator.
 }
 \description{
-Calculate the numerical standard error with the kernel 
+Function which calculates the numerical standard error with the kernel 
 based variance estimator by Andrews (1991).
 }
 \note{
@@ -61,17 +61,22 @@ David Ardia and Keven Bluteau
 \references{
 Andrews, D.W.K. (1991).
 Heteroskedasticity and autocorrelation consistent covariance matrix estimation. 
-\emph{Econometrica} \bold{59}(3), pp.817--858. \doi{10.2307/2938229}.
+\emph{Econometrica} \bold{59}(3), pp.817--858. 
+\doi{10.2307/2938229}
 
 Andrews, D.W.K, Monahan, J.C. (1992).
 An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator. 
-\emph{Econometrica} \bold{60}(4), pp.953--966. \doi{10.2307/2951574}.
+\emph{Econometrica} \bold{60}(4), pp.953--966. 
+\doi{10.2307/2951574}
+
 Newey, W.K., West, K.D. (1987).
 A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
-\emph{Econometrica} \bold{55}(3), pp.703--708. \doi{10.2307/1913610}.
+\emph{Econometrica} \bold{55}(3), pp.703--708. 
+\doi{10.2307/1913610}
 
 Newey, W.K., West, K.D. (1994) .
 Automatic lag selection in covariance matrix estimation.
-\emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{10.3386/t0144}
+\emph{Review of Economic Studies} \bold{61}(4), pp.631--653. 
+\doi{10.3386/t0144}
 }
 

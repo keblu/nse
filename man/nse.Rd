@@ -8,7 +8,7 @@
 \description{
 \code{nse} is an \R package for computing the numerical standard error (NSE), an estimate 
 of the standard deviation of a simulation result, if the simulation experiment were to be repeated 
-many times. TThe package provides a set of wrappers around several R packages, which give access to 
+many times. The package provides a set of wrappers around several R packages, which give access to 
 more than thirty NSE estimators, including batch means 
 estimators (Geyer, 1992, Section 3.2), initial sequence estimators Geyer (1992, Equation 3.3), 
 spectrum at zero estimators (Heidelberger and Welch, 1981; Flegal and Jones, 2010), heteroskedasticity 
@@ -38,19 +38,23 @@ David Ardia and Keven Bluteau
 \references{
 Andrews, D.W.K. (1991). 
 Heteroskedasticity and autocorrelation consistent covariance matrix estimation. 
-\emph{Econometrica} \bold{59}(3), pp.817--858. \doi{10.2307/2938229}.
+\emph{Econometrica} \bold{59}(3), pp.817--858. 
+\doi{10.2307/2938229}
 
 Andrews, D.W.K, Monahan, J.C. (1992).
 An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator. 
-\emph{Econometrica} \bold{60}(4), pp.953--966. \doi{10.2307/2951574}.
+\emph{Econometrica} \bold{60}(4), pp.953--966. 
+\doi{10.2307/2951574}
 
 Ardia, D., Bluteau, K., Hoogerheide, L. (2016).
-Comparison of multiple methods for computing numerical standard errors: An extensive Monte Carlo study. 
-Working paper. \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2741587}.
+\emph{Comparison of multiple methods for computing numerical standard errors: An extensive Monte Carlo study}. 
+Working paper. 
+\url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2741587}
 
 Flegal, J.M., Hughes, J., Vats D. (2010). 
 Batch means and spectral variance estimators in Markov chain Monte Carlo.
-\emph{Annals of Statistics} \bold{38}(2), pp.1034--1070. \doi{10.1214/09-aos735}.
+\emph{Annals of Statistics} \bold{38}(2), pp.1034--1070. 
+\doi{10.1214/09-aos735}
 
 Geyer, C.J. (1992). 
 Practical Markov chain Monte Carlo. 
@@ -58,19 +62,23 @@ Practical Markov chain Monte Carlo.
 
 Heidelberger, P., Welch, Peter D. (1981).
 A spectral method for confidence interval generation and run length control in simulations. 
-\emph{Communications of the ACM} \bold{24}(4), pp.233--245. \doi{10.1145/358598.358630}.
+\emph{Communications of the ACM} \bold{24}(4), pp.233--245. 
+\doi{10.1145/358598.358630}
 
 Hirukawa, M. (2010). 
 A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
-\emph{Econometric Theory} \bold{26}(3), pp.710--743. \doi{10.1017/s0266466609990089}.
+\emph{Econometric Theory} \bold{26}(3), pp.710--743. 
+\doi{10.1017/s0266466609990089}
 
 Newey, W.K., West, K.D. (1987).
 A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
-\emph{Econometrica} \bold{55}(3), pp.703--708. \doi{10.2307/1913610}.
+\emph{Econometrica} \bold{55}(3), pp.703--708. 
+\doi{10.2307/1913610}
 
 Newey, W.K., West, K.D. (1994) .
 Automatic lag selection in covariance matrix estimation.
-\emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{10.3386/t0144}
+\emph{Review of Economic Studies} \bold{61}(4), pp.631--653. 
+\doi{10.3386/t0144}
 
 Politis, D.N., Romano, and J.P. (1992).
 A circular block-resampling procedure for stationary data.
@@ -78,10 +86,12 @@ In \emph{Exploring the limits of bootstrap}, John Wiley & Sons, pp.263--270.
 
 Politis, D.N., Romano, and J.P. (1994). 
 The stationary bootstrap.
-\emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303--1313. \doi{10.2307/2290993}.
+\emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303--1313. 
+\doi{10.2307/2290993}
 
 Politis, D.N., White, H. (2004).
 Automatic block-length selection for the dependent bootstrap.
-\emph{Econometric Reviews} \bold{23}(1), pp.53--70. \doi{10.1081/etc-120028836}.
+\emph{Econometric Reviews} \bold{23}(1), pp.53--70. 
+\doi{10.1081/etc-120028836}
 }
 

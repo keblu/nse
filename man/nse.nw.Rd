@@ -9,13 +9,13 @@ nse.nw(x, lag.prewhite = 0)
 \arguments{
 \item{x}{A numeric vector}
 
-\item{lag.prewhite}{Prewhite the serie before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
+\item{lag.prewhite}{Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
 }
 \value{
 The NSE estimator.
 }
 \description{
-Calculate the numerical standard error with the Newey West (1987, 1994) HAC estimator.
+Function which calculates the numerical standard error with the Newey West (1987, 1994) HAC estimator.
 }
 \note{
 \code{nse.nw} is a wrapper around \code{\link[sandwich]{lrvar}} from 
@@ -40,10 +40,12 @@ David Ardia and Keven Bluteau
 \references{
 Newey, W.K., West, K.D. (1987).
 A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
-\emph{Econometrica} \bold{55}(3), pp.703--708. \doi{10.2307/1913610}.
+\emph{Econometrica} \bold{55}(3), pp.703--708. 
+\doi{10.2307/1913610}
 
 Newey, W.K., West, K.D. (1994) .
 Automatic lag selection in covariance matrix estimation.
-\emph{Review of Economic Studies} \bold{61}(4), pp.631--653. \doi{10.3386/t0144}
+\emph{Review of Economic Studies} \bold{61}(4), pp.631--653. 
+\doi{10.3386/t0144}
 }
 

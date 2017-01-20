@@ -22,11 +22,11 @@ and nonincreasing, and \code{"con"} for nonnegative, nonincreasing, and convex. 
 The NSE estimator.
 }
 \description{
-Calculate the numerical standard error with the method of Geyer (1992).
+Function which calculates the numerical standard error with the method of Geyer (1992).
 }
 \details{
 The type \code{"iseq"} gives the positive intial sequence estimator, \code{"bm"} is the batch mean estimator, 
-\code{"obm"} is the overlapping batch mean estimator and \code{"iseq.bm"} is a combinaison of \code{"iseq"} and \code{"bm"}.
+\code{"obm"} is the overlapping batch mean estimator and \code{"iseq.bm"} is a combination of \code{"iseq"} and \code{"bm"}.
 }
 \note{
 \code{nse.geyer} relies on the packages \code{\link{mcmc}} and \code{\link{mcmcse}}; see 
