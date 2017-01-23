@@ -18,8 +18,8 @@ Romano (1992, 1994); Politis and White (2004). The full set of estimators are de
 Ardia et al. (2016).
 }
 \note{
-Functions rely on the packages \code{\link{coda}}, \code{\link{mcmc}}, 
-\code{\link{mcmcse}}, \code{\link{np}}, \code{\link{sandwich}} and \code{\link{sapa}}.
+Functions rely on the packages \code{coda}, \code{mcmc}, 
+\code{mcmcse}, \code{np}, \code{sandwich} and \code{sapa}.
 }
 \section{Functions}{
 

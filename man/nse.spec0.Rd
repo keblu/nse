@@ -25,7 +25,7 @@ Function which calculates the numerical standard error with the spectrum at zero
 The method \code{"ar"} estimates the spectral density using an autoregressive model, \code{"glm"} using a generelized linear model, \code{"wosa"} using the Welch's Overlapped Segment averaging nonparametric approach, \code{"tukey"} using Tukey-Hanning window and \code{"bartlett"} using the Bartlett window.
 }
 \note{
-\code{nse.spec0} relies on the packages \code{\link{coda}}, \code{\link{mcmcse}} and \code{\link{sapa}}; see the documentation of these packages for more details.
+\code{nse.spec0} relies on the packages \code{coda}, \code{mcmcse} and \code{sapa}; see the documentation of these packages for more details.
 }
 \examples{
 n    = 1000

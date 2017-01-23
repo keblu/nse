@@ -22,8 +22,8 @@
 #' \item \code{\link{nse.boot}}: Bootstrap NSE estimator.
 #' }
 #' @author David Ardia and Keven Bluteau
-#' @note Functions rely on the packages \code{\link{coda}}, \code{\link{mcmc}}, 
-#' \code{\link{mcmcse}}, \code{\link{np}}, \code{\link{sandwich}} and \code{\link{sapa}}. 
+#' @note Functions rely on the packages \code{coda}, \code{mcmc}, 
+#' \code{mcmcse}, \code{np}, \code{sandwich} and \code{sapa}. 
 #' @references 
 #' Andrews, D.W.K. (1991). 
 #' Heteroskedasticity and autocorrelation consistent covariance matrix estimation. 
@@ -198,7 +198,7 @@ nse.geyer = function(x, type = c("iseq", "bm", "obm", "iseq.bm"),
 #' Default is \code{type = "ar"}.
 #' @param lag.prewhite Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
 #' @details The method \code{"ar"} estimates the spectral density using an autoregressive model, \code{"glm"} using a generelized linear model, \code{"wosa"} using the Welch's Overlapped Segment averaging nonparametric approach, \code{"tukey"} using Tukey-Hanning window and \code{"bartlett"} using the Bartlett window.
-#' @note \code{nse.spec0} relies on the packages \code{\link{coda}}, \code{\link{mcmcse}} and \code{\link{sapa}}; see the documentation of these packages for more details. 
+#' @note \code{nse.spec0} relies on the packages \code{coda}, \code{mcmcse} and \code{sapa}; see the documentation of these packages for more details. 
 #' @return The NSE estimator.
 #' @references 
 #' Flegal, J.M., Hughes, J., Vats D. (2010). 
