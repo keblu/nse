@@ -9,10 +9,10 @@ tags:
 - HAC
 - bootstrap
 authors:
-- affiliation: Institute of Financial Analysis - University of Neuchâtel
+- affiliation: Institute of Financial Analysis - University of NeuchÃ¢tel
   name: David Ardia
   orcid: 0000-0003-2823-782X
-- affiliation: Institute of Financial Analysis - University of Neuchâtel
+- affiliation: Institute of Financial Analysis - University of NeuchÃ¢tel
   name: Keven Bluteau
   orcid: null
 ---
@@ -30,20 +30,24 @@ more than thirty NSE estimators, including batch means estimators, initial seque
 estimators, spectrum at zero estimators, heteroskedasticity and autocorrelation 
 consistent (HAC) kernel estimators and bootstrap estimators. 
 
-The full set of methods available in the package is summarized in [Ardia et al. (2016)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2741587) together with 
-several examples of applications of NSE in econometrics and finance.
+The full set of methods available in the package is summarized in [Ardia et al. (2016)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2741587) together with several examples of applications of NSE in econometrics and finance.
 
-The latest version of the package is available at 'https://github.com/keblu/nse'.
+The latest stable version of the package is available at 'https://cran.r-project.org/package=nse'
+The latest development version of the package is available at 'https://github.com/keblu/nse'.
 
 # Installation
-To install the package, run the following commands in R:
+To install the latest stable version of the package, run the following commands in R:
 
-R> install.packages("devtools")
+    R> install.packages("nse")
 
-R> devtools::install_github("keblu/nse", dependencies = TRUE)
+To install the development version of the package, run the following commands in R:
+
+    R> install.packages("devtools")
+
+    R> devtools::install_github("keblu/nse", dependencies = TRUE)
 
 Then check the help of the various files, and run the examples:
 
-R> library("nse")
+    R> library("nse")
 
-R> ?nse
+    R> ?nse
