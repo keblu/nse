@@ -1,6 +1,6 @@
 ---
 title: 'nse: Computation of Numerical Standard Errors in R'
-date: "11 January 2017"
+date: "24 January 2017"
 tags:
 - nse
 - numerical standard error
@@ -16,6 +16,10 @@ authors:
   name: Keven Bluteau
   orcid: null
 ---
+
+[![CRAN](http://www.r-pkg.org/badges/version/nse)](https://cran.r-project.org/package=nse) 
+[![Downloads](http://cranlogs.r-pkg.org/badges/nse?color=brightgreen)](http://www.r-pkg.org/pkg/nse)
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/nse?color=brightgreen)](http://www.r-pkg.org/pkg/nse)
 
 # Introduction
 
