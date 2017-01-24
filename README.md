@@ -33,6 +33,7 @@ consistent (HAC) kernel estimators and bootstrap estimators.
 The full set of methods available in the package is summarized in [Ardia et al. (2016)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2741587) together with several examples of applications of NSE in econometrics and finance.
 
 The latest stable version of the package is available at 'https://cran.r-project.org/package=nse'
+
 The latest development version of the package is available at 'https://github.com/keblu/nse'.
 
 # Installation
