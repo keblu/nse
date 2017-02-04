@@ -48,7 +48,7 @@ David Ardia and Keven Bluteau
 \references{
 Hirukawa, M. (2010). 
 A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
-\emph{Econometric Theory} \bold{26}(3), pp.710--743. 
+\emph{Econometric Theory} \bold{26}(3), pp.710-743. 
 \doi{10.1017/s0266466609990089}
 }
 

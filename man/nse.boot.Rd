@@ -61,16 +61,16 @@ David Ardia and Keven Bluteau
 \references{
 Politis, D.N., Romano, and J.P. (1992).
 A circular block-resampling procedure for stationary data.
-In \emph{Exploring the limits of bootstrap}, John Wiley & Sons, pp.263--270.
+In \emph{Exploring the limits of bootstrap}, John Wiley & Sons, pp.263-270.
 
 Politis, D.N., Romano, and J.P. (1994). 
 The stationary bootstrap.
-\emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303--1313. 
+\emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303-1313. 
 \doi{10.2307/2290993}
 
 Politis, D.N., White, H. (2004).
 Automatic block-length selection for the dependent bootstrap.
-\emph{Econometric Reviews} \bold{23}(1), pp.53--70. 
+\emph{Econometric Reviews} \bold{23}(1), pp.53-70. 
 \doi{10.1081/etc-120028836}
 }
 

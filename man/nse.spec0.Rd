@@ -61,7 +61,7 @@ David Ardia and Keven Bluteau
 \references{
 Flegal, J.M., Hughes, J., Vats D. (2010). 
 Batch means and spectral variance estimators in Markov chain Monte Carlo.
-\emph{Annals of Statistics} \bold{38}(2), pp.1034--1070. 
+\emph{Annals of Statistics} \bold{38}(2), pp.1034-1070. 
 \doi{10.1214/09-aos735}
 }
 

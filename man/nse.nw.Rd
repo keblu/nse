@@ -40,12 +40,12 @@ David Ardia and Keven Bluteau
 \references{
 Newey, W.K., West, K.D. (1987).
 A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
-\emph{Econometrica} \bold{55}(3), pp.703--708. 
+\emph{Econometrica} \bold{55}(3), pp.703-708. 
 \doi{10.2307/1913610}
 
 Newey, W.K., West, K.D. (1994) .
 Automatic lag selection in covariance matrix estimation.
-\emph{Review of Economic Studies} \bold{61}(4), pp.631--653. 
+\emph{Review of Economic Studies} \bold{61}(4), pp.631-653. 
 \doi{10.3386/t0144}
 }
 

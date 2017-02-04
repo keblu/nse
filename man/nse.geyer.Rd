@@ -50,6 +50,6 @@ David Ardia and Keven Bluteau
 \references{
 Geyer, C.J. (1992). 
 Practical Markov chain Monte Carlo. 
-\emph{Statistical Science} \bold{7}(4), pp.473--483.
+\emph{Statistical Science} \bold{7}(4), pp.473-483.
 }
 
