@@ -1,5 +1,5 @@
 Package: nse
-Version: 1-00.17
+Version: 1.00
 Date: 2017-02-03
 Title: Numerical Standard Errors Computation in R
 Authors@R: c(person("David", "Ardia", role = c("aut"),
@@ -14,7 +14,7 @@ Description: Collection of functions designed to calculate numerical standard er
 License: GPL (>= 2)
 BugReports: https://github.com/keblu/nse/issues
 URL: https://github.com/keblu/nse
-Imports: Rcpp (>= 0.12.0), coda, mcmc, np, sandwich, sapa, mcmcse
+Imports: Rcpp (>= 0.12.0), coda, mcmc, np, sandwich,
 LinkingTo: Rcpp
 NeedsCompilation: yes
 RoxygenNote: 5.0.1

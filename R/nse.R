@@ -241,37 +241,34 @@ nse.geyer = function(x, type = c("iseq", "bm", "obm", "iseq.bm"),
 #' nse.spec0(x = x, type = "tukey", lag.prewhite = 0)
 #' nse.spec0(x = x, type = "tukey", lag.prewhite = 1)
 #' nse.spec0(x = x, type = "tukey", lag.prewhite = NULL)
-nse.spec0 = function(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"), lag.prewhite = 0) {
+nse.spec0 = function(x, type = c("ar", "glm", "daniell", "modified.daniell", "tukey-hanning","parzen","triweight","bartlett","triangular","QS"), lag.prewhite = 0, welch = FALSE,steep = FALSE) {
   
   scale = 1
   if (is.vector(x)){
     x = matrix(data = x, ncol = 1)
   }
   # DA for simplicity, we currently consider univariate time series but could extend later
-  f.error.multivariate(x)
-  
+  nse:::f.error.multivariate(x)
+  if((isTRUE(steep)) && (lag.prewhite != 0)){
+   warning("setting lag.prewhite to 0 as steep kernel is not compatible with prewhitening since it is taken care directly by the kernel")
+  }
   n = dim(x)[1]
-  tmp   = f.prewhite(x, ar.order = lag.prewhite) 
+  tmp   = nse:::f.prewhite(x, ar.order = lag.prewhite) 
   x     = tmp$ar.resid
   scale = tmp$scale
   
   type = type[1]
-  if (type == "ar") {
-    spec0 = coda::spectrum0.ar(x)$spec
-  }else if (type == "glm") {
-    spec0 = coda::spectrum0(x)$spec
-  }else if (type == "wosa") {
-    spec0 = sapa::SDF(x, method = "wosa", single.sided = TRUE)[1]
-  }else if (type == "tukey") {
-    out = as.numeric((mcmcse::mcse(x, method = "tukey")$se)^2 * scale)
-    out = sqrt(out)
-    return(out)
-  }else if (type == "bartlett") {
-    out = as.numeric((mcmcse::mcse(x, method = "bartlett")$se)^2 * scale)
-    out = sqrt(out)
-    return(out)
-  }else {
-    stop("Invalid type : must be one of c('ar','bartlett','wosa','tukey')")
+  x = as.ts(x)
+  if(isTRUE(welch)){
+    spec0 = nse:::f.welch(y = x, blocksize = NULL, overlap = 0.5, type = type, steep = steep)
+  } else if (type == "ar") {
+    spec0 = coda::spectrum0.ar(x = x)$spec
+  } else if (type == "glm") {
+    spec0 = coda::spectrum0(x = x)$spec
+  } else {
+    m = nse:::f.optimal_h(x, type = type)
+    kern = nse:::f.kernel_addon(type = type, m,steep = steep, y = x)
+    spec0 = spectrum(x, kernel= kern, taper = 0.5, plot = FALSE)[[2]][1]
   }
   spec0 = spec0 * scale
   out   = spec0 / n
