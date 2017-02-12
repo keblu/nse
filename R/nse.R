@@ -503,9 +503,9 @@ nse.hiruk <- function(x, type = c("bartlett", "parzen"), lag.prewhite = 0) {
 #' nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = 1)
 #' nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = NULL)
 nse.boot <- function(x, nb, type = c("stationary", "circular"), b = NULL, lag.prewhite = 0){
+  scale = 1
   f.error.multivariate(x)
   x = as.vector(x)
-  
   # prewhiteneing
   tmp   = f.prewhite(x, ar.order = lag.prewhite) 
   x     = tmp$ar.resid
@@ -526,6 +526,48 @@ nse.boot <- function(x, nb, type = c("stationary", "circular"), b = NULL, lag.pr
   out = as.vector(out)
   out = unname(out)
   # nse 
+  out = sqrt(out)
+  out = as.numeric(out)
+  return(out)
+}
+#' @name nse.cos
+#' @title Long-run variance estimation using low-frequency cosine weighted averages.
+#' @description Function which calculates the numerical standard error with low-frequency cosine weighted averages of the original serie.
+#' @param x A numeric vector.
+#' @param q Range of the cosine weight. 
+#' Default is \code{q = 12}.
+#' @param lag.prewhite Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
+#' @details The method estimate the serie with a linear regression using cosine weight
+#'  \eqn{\sqrt(2)cos(js\pi)} for j = 1,...,q, where s is equal to \eqn{(t-0.5)/T} for t = 1,...,T, and T is the lenght of the serie. Derivation of the NSE is derived
+#'  from the coefficient of the cosine weight found using the \code{mcmcse} R function.
+#' @return The NSE estimator.
+#' @references 
+#' Müller, Ulrich K., and Mark W. Watson.
+#' Low-frequency econometrics.
+#' No. w21564. National Bureau of Economic Research, 2015.
+#' @author David Ardia and Keven Bluteau
+#' @export
+#' @examples 
+#' n    = 1000
+#' ar   = 0.9
+#' mean = 1
+#' sd   = 1
+#' set.seed(1234)   
+#' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
+#' 
+#' nse.cos(x = x, q = 12)
+nse.cos = function(x, q = 12, lag.prewhite = 0){
+  f.error.multivariate(x)
+  x = as.vector(x)
+  tmp   = f.prewhite(x, ar.order = lag.prewhite) 
+  x     = tmp$ar.resid
+  scale = tmp$scale
+  N = length(x)
+  X = cos.basis(q,N)
+  coef = lm(x ~ 1 + X)$coef[2:(q+1)]
+  SSX = N*sum(coef*coef)
+  out = (scale*SSX/q/n)
+  out = as.vector(out)
   out = sqrt(out)
   out = as.numeric(out)
   return(out)
