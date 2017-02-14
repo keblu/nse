@@ -10,7 +10,7 @@ Author: David Ardia [aut],
         Keven Bluteau [aut, cre]
 Maintainer: Keven Bluteau <Keven.Bluteau@unine.ch>
 Description: Collection of functions designed to calculate numerical standard error (NSE) of univariate time series 
-  as described in Ardia et al. (2016) <doi:10.2139/ssrn.2741587> and Ardia and Bluteau (2017) <doi:10.2139/ssrn.2741587>.
+  as described in Ardia et al. (2016) <doi:10.2139/ssrn.2741587> and Ardia and Bluteau (2017) <doi:10.21105/joss.00172>.
 License: GPL (>= 2)
 BugReports: https://github.com/keblu/nse/issues
 URL: https://github.com/keblu/nse
