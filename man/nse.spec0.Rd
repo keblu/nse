@@ -30,6 +30,7 @@ The NSE estimator.
 Function which calculates the numerical standard error with the spectrum at zero estimator.
 }
 \details{
+Welsh's method use 50\% overlap and 8 sub-samples.
 The method \code{"ar"} estimates the spectral density using an autoregressive model,
 \code{"glm"} using a generalized linear model Heidelberger & Welch (1981), 
  \code{"daniell"} uses daniell window from the \R kernel function,
