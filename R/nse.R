@@ -618,7 +618,7 @@ nse.boot <-
 #' set.seed(1234)
 #' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 #'
-#' nse.cos(x = x, q = 12)
+#' nse.cos(x = x, q = 12, lag.prewhite = 0)
 nse.cos = function(x, q = 12, lag.prewhite = 0) {
   f.error.multivariate(x)
   x = as.vector(x)
@@ -629,7 +629,7 @@ nse.cos = function(x, q = 12, lag.prewhite = 0) {
   X = cos.basis(q, N)
   coef = lm(x ~ 1 + X)$coef[2:(q + 1)]
   SSX = N * sum(coef * coef)
-  out = (scale * SSX / q / n)
+  out = (scale * SSX / q / N)
   out = as.vector(out)
   out = sqrt(out)
   out = as.numeric(out)
