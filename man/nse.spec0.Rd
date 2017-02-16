@@ -4,16 +4,24 @@
 \alias{nse.spec0}
 \title{Spectral density at zero estimator}
 \usage{
-nse.spec0(x, type = c("ar", "glm", "wosa", "bartlett", "tukey"),
-  lag.prewhite = 0)
+nse.spec0(x, type = c("ar", "glm", "daniell", "modified.daniell",
+  "tukey-hanning", "parzen", "triweight", "bartlett-priestley", "triangular",
+  "qs"), lag.prewhite = 0, welch = FALSE, steep = FALSE)
 }
 \arguments{
 \item{x}{A numeric vector.}
 
-\item{type}{Method to use in estimating the spectral density function, among \code{"ar"}, \code{"glm"}, \code{"wosa"}, \code{"tukey"} and \code{"bartlett"}. See *Details*. 
+\item{type}{Method to use in estimating the spectral density function, among \code{"ar"}, \code{"glm"}, \code{"daniell"},
+ \code{"modified.daniell"}, \code{"tukey-hanning"},
+  \code{"parzen"}, \code{"triweight"},
+   \code{"bartlett-priestley"}, \code{"triangular"}, and \code{"qs"}. See *Details*.
 Default is \code{type = "ar"}.}
 
 \item{lag.prewhite}{Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.}
+
+\item{welch}{Use Welch's method (Welsh, 1967) to estimate the spectral density.}
+
+\item{steep}{Use steep or sharp version of the kernel (Phillips et al., 2006) (only available for type: \code{"qs"},\code{"triangular"}, and \code{"parzen"}). \code{lag.prewhite} must be set to 0 to use steep version.}
 }
 \value{
 The NSE estimator.
@@ -22,46 +30,53 @@ The NSE estimator.
 Function which calculates the numerical standard error with the spectrum at zero estimator.
 }
 \details{
-The method \code{"ar"} estimates the spectral density using an autoregressive model, \code{"glm"} using a generelized linear model, \code{"wosa"} using the Welch's Overlapped Segment averaging nonparametric approach, \code{"tukey"} using Tukey-Hanning window and \code{"bartlett"} using the Bartlett window.
+The method \code{"ar"} estimates the spectral density using an autoregressive model,
+\code{"glm"} using a generalized linear model Heidelberger & Welch (1981), 
+ \code{"daniell"} uses daniell window from the \R kernel function,
+ \code{"modified.daniell"} uses daniell window the \R kernel function,
+ \code{"tukey-hanning"} uses the tukey-hanning window,
+ \code{"parzen"} uses the parzen window,
+ \code{"triweight"} uses the triweight window,
+ \code{"bartlett-priestley"} uses the Bartlett-Priestley window,
+ \code{"triangular"} uses the triangular window, and
+ \code{"qs"} uses the quadratic-spectral window,
+
+This kernel based variance estimator apply weights to smooth out the spectral density using a kernel and takes the spectral density at frequency zero which is equivalent to the variance of the serie. Bandwidth for the kernel is automatically selected using cross-validatory methods (Hurvich, 1985).
 }
 \note{
-\code{nse.spec0} relies on the packages \code{coda}, \code{mcmcse} and \code{sapa}; see the documentation of these packages for more details.
+\code{nse.spec0} relies on the packages \code{coda}; see the documentation of this package for more details.
 }
 \examples{
 n    = 1000
 ar   = 0.9
 mean = 1
 sd   = 1
-set.seed(1234)   
+set.seed(1234)
 x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
- 
-nse.spec0(x = x, type = "ar", lag.prewhite = 0)
-nse.spec0(x = x, type = "ar", lag.prewhite = 1)
-nse.spec0(x = x, type = "ar", lag.prewhite = NULL)
 
-nse.spec0(x = x, type = "glm", lag.prewhite = 0)
-nse.spec0(x = x, type = "glm", lag.prewhite = 1)
-nse.spec0(x = x, type = "glm", lag.prewhite = NULL)
-
-nse.spec0(x = x, type = "wosa", lag.prewhite = 0)
-nse.spec0(x = x, type = "wosa", lag.prewhite = 1)
-nse.spec0(x = x, type = "wosa", lag.prewhite = NULL)
-
-nse.spec0(x = x, type = "bartlett", lag.prewhite = 0)
-nse.spec0(x = x, type = "bartlett", lag.prewhite = 1)
-nse.spec0(x = x, type = "bartlett", lag.prewhite = NULL)
-
-nse.spec0(x = x, type = "tukey", lag.prewhite = 0)
-nse.spec0(x = x, type = "tukey", lag.prewhite = 1)
-nse.spec0(x = x, type = "tukey", lag.prewhite = NULL)
+nse.spec0(x = x, type = "parzen", lag.prewhite = 0, welch = TRUE, steep = TRUE)
 }
 \author{
 David Ardia and Keven Bluteau
 }
 \references{
-Flegal, J.M., Hughes, J., Vats D. (2010). 
-Batch means and spectral variance estimators in Markov chain Monte Carlo.
-\emph{Annals of Statistics} \bold{38}(2), pp.1034-1070. 
-\doi{10.1214/09-aos735}
+Heidelberger, P., Welch, Peter D. (1981).
+A spectral method for confidence interval generation and run length control in simulations.
+\emph{Communications of the ACM} \bold{24}(4), 233-245.
+\doi{10.1145/358598.358630}
+
+Phillips, P. C., Sun, Y., & Jin, S. (2006).
+Spectral density estimation and robust hypothesis testing using steep origin kernels without truncation.
+\emph{International Economic Review}, \bold{47}(3), 837-894.
+\doi{10.1111/j.1468-2354.2006.00398.x}
+ 
+Welch, P. D. (1967),
+The use of Fast Fourier Transform for the estimation of power spectra: A method based on time averaging over short, modified periodograms.
+\emph{IEEE Transactions on Audio and Electroacoustics}, \bold{AU-15}(2): 70-73,
+\doi{10.1109/TAU.1967.1161901}
+
+Hurvich, C. M. (1985).
+ Data-driven choice of a spectrum estimate: extending the applicability of cross-validation methods.
+ \emph{Journal of the American Statistical Association}, \bold{80}(392), 933-940.
 }
 

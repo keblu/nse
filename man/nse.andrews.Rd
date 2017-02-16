@@ -20,8 +20,11 @@ nse.andrews(x, type = c("bartlett", "parzen", "tukey", "qs", "trunc"),
 The NSE estimator.
 }
 \description{
-Function which calculates the numerical standard error with the kernel 
+Function which calculates the numerical standard error with the kernel
 based variance estimator by Andrews (1991).
+}
+\details{
+This kernel based variance estimation apply weight to the auto-covariance function with a kernel and sums up the value.
 }
 \note{
 \code{nse.andrews} is a wrapper around \code{\link[sandwich]{lrvar}} from the \code{\link{sandwich}} package and uses Andrews (1991) automatic bandwidth estimator. See the documentation of \code{\link{sandwich}} for details.
@@ -31,52 +34,36 @@ n    = 1000
 ar   = 0.9
 mean = 1
 sd   = 1
- 
-set.seed(1234)   
+
+set.seed(1234)
 x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
- 
-nse.andrews(x = x, type = "bartlett", lag.prewhite = 0)
-nse.andrews(x = x, type = "bartlett", lag.prewhite = 1)
-nse.andrews(x = x, type = "bartlett", lag.prewhite = NULL)
 
 nse.andrews(x = x, type = "parzen", lag.prewhite = 0)
-nse.andrews(x = x, type = "parzen", lag.prewhite = 1)
-nse.andrews(x = x, type = "parzen", lag.prewhite = NULL)
-
-nse.andrews(x = x, type = "tukey", lag.prewhite = 0)
 nse.andrews(x = x, type = "tukey", lag.prewhite = 1)
-nse.andrews(x = x, type = "tukey", lag.prewhite = NULL)
-
-nse.andrews(x = x, type = "qs", lag.prewhite = 0)
-nse.andrews(x = x, type = "qs", lag.prewhite = 1)
 nse.andrews(x = x, type = "qs", lag.prewhite = NULL)
-
-nse.andrews(x = x, type = "trunc", lag.prewhite = 0)
-nse.andrews(x = x, type = "trunc", lag.prewhite = 1)
-nse.andrews(x = x, type = "trunc", lag.prewhite = NULL)
 }
 \author{
 David Ardia and Keven Bluteau
 }
 \references{
 Andrews, D.W.K. (1991).
-Heteroskedasticity and autocorrelation consistent covariance matrix estimation. 
-\emph{Econometrica} \bold{59}(3), pp.817-858. 
+Heteroskedasticity and autocorrelation consistent covariance matrix estimation.
+\emph{Econometrica} \bold{59}(3),  817-858.
 \doi{10.2307/2938229}
 
 Andrews, D.W.K, Monahan, J.C. (1992).
-An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator. 
-\emph{Econometrica} \bold{60}(4), pp.953-966. 
+An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator.
+\emph{Econometrica} \bold{60}(4),  953-966.
 \doi{10.2307/2951574}
 
 Newey, W.K., West, K.D. (1987).
-A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
-\emph{Econometrica} \bold{55}(3), pp.703-708. 
+A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix.
+\emph{Econometrica} \bold{55}(3),  703-708.
 \doi{10.2307/1913610}
 
 Newey, W.K., West, K.D. (1994) .
 Automatic lag selection in covariance matrix estimation.
-\emph{Review of Economic Studies} \bold{61}(4), pp.631-653. 
+\emph{Review of Economic Studies} \bold{61}(4),  631-653.
 \doi{10.3386/t0144}
 }
 

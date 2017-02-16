@@ -6,7 +6,7 @@
 #' many times. The package provides a set of wrappers around several R packages, which give access to
 #' more than thirty NSE estimators, including batch means
 #' estimators (Geyer, 1992, Section 3.2), initial sequence estimators Geyer (1992, Equation 3.3),
-#' spectrum at zero estimators (Heidelberger and Welch, 1981; Flegal and Jones, 2010), heteroskedasticity
+#' spectrum at zero estimators (Heidelberger and Welch, 1981), heteroskedasticity
 #' and autocorrelation consistent (HAC) kernel estimators (Newey and West, 1987; Andrews, 1991; Andrews and
 #' Monahan, 1992; Newey and West, 1994; Hirukawa, 2010), and bootstrap estimators Politis and
 #' Romano (1992, 1994); Politis and White (2004). The full set of estimators is described in
@@ -22,18 +22,17 @@
 #' \item \code{\link{nse.boot}}: Bootstrap NSE estimator.
 #' }
 #' @author David Ardia and Keven Bluteau
-#' @note Functions rely on the packages \code{coda}, \code{mcmc},
-#' \code{mcmcse}, \code{np}, \code{sandwich} and \code{sapa}.
+#' @note Functions rely on the packages \code{coda}, \code{mcmc},\code{mcmcse}, \code{np}, and \code{sandwich}.
 #' @note Please cite the package in publications. Use \code{citation("nse")}.
 #' @references
 #' Andrews, D.W.K. (1991).
 #' Heteroskedasticity and autocorrelation consistent covariance matrix estimation.
-#' \emph{Econometrica} \bold{59}(3), pp.817-858.
+#' \emph{Econometrica} \bold{59}(3),  817-858.
 #' \doi{10.2307/2938229}
 #'
 #' Andrews, D.W.K, Monahan, J.C. (1992).
 #' An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator.
-#' \emph{Econometrica} \bold{60}(4), pp.953-966.
+#' \emph{Econometrica} \bold{60}(4),  953-966.
 #' \doi{10.2307/2951574}
 #'
 #' Ardia, D., Bluteau, K., Hoogerheide, L. (2016).
@@ -46,49 +45,45 @@
 #' \emph{Journal of Open Source Software} \bold{10}(2).
 #' \doi{10.21105/joss.00172}
 #'
-#' Flegal, J.M., Hughes, J., Vats D. (2010).
-#' Batch means and spectral variance estimators in Markov chain Monte Carlo.
-#' \emph{Annals of Statistics} \bold{38}(2), pp.1034-1070.
-#' \doi{10.1214/09-aos735}
 #'
 #' Geyer, C.J. (1992).
 #' Practical Markov chain Monte Carlo.
-#' \emph{Statistical Science} \bold{7}(4), pp.473-483.
+#' \emph{Statistical Science} \bold{7}(4),  473-483.
 #'
 #' Heidelberger, P., Welch, Peter D. (1981).
 #' A spectral method for confidence interval generation and run length control in simulations.
-#' \emph{Communications of the ACM} \bold{24}(4), pp.233-245.
+#' \emph{Communications of the ACM} \bold{24}(4),  233-245.
 #' \doi{10.1145/358598.358630}
 #'
 #' Hirukawa, M. (2010).
 #' A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
-#' \emph{Econometric Theory} \bold{26}(3), pp.710-743.
+#' \emph{Econometric Theory} \bold{26}(3),  710-743.
 #' \doi{10.1017/s0266466609990089}
 #'
 #' Newey, W.K., West, K.D. (1987).
 #' A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix.
-#' \emph{Econometrica} \bold{55}(3), pp.703-708.
+#' \emph{Econometrica} \bold{55}(3),  703-708.
 #' \doi{10.2307/1913610}
 #'
 #' Newey, W.K., West, K.D. (1994) .
 #' Automatic lag selection in covariance matrix estimation.
-#' \emph{Review of Economic Studies} \bold{61}(4), pp.631-653.
+#' \emph{Review of Economic Studies} \bold{61}(4), 631-653.
 #' \doi{10.3386/t0144}
 #'
 #' Politis, D.N., Romano, and J.P. (1992).
 #' A circular block-resampling procedure for stationary data.
-#' In \emph{Exploring the limits of bootstrap}, John Wiley & Sons, pp.263-270.
+#' In \emph{Exploring the limits of bootstrap}, John Wiley & Sons, 263-270.
 #'
 #' Politis, D.N., Romano, and J.P. (1994).
 #' The stationary bootstrap.
-#' \emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303-1313.
+#' \emph{Journal of the American Statistical Association} \bold{89}(428), 1303-1313.
 #' \doi{10.2307/2290993}
 #'
 #' Politis, D.N., White, H. (2004).
 #' Automatic block-length selection for the dependent bootstrap.
-#' \emph{Econometric Reviews} \bold{23}(1), pp.53-70.
+#' \emph{Econometric Reviews} \bold{23}(1), 53-70.
 #' \doi{10.1081/etc-120028836}
-#' @import coda mcmc mcmcse np sandwich sapa
+#' @import coda mcmc mcmcse np sandwich
 NULL
 
 #' @name nse.geyer
@@ -109,7 +104,7 @@ NULL
 #' @references
 #' Geyer, C.J. (1992).
 #' Practical Markov chain Monte Carlo.
-#' \emph{Statistical Science} \bold{7}(4), pp.473-483.
+#' \emph{Statistical Science} \bold{7}(4),  .473-483.
 #' @export
 #' @import mcmc mcmcse
 #' @examples
@@ -203,19 +198,50 @@ nse.geyer = function(x,
 #' @title Spectral density at zero estimator
 #' @description Function which calculates the numerical standard error with the spectrum at zero estimator.
 #' @param x A numeric vector.
-#' @param type Method to use in estimating the spectral density function, among \code{"ar"}, \code{"glm"}, \code{"wosa"}, \code{"tukey"} and \code{"bartlett"}. See *Details*.
+#' @param type Method to use in estimating the spectral density function, among \code{"ar"}, \code{"glm"}, \code{"daniell"},
+#'  \code{"modified.daniell"}, \code{"tukey-hanning"},
+#'   \code{"parzen"}, \code{"triweight"},
+#'    \code{"bartlett-priestley"}, \code{"triangular"}, and \code{"qs"}. See *Details*.
 #' Default is \code{type = "ar"}.
 #' @param lag.prewhite Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
-#' @details The method \code{"ar"} estimates the spectral density using an autoregressive model, \code{"glm"} using a generelized linear model, \code{"wosa"} using the Welch's Overlapped Segment averaging nonparametric approach, \code{"tukey"} using Tukey-Hanning window and \code{"bartlett"} using the Bartlett window.
-#' @note \code{nse.spec0} relies on the packages \code{coda}, \code{mcmcse} and \code{sapa}; see the documentation of these packages for more details.
+#' @param welch Use Welch's method (Welsh, 1967) to estimate the spectral density.
+#' @param steep Use steep or sharp version of the kernel (Phillips et al., 2006) (only available for type: \code{"qs"},\code{"triangular"}, and \code{"parzen"}). \code{lag.prewhite} must be set to 0 to use steep version.
+#' @details Welsh's method use 50\% overlap and 8 sub-samples.
+#' The method \code{"ar"} estimates the spectral density using an autoregressive model,
+#' \code{"glm"} using a generalized linear model Heidelberger & Welch (1981), 
+#'  \code{"daniell"} uses daniell window from the \R kernel function,
+#'  \code{"modified.daniell"} uses daniell window the \R kernel function,
+#'  \code{"tukey-hanning"} uses the tukey-hanning window,
+#'  \code{"parzen"} uses the parzen window,
+#'  \code{"triweight"} uses the triweight window,
+#'  \code{"bartlett-priestley"} uses the Bartlett-Priestley window,
+#'  \code{"triangular"} uses the triangular window, and
+#'  \code{"qs"} uses the quadratic-spectral window,
+#' @note \code{nse.spec0} relies on the packages \code{coda}; see the documentation of this package for more details.
 #' @return The NSE estimator.
 #' @references
-#' Flegal, J.M., Hughes, J., Vats D. (2010).
-#' Batch means and spectral variance estimators in Markov chain Monte Carlo.
-#' \emph{Annals of Statistics} \bold{38}(2), pp.1034-1070.
-#' \doi{10.1214/09-aos735}
+#' Heidelberger, P., Welch, Peter D. (1981).
+#' A spectral method for confidence interval generation and run length control in simulations.
+#' \emph{Communications of the ACM} \bold{24}(4), 233-245.
+#' \doi{10.1145/358598.358630}
+#' 
+#' Phillips, P. C., Sun, Y., & Jin, S. (2006).
+#'Spectral density estimation and robust hypothesis testing using steep origin kernels without truncation.
+#'\emph{International Economic Review}, \bold{47}(3), 837-894.
+#'\doi{10.1111/j.1468-2354.2006.00398.x}
+#'  
+#' Welch, P. D. (1967),
+#' The use of Fast Fourier Transform for the estimation of power spectra: A method based on time averaging over short, modified periodograms.
+#' \emph{IEEE Transactions on Audio and Electroacoustics}, \bold{AU-15}(2): 70-73,
+#' \doi{10.1109/TAU.1967.1161901}
+#' 
+#' Hurvich, C. M. (1985).
+#'  Data-driven choice of a spectrum estimate: extending the applicability of cross-validation methods.
+#'  \emph{Journal of the American Statistical Association}, \bold{80}(392), 933-940.
+#' 
+#' @details This kernel based variance estimator apply weights to smooth out the spectral density using a kernel and takes the spectral density at frequency zero which is equivalent to the variance of the serie. Bandwidth for the kernel is automatically selected using cross-validatory methods (Hurvich, 1985).
 #' @author David Ardia and Keven Bluteau
-#' @import coda mcmcse sapa
+#' @import coda
 #' @export
 #' @examples
 #' n    = 1000
@@ -225,21 +251,7 @@ nse.geyer = function(x,
 #' set.seed(1234)
 #' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 #'
-#' nse.spec0(x = x, type = "ar", lag.prewhite = 0)
-#' nse.spec0(x = x, type = "ar", lag.prewhite = 1)
-#' nse.spec0(x = x, type = "ar", lag.prewhite = NULL)
-#'
-#' nse.spec0(x = x, type = "glm", lag.prewhite = 0)
-#' nse.spec0(x = x, type = "glm", lag.prewhite = 1)
-#' nse.spec0(x = x, type = "glm", lag.prewhite = NULL)
-#'
-#' nse.spec0(x = x, type = "bartlett", lag.prewhite = 0)
-#' nse.spec0(x = x, type = "bartlett", lag.prewhite = 1)
-#' nse.spec0(x = x, type = "bartlett", lag.prewhite = NULL)
-#'
-#' nse.spec0(x = x, type = "tukey", lag.prewhite = 0)
-#' nse.spec0(x = x, type = "tukey", lag.prewhite = 1)
-#' nse.spec0(x = x, type = "tukey", lag.prewhite = NULL)
+#' nse.spec0(x = x, type = "parzen", lag.prewhite = 0, welch = TRUE, steep = TRUE)
 nse.spec0 = function(x,
                      type = c(
                        "ar",
@@ -249,7 +261,7 @@ nse.spec0 = function(x,
                        "tukey-hanning",
                        "parzen",
                        "triweight",
-                       "bartlett",
+                       "bartlett-priestley",
                        "triangular",
                        "qs"
                      ),
@@ -261,21 +273,21 @@ nse.spec0 = function(x,
     x = matrix(data = x, ncol = 1)
   }
   # DA for simplicity, we currently consider univariate time series but could extend later
-  nse:::f.error.multivariate(x)
+  f.error.multivariate(x)
   if ((isTRUE(steep)) && (lag.prewhite != 0)) {
     warning(
       "setting lag.prewhite to 0 as steep kernel is not compatible with prewhitening since it is taken care directly by the kernel"
     )
   }
   n = dim(x)[1]
-  tmp   = nse:::f.prewhite(x, ar.order = lag.prewhite)
+  tmp   = f.prewhite(x, ar.order = lag.prewhite)
   x     = tmp$ar.resid
   scale = tmp$scale
   
   type = type[1]
   x = as.ts(x)
   if (isTRUE(welch)) {
-    spec0 = nse:::f.welch(
+    spec0 = f.welch(
       y = x,
       blocksize = NULL,
       overlap = 0.5,
@@ -287,8 +299,8 @@ nse.spec0 = function(x,
   } else if (type == "glm") {
     spec0 = coda::spectrum0(x = x)$spec
   } else {
-    m = nse:::f.optimal_h(x, type = type)
-    kern = nse:::f.kernel_addon(type = type,
+    m = f.optimal_h(x, type = type)
+    kern = f.kernel_addon(type = type,
                                 m,
                                 steep = steep,
                                 y = x)
@@ -318,12 +330,12 @@ nse.spec0 = function(x,
 #' @references
 #' Newey, W.K., West, K.D. (1987).
 #' A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix.
-#' \emph{Econometrica} \bold{55}(3), pp.703-708.
+#' \emph{Econometrica} \bold{55}(3),  .703-708.
 #' \doi{10.2307/1913610}
 #'
 #' Newey, W.K., West, K.D. (1994) .
 #' Automatic lag selection in covariance matrix estimation.
-#' \emph{Review of Economic Studies} \bold{61}(4), pp.631-653.
+#' \emph{Review of Economic Studies} \bold{61}(4), .631-653.
 #' \doi{10.3386/t0144}
 #' @import sandwich
 #' @export
@@ -360,6 +372,7 @@ nse.nw <- function(x, lag.prewhite = 0) {
 #' @title Andrews estimator
 #' @description Function which calculates the numerical standard error with the kernel
 #' based variance estimator by Andrews (1991).
+#' @details This kernel based variance estimation apply weight to the auto-covariance function with a kernel and sums up the value.
 #' @param x A numeric vector.
 #' @param type The type of kernel used among which \code{"bartlett"}, \code{"parzen"}, \code{"qs"}, \code{"trunc"} and \code{"tukey"}. Default is \code{type = "bartlett"}.
 #' @param lag.prewhite Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
@@ -370,22 +383,22 @@ nse.nw <- function(x, lag.prewhite = 0) {
 #' @references
 #' Andrews, D.W.K. (1991).
 #' Heteroskedasticity and autocorrelation consistent covariance matrix estimation.
-#' \emph{Econometrica} \bold{59}(3), pp.817-858.
+#' \emph{Econometrica} \bold{59}(3),  817-858.
 #' \doi{10.2307/2938229}
 #'
 #' Andrews, D.W.K, Monahan, J.C. (1992).
 #' An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator.
-#' \emph{Econometrica} \bold{60}(4), pp.953-966.
+#' \emph{Econometrica} \bold{60}(4),  953-966.
 #' \doi{10.2307/2951574}
 #'
 #' Newey, W.K., West, K.D. (1987).
 #' A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix.
-#' \emph{Econometrica} \bold{55}(3), pp.703-708.
+#' \emph{Econometrica} \bold{55}(3),  703-708.
 #' \doi{10.2307/1913610}
 #'
 #' Newey, W.K., West, K.D. (1994) .
 #' Automatic lag selection in covariance matrix estimation.
-#' \emph{Review of Economic Studies} \bold{61}(4), pp.631-653.
+#' \emph{Review of Economic Studies} \bold{61}(4),  631-653.
 #' \doi{10.3386/t0144}
 #' @import sandwich
 #' @export
@@ -398,25 +411,10 @@ nse.nw <- function(x, lag.prewhite = 0) {
 #' set.seed(1234)
 #' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 #'
-#'nse.andrews(x = x, type = "bartlett", lag.prewhite = 0)
-#'nse.andrews(x = x, type = "bartlett", lag.prewhite = 1)
-#'nse.andrews(x = x, type = "bartlett", lag.prewhite = NULL)
-#'
 #'nse.andrews(x = x, type = "parzen", lag.prewhite = 0)
-#'nse.andrews(x = x, type = "parzen", lag.prewhite = 1)
-#'nse.andrews(x = x, type = "parzen", lag.prewhite = NULL)
-#'
-#'nse.andrews(x = x, type = "tukey", lag.prewhite = 0)
 #'nse.andrews(x = x, type = "tukey", lag.prewhite = 1)
-#'nse.andrews(x = x, type = "tukey", lag.prewhite = NULL)
-#'
-#'nse.andrews(x = x, type = "qs", lag.prewhite = 0)
-#'nse.andrews(x = x, type = "qs", lag.prewhite = 1)
 #'nse.andrews(x = x, type = "qs", lag.prewhite = NULL)
-#'
-#'nse.andrews(x = x, type = "trunc", lag.prewhite = 0)
-#'nse.andrews(x = x, type = "trunc", lag.prewhite = 1)
-#'nse.andrews(x = x, type = "trunc", lag.prewhite = NULL)
+
 nse.andrews <-
   function(x,
            type = c("bartlett", "parzen", "tukey", "qs", "trunc"),
@@ -456,7 +454,7 @@ nse.andrews <-
 #' @references
 #' Hirukawa, M. (2010).
 #' A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
-#' \emph{Econometric Theory} \bold{26}(3), pp.710-743.
+#' \emph{Econometric Theory} \bold{26}(3),  710-743.
 #' \doi{10.1017/s0266466609990089}
 #' @import sandwich
 #' @export
@@ -468,14 +466,8 @@ nse.andrews <-
 #'
 #' set.seed(1234)
 #' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
-#'
-#' nse.hiruk(x = x, type = "bartlett", lag.prewhite = 0)
-#' nse.hiruk(x = x, type = "bartlett", lag.prewhite = 1)
-#' nse.hiruk(x = x, type = "bartlett", lag.prewhite = NULL)
-#'
 #' nse.hiruk(x = x, type = "parzen", lag.prewhite = 0)
-#' nse.hiruk(x = x, type = "parzen", lag.prewhite = 1)
-#' nse.hiruk(x = x, type = "parzen", lag.prewhite = NULL)
+#' nse.hiruk(x = x, type = "bartlett", lag.prewhite = NULL)
 nse.hiruk <-
   function(x,
            type = c("bartlett", "parzen"),
@@ -515,16 +507,16 @@ nse.hiruk <-
 #' @references
 #' Politis, D.N., Romano, and J.P. (1992).
 #' A circular block-resampling procedure for stationary data.
-#' In \emph{Exploring the limits of bootstrap}, John Wiley & Sons, pp.263-270.
+#' In \emph{Exploring the limits of bootstrap}, John Wiley & Sons,  263-270.
 #'
 #' Politis, D.N., Romano, and J.P. (1994).
 #' The stationary bootstrap.
-#' \emph{Journal of the American Statistical Association} \bold{89}(428), pp.1303-1313.
+#' \emph{Journal of the American Statistical Association} \bold{89}(428),  1303-1313.
 #' \doi{10.2307/2290993}
 #'
 #' Politis, D.N., White, H. (2004).
 #' Automatic block-length selection for the dependent bootstrap.
-#' \emph{Econometric Reviews} \bold{23}(1), pp.53-70.
+#' \emph{Econometric Reviews} \bold{23}(1),  53-70.
 #' \doi{10.1081/etc-120028836}
 #' @import np Rcpp stats
 #' @useDynLib nse
@@ -541,19 +533,7 @@ nse.hiruk <-
 #'
 #' set.seed(1234)
 #' nse.boot(x = x, nb = 1000, type = "stationary", b = NULL, lag.prewhite = 0)
-#' nse.boot(x = x, nb = 1000, type = "stationary", b = NULL, lag.prewhite = 1)
-#' nse.boot(x = x, nb = 1000, type = "stationary", b = NULL, lag.prewhite = NULL)
-#'
-#' nse.boot(x = x, nb = 1000, type = "stationary", b = 10, lag.prewhite = 0)
-#' nse.boot(x = x, nb = 1000, type = "stationary", b = 10, lag.prewhite = 1)
-#' nse.boot(x = x, nb = 1000, type = "stationary", b = 10, lag.prewhite = NULL)
-#'
-#' nse.boot(x = x, nb = 1000, type = "circular", b = NULL, lag.prewhite = 0)
-#' nse.boot(x = x, nb = 1000, type = "circular", b = NULL, lag.prewhite = 1)
 #' nse.boot(x = x, nb = 1000, type = "circular", b = NULL, lag.prewhite = NULL)
-#'
-#' nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = 0)
-#' nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = 1)
 #' nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = NULL)
 nse.boot <-
   function(x,
@@ -594,20 +574,17 @@ nse.boot <-
     return(out)
   }
 #' @name nse.cos
-#' @title Long-run variance estimation using low-frequency cosine weighted averages.
+#' @title Long-run variance estimation using low-frequency cosine series.
 #' @description Function which calculates the numerical standard error with low-frequency cosine weighted averages of the original serie.
 #' @param x A numeric vector.
-#' @param q Range of the cosine weight.
-#' Default is \code{q = 12}.
+#' @param q Number of consine series.
 #' @param lag.prewhite Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
-#' @details The method estimate the serie with a linear regression using cosine weight
-#'  \eqn{\sqrt(2)cos(js\pi)} for j = 1,...,q, where s is equal to \eqn{(t-0.5)/T} for t = 1,...,T, and T is the lenght of the serie. Derivation of the NSE is derived
-#'  from the coefficient of the cosine weight found using the \code{mcmcse} R function.
+#' @details The method estimate the series with a linear regression using cosine low frequency series. It than derived the NSE from the coefficient of the cosine series (Ulrich and Watson, 2017).
 #' @return The NSE estimator.
 #' @references
-#' Müller, Ulrich K., and Mark W. Watson.
+#' Muller, Ulrich K., and Mark W. Watson. (2015)
 #' Low-frequency econometrics.
-#' No. w21564. National Bureau of Economic Research, 2015.
+#' \emph{National Bureau of Economic Research}, No. w21564.
 #' @author David Ardia and Keven Bluteau
 #' @export
 #' @examples
@@ -619,6 +596,7 @@ nse.boot <-
 #' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 #'
 #' nse.cos(x = x, q = 12, lag.prewhite = 0)
+#' #' nse.cos(x = x, q = 12, lag.prewhite = NULL)
 nse.cos = function(x, q = 12, lag.prewhite = 0) {
   f.error.multivariate(x)
   x = as.vector(x)

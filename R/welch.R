@@ -13,8 +13,8 @@ f.welch = function(y,
   end[length(end)] = length(y)
   value = NULL
   for (i in 1:length(start)) {
-    m = nse:::f.optimal_h(y[start[i]:end[i]], type = type)
-    kern = nse:::f.kernel_addon(type = type,
+    m = f.optimal_h(y[start[i]:end[i]], type = type)
+    kern = f.kernel_addon(type = type,
                                 m,
                                 steep = steep,
                                 y = y[start[i]:end[i]])

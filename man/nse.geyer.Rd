@@ -10,12 +10,12 @@ nse.geyer(x, type = c("iseq", "bm", "obm", "iseq.bm"), nbatch = 30,
 \arguments{
 \item{x}{A numeric vector.}
 
-\item{type}{The type which can be either \code{"iseq"}, \code{"bm"}, \code{"obm"} or \code{"iseq.bm"}. 
+\item{type}{The type which can be either \code{"iseq"}, \code{"bm"}, \code{"obm"} or \code{"iseq.bm"}.
 See *Details*. Default is \code{type = "iseq"}.}
 
 \item{nbatch}{Number of batches when \code{type = "bm"} and \code{type = "iseq.bm"}. Default is \code{nbatch = 30}.}
 
-\item{iseq.type}{Constraints on function: \code{"pos"} for nonnegative, \code{"dec"} for nonnegative 
+\item{iseq.type}{Constraints on function: \code{"pos"} for nonnegative, \code{"dec"} for nonnegative
 and nonincreasing, and \code{"con"} for nonnegative, nonincreasing, and convex. Default is \code{iseq.type = "pos"}.}
 }
 \value{
@@ -25,11 +25,11 @@ The NSE estimator.
 Function which calculates the numerical standard error with the method of Geyer (1992).
 }
 \details{
-The type \code{"iseq"} gives the positive intial sequence estimator, \code{"bm"} is the batch mean estimator, 
+The type \code{"iseq"} gives the positive intial sequence estimator, \code{"bm"} is the batch mean estimator,
 \code{"obm"} is the overlapping batch mean estimator and \code{"iseq.bm"} is a combination of \code{"iseq"} and \code{"bm"}.
 }
 \note{
-\code{nse.geyer} relies on the packages \code{\link{mcmc}} and \code{\link{mcmcse}}; see 
+\code{nse.geyer} relies on the packages \code{\link{mcmc}} and \code{\link{mcmcse}}; see
 the documentation of these packages for more details.
 }
 \examples{
@@ -48,8 +48,8 @@ nse.geyer(x = x, type = "iseq.bm", iseq.type = "con")
 David Ardia and Keven Bluteau
 }
 \references{
-Geyer, C.J. (1992). 
-Practical Markov chain Monte Carlo. 
-\emph{Statistical Science} \bold{7}(4), pp.473-483.
+Geyer, C.J. (1992).
+Practical Markov chain Monte Carlo.
+\emph{Statistical Science} \bold{7}(4),  .473-483.
 }
 

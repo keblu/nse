@@ -18,7 +18,7 @@ The NSE estimator.
 Function which calculates the numerical standard error with the Newey West (1987, 1994) HAC estimator.
 }
 \note{
-\code{nse.nw} is a wrapper around \code{\link[sandwich]{lrvar}} from 
+\code{nse.nw} is a wrapper around \code{\link[sandwich]{lrvar}} from
 the \code{\link{sandwich}} package. See the documentation of \code{\link{sandwich}} for details.
 }
 \examples{
@@ -27,9 +27,9 @@ ar   = 0.9
 mean = 1
 sd   = 1
 
-set.seed(1234)   
+set.seed(1234)
 x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
- 
+
 nse.nw(x = x, lag.prewhite = 0)
 nse.nw(x = x, lag.prewhite = 1)
 nse.nw(x = x, lag.prewhite = NULL)
@@ -39,13 +39,13 @@ David Ardia and Keven Bluteau
 }
 \references{
 Newey, W.K., West, K.D. (1987).
-A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix. 
-\emph{Econometrica} \bold{55}(3), pp.703-708. 
+A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix.
+\emph{Econometrica} \bold{55}(3),  .703-708.
 \doi{10.2307/1913610}
 
 Newey, W.K., West, K.D. (1994) .
 Automatic lag selection in covariance matrix estimation.
-\emph{Review of Economic Studies} \bold{61}(4), pp.631-653. 
+\emph{Review of Economic Studies} \bold{61}(4), .631-653.
 \doi{10.3386/t0144}
 }
 

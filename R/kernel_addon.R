@@ -35,7 +35,7 @@ f.kernel_addon = function(type,
     k_temp = x
     k_temp = 35 / 32 * (1 - k_temp[x >= 0 & x <= 1] ^ 2) ^ 3
     k_temp[x > 1] = 0
-  } else if (type == "bartlett") {
+  } else if (type == "bartlett-priestley") {
     k_temp = x
     k_temp = 3 / (pi ^ 2 * x[x >= 0 &
                                x <= 1] ^ 2) * (sin(pi * x[x >= 0 &
