@@ -21,6 +21,8 @@ authors:
 [![CRAN](http://www.r-pkg.org/badges/version/nse)](https://cran.r-project.org/package=nse) 
 [![Downloads](http://cranlogs.r-pkg.org/badges/nse?color=brightgreen)](http://www.r-pkg.org/pkg/nse)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/nse?color=brightgreen)](http://www.r-pkg.org/pkg/nse)
+[![Pending Pull-Requests](http://githubbadges.herokuapp.com/keblu/nse/pulls.svg?style=flat)](https://github.com/keblu/nse/pulls)
+[![Github Issues](http://githubbadges.herokuapp.com/keblu/nse/issues.svg)](https://github.com/keblu/nse/issues)
 
 # Summary
 `nse` ([Ardia and Bluteau, 2017](http://dx.doi.org/10.21105/joss.00172)) is an R package for computing the numerical standard error (NSE), an estimate 
