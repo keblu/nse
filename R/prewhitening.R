@@ -1,6 +1,6 @@
 
 ## Function to perform AR prewithening
-f.prewhite = function(x, ar.order = 1, method = "ols") {
+f.prewhite = function(x, ar.order = 1, method = "yw") {
   
   if (!is.null(ar.order)) {
     if (ar.order == 0){
