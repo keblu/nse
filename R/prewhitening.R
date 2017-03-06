@@ -1,6 +1,6 @@
 
 ## Function to perform AR prewithening
-f.prewhite = function(x, ar.order = 1) {
+f.prewhite = function(x, ar.order = 1, method = "ols") {
   
   if (!is.null(ar.order)) {
     if (ar.order == 0){
@@ -14,7 +14,12 @@ f.prewhite = function(x, ar.order = 1) {
     aic = TRUE
     ar.order = min(length(x), 10)
   }
-  ar.fit = stats::ar.ols(x = x, aic = aic, order.max = ar.order, demean = FALSE)
+  if (method = "ols") {
+    ar.fit = stats::ar.ols(x = x, aic = aic, order.max = ar.order, demean = FALSE)
+  }
+  if (method == "yw") {
+    ar.fit = stats::ar.yw(x = x, aic = aic, order.max = ar.order, demean = FALSE)
+  }
   
   if (inherits(ar.fit, "try-error")) {
     stop("AR prewhitening of estimating functions failed")
