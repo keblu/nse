@@ -14,7 +14,7 @@ f.prewhite = function(x, ar.order = 1, method = "ols") {
     aic = TRUE
     ar.order = min(length(x), 10)
   }
-  if (method = "ols") {
+  if (method == "ols") {
     ar.fit = stats::ar.ols(x = x, aic = aic, order.max = ar.order, demean = FALSE)
   }
   if (method == "yw") {
