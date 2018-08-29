@@ -15,16 +15,19 @@ citEntry(entry = "article",
     "doi:10.21105/joss.00172")
 )
 
-citEntry(entry = "misc",
-  title  = "Comparison of multiple methods for computing numerical standard errors: {A}n extensive {M}onte {C}arlo study",
+citEntry(entry = "article",
+  title  = "Methods for computing numerical standard errors: Review and application to {V}alue-at-{R}isk estimation",
   author = personList(person("David","Ardia"),
 			     person("Keven","Bluteau"),
            person("Lennart","Hoogerheide")),
-  year = "2016",
-	doi  = "10.2139/ssrn.2741587",
-	note = "Working paper",
-  textVersion = paste("Ardia, D., Bluteau, K., Hoogerheide, L.F. (2016).",
-    "Comparison of multiple methods for computing numerical standard errors: An extensive Monte Carlo study.",
-    "Working paper",
-    "doi:10.2139/ssrn.2741587")
+  year = "2018",
+  journal = "Journal of Time Series Econometrics",
+  volume = "10",
+  number = "2",
+  pages  = "1-9",
+	doi  = "10.1515/jtse-2017-0011",
+  textVersion = paste("Ardia, D., Bluteau, K., Hoogerheide, L.F. (2018).",
+    "Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.",
+    "Journal of Time Series Econometrics 10(2), pp.1-9.",
+    "doi:10.1515/jtse-2017-0011")
 )

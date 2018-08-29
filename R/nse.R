@@ -10,7 +10,7 @@
 #' and autocorrelation consistent (HAC) kernel estimators (Newey and West, 1987; Andrews, 1991; Andrews and
 #' Monahan, 1992; Newey and West, 1994; Hirukawa, 2010), and bootstrap estimators Politis and
 #' Romano (1992, 1994); Politis and White (2004). The full set of estimators is described in
-#' Ardia et al. (2016).
+#' Ardia et al. (2018).
 #'
 #' @section Functions:
 #' \itemize{
@@ -35,10 +35,10 @@
 #' \emph{Econometrica} \bold{60}(4),  953-966.
 #' \doi{10.2307/2951574}
 #'
-#' Ardia, D., Bluteau, K., Hoogerheide, L. (2016).
-#' \emph{Comparison of multiple methods for computing numerical standard errors: An extensive Monte Carlo study}.
-#' Working paper.
-#' \doi{10.2139/ssrn.2741587}
+#' Ardia, D., Bluteau, K., Hoogerheide, L. (2018).
+#' Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.
+#' \emph{Journal of Time Series Econometrics} \bold{10}(2), 1-9.
+#' \doi{10.1515/jtse-2017-0011}
 #'
 #' Ardia, D., Bluteau, K. (2017).
 #' nse: Computation of numerical standard errors in R.
