@@ -1,11 +1,6 @@
 # nse
 Computation of numerical standard errors in R
 
-[![status](http://joss.theoj.org/papers/9ad602c309d8cbd10ecdc546fdb25462/status.svg)](http://joss.theoj.org/papers/9ad602c309d8cbd10ecdc546fdb25462)
-[![CRAN](http://www.r-pkg.org/badges/version/nse)](https://cran.r-project.org/package=nse) 
-[![Downloads](http://cranlogs.r-pkg.org/badges/nse?color=brightgreen)](http://www.r-pkg.org/pkg/nse)
-[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/nse?color=brightgreen)](http://www.r-pkg.org/pkg/nse)
-
 `nse` ([Ardia and Bluteau, 2017](http://dx.doi.org/10.21105/joss.00172)) is an R package for computing the numerical standard error (NSE), an estimate 
 of the standard deviation of a simulation result, if the simulation experiment were to be repeated 
 many times. The package provides a set of wrappers around several R packages, which give access to 

@@ -42,9 +42,6 @@ nse.andrews(x = x, type = "parzen", lag.prewhite = 0)
 nse.andrews(x = x, type = "tukey", lag.prewhite = 1)
 nse.andrews(x = x, type = "qs", lag.prewhite = NULL)
 }
-\author{
-David Ardia and Keven Bluteau
-}
 \references{
 Andrews, D.W.K. (1991).
 Heteroskedasticity and autocorrelation consistent covariance matrix estimation.
@@ -66,4 +63,6 @@ Automatic lag selection in covariance matrix estimation.
 \emph{Review of Economic Studies} \bold{61}(4),  631-653.
 \doi{10.3386/t0144}
 }
-
+\author{
+David Ardia and Keven Bluteau
+}

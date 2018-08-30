@@ -36,13 +36,12 @@ x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 nse.hiruk(x = x, type = "parzen", lag.prewhite = 0)
 nse.hiruk(x = x, type = "bartlett", lag.prewhite = NULL)
 }
-\author{
-David Ardia and Keven Bluteau
-}
 \references{
 Hirukawa, M. (2010).
 A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
 \emph{Econometric Theory} \bold{26}(3),  710-743.
 \doi{10.1017/s0266466609990089}
 }
-
+\author{
+David Ardia and Keven Bluteau
+}

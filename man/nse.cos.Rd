@@ -33,12 +33,11 @@ x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 nse.cos(x = x, q = 12, lag.prewhite = 0)
 #' nse.cos(x = x, q = 12, lag.prewhite = NULL)
 }
-\author{
-David Ardia and Keven Bluteau
-}
 \references{
 Muller, Ulrich K., and Mark W. Watson. (2015)
 Low-frequency econometrics.
 \emph{National Bureau of Economic Research}, No. w21564.
 }
-
+\author{
+David Ardia and Keven Bluteau
+}

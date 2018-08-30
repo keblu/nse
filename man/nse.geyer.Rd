@@ -44,12 +44,11 @@ nse.geyer(x = x, type = "obm", nbatch = 30)
 nse.geyer(x = x, type = "iseq", iseq.type = "pos")
 nse.geyer(x = x, type = "iseq.bm", iseq.type = "con")
 }
-\author{
-David Ardia and Keven Bluteau
-}
 \references{
 Geyer, C.J. (1992).
 Practical Markov chain Monte Carlo.
 \emph{Statistical Science} \bold{7}(4),  .473-483.
 }
-
+\author{
+David Ardia and Keven Bluteau
+}

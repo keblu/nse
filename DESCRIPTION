@@ -1,6 +1,6 @@
 Package: nse
 Version: 1.19
-Date: 2018-08-28
+Date: 2018-08-30
 Title: Numerical Standard Errors Computation in R
 Authors@R: c(person("David", "Ardia", role = c("aut"),
              email = "david.ardia.ch@gmail.com"),
@@ -16,5 +16,5 @@ URL: https://github.com/keblu/nse
 Imports: Rcpp (>= 0.12.0), coda, mcmc, mcmcse, np, sandwich
 LinkingTo: Rcpp
 NeedsCompilation: yes
-RoxygenNote: 5.0.1
+RoxygenNote: 6.1.0
 Suggests: testthat

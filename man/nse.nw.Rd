@@ -34,9 +34,6 @@ nse.nw(x = x, lag.prewhite = 0)
 nse.nw(x = x, lag.prewhite = 1)
 nse.nw(x = x, lag.prewhite = NULL)
 }
-\author{
-David Ardia and Keven Bluteau
-}
 \references{
 Newey, W.K., West, K.D. (1987).
 A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix.
@@ -48,4 +45,6 @@ Automatic lag selection in covariance matrix estimation.
 \emph{Review of Economic Studies} \bold{61}(4), .631-653.
 \doi{10.3386/t0144}
 }
-
+\author{
+David Ardia and Keven Bluteau
+}

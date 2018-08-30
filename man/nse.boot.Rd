@@ -42,9 +42,6 @@ nse.boot(x = x, nb = 1000, type = "stationary", b = NULL, lag.prewhite = 0)
 nse.boot(x = x, nb = 1000, type = "circular", b = NULL, lag.prewhite = NULL)
 nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = NULL)
 }
-\author{
-David Ardia and Keven Bluteau
-}
 \references{
 Politis, D.N., Romano, and J.P. (1992).
 A circular block-resampling procedure for stationary data.
@@ -60,4 +57,6 @@ Automatic block-length selection for the dependent bootstrap.
 \emph{Econometric Reviews} \bold{23}(1),  53-70.
 \doi{10.1081/etc-120028836}
 }
-
+\author{
+David Ardia and Keven Bluteau
+}

@@ -5,8 +5,9 @@
 \title{Spectral density at zero estimator}
 \usage{
 nse.spec0(x, type = c("ar", "glm", "daniell", "modified.daniell",
-  "tukey-hanning", "parzen", "triweight", "bartlett-priestley", "triangular",
-  "qs"), lag.prewhite = 0, welch = FALSE, steep = FALSE)
+  "tukey-hanning", "parzen", "triweight", "bartlett-priestley",
+  "triangular", "qs"), lag.prewhite = 0, welch = FALSE,
+  steep = FALSE)
 }
 \arguments{
 \item{x}{A numeric vector.}
@@ -57,9 +58,6 @@ x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 
 nse.spec0(x = x, type = "parzen", lag.prewhite = 0, welch = TRUE, steep = TRUE)
 }
-\author{
-David Ardia and Keven Bluteau
-}
 \references{
 Heidelberger, P., Welch, Peter D. (1981).
 A spectral method for confidence interval generation and run length control in simulations.
@@ -80,4 +78,6 @@ Hurvich, C. M. (1985).
  Data-driven choice of a spectrum estimate: extending the applicability of cross-validation methods.
  \emph{Journal of the American Statistical Association}, \bold{80}(392), 933-940.
 }
-
+\author{
+David Ardia and Keven Bluteau
+}

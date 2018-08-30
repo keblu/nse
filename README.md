@@ -1,6 +1,6 @@
 ---
 title: 'nse: Computation of numerical standard errors in R'
-date: "2 February 2017"
+date: "30 August 2018"
 tags:
 - nse
 - numerical standard error
