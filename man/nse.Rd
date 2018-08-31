@@ -48,7 +48,7 @@ An improved heteroskedasticity and autocorrelation consistent covariance matrix 
 Ardia, D., Bluteau, K., Hoogerheide, L. (2018).
 Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.
 \emph{Journal of Time Series Econometrics} \bold{10}(2), 1-9.
-\doi{10.1515/jtse-2017-0011}
+\url{https://doi.org/10.1515/jtse-2017-0011}
 
 Ardia, D., Bluteau, K. (2017).
 nse: Computation of numerical standard errors in R.
