@@ -94,6 +94,14 @@ Automatic block-length selection for the dependent bootstrap.
 \emph{Econometric Reviews} \bold{23}(1), 53-70.
 \doi{10.1081/etc-120028836}
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/keblu/nse}
+  \item Report bugs at \url{https://github.com/keblu/nse/issues}
+}
+
+}
 \author{
 David Ardia and Keven Bluteau
 }

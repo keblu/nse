@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // f_bootstrap
 Rcpp::NumericVector f_bootstrap(Rcpp::NumericVector x, double p, int type);
-RcppExport SEXP nse_f_bootstrap(SEXP xSEXP, SEXP pSEXP, SEXP typeSEXP) {
+RcppExport SEXP _nse_f_bootstrap(SEXP xSEXP, SEXP pSEXP, SEXP typeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -17,4 +17,14 @@ BEGIN_RCPP
     rcpp_result_gen = Rcpp::wrap(f_bootstrap(x, p, type));
     return rcpp_result_gen;
 END_RCPP
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_nse_f_bootstrap", (DL_FUNC) &_nse_f_bootstrap, 3},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_nse(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }

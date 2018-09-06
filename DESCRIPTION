@@ -15,6 +15,7 @@ BugReports: https://github.com/keblu/nse/issues
 URL: https://github.com/keblu/nse
 Imports: Rcpp (>= 0.12.0), coda, mcmc, mcmcse, np, sandwich
 LinkingTo: Rcpp
+Encoding: UTF-8
 NeedsCompilation: yes
 RoxygenNote: 6.1.0
 Suggests: testthat

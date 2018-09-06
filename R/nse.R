@@ -84,7 +84,8 @@
 #' \emph{Econometric Reviews} \bold{23}(1), 53-70.
 #' \doi{10.1081/etc-120028836}
 #' @import coda mcmc mcmcse np sandwich
-NULL
+#' @useDynLib nse, .registration = TRUE
+"_PACKAGE"
 
 #' @name nse.geyer
 #' @title Geyer estimator
@@ -519,7 +520,6 @@ nse.hiruk <-
 #' \emph{Econometric Reviews} \bold{23}(1),  53-70.
 #' \doi{10.1081/etc-120028836}
 #' @import np Rcpp stats
-#' @useDynLib nse
 #' @importFrom Rcpp evalCpp
 #' @export
 #' @examples
