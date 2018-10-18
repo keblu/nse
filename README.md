@@ -1,21 +1,3 @@
----
-title: 'nse: Computation of numerical standard errors in R'
-date: "30 August 2018"
-tags:
-- nse
-- numerical standard error
-- simulation
-- MCMC
-- HAC
-- bootstrap
-authors:
-- affiliation: Institute of Financial Analysis - University of Neuchatel
-  name: David Ardia
-  orcid: 0000-0003-2823-782X
-- affiliation: Institute of Financial Analysis - University of Neuchatel
-  name: Keven Bluteau
-  orcid: 0000-0003-2990-4807
----
 
 [![status](http://joss.theoj.org/papers/9ad602c309d8cbd10ecdc546fdb25462/status.svg)](http://joss.theoj.org/papers/9ad602c309d8cbd10ecdc546fdb25462)
 [![CRAN](http://www.r-pkg.org/badges/version/nse)](https://cran.r-project.org/package=nse) 
