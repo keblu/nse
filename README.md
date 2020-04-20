@@ -1,5 +1,4 @@
 # NSE
-[![status](http://joss.theoj.org/papers/9ad602c309d8cbd10ecdc546fdb25462/status.svg)](http://joss.theoj.org/papers/9ad602c309d8cbd10ecdc546fdb25462)
 [![CRAN](http://www.r-pkg.org/badges/version/nse)](https://cran.r-project.org/package=nse) 
 [![Downloads](http://cranlogs.r-pkg.org/badges/nse?color=brightgreen)](http://www.r-pkg.org/pkg/nse)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/nse?color=brightgreen)](http://www.r-pkg.org/pkg/nse)
