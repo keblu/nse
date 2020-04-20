@@ -33,4 +33,4 @@ Ardia, D., Bluteau, K., Hoogerheide, L.F. (2018).
 Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.        
 _Journal of Time Series Econometrics_, 10(2), 1-9.    
 [https://doi.org/10.1515/jtse-2017-0011](https://doi.org/10.1515/jtse-2017-0011)      
-[http://dx.doi.org/10.2139/ssrn.2741587](http://dx.doi.org/10.2139/ssrn.2741587)
+[https://doi.org/10.2139/ssrn.2741587](hhttps://doi.org/10.2139/ssrn.2741587)
