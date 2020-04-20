@@ -20,7 +20,7 @@ The latest development version of `nse` is available at [https://github.com/kebl
 By using `nse` you agree to the following rules: 
 
 1) You must cite [Ardia and Bluteau (2017)](https://doi.org/10.21105/joss.00172) in working papers and published papers that use `nse`.
-2) You must place the following URL in a footnote to help others find `MSGARCH`: [https://CRAN.R-project.org/package=nse](https://CRAN.R-project.org/package=nse). 
+2) You must place the following URL in a footnote to help others find `nse`: [https://CRAN.R-project.org/package=nse](https://CRAN.R-project.org/package=nse). 
 3) You assume all risk for the use of `nse`.
         
 Ardia, D., Bluteau, K. (2017).      
@@ -33,4 +33,4 @@ Ardia, D., Bluteau, K., Hoogerheide, L.F. (2018).
 Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.        
 _Journal of Time Series Econometrics_, 10(2), 1-9.    
 [https://doi.org/10.1515/jtse-2017-0011](https://doi.org/10.1515/jtse-2017-0011)      
-[https://doi.org/10.2139/ssrn.2741587](hhttps://doi.org/10.2139/ssrn.2741587)
+[https://doi.org/10.2139/ssrn.2741587](https://doi.org/10.2139/ssrn.2741587)
