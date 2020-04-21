@@ -4,8 +4,12 @@
 \alias{nse.geyer}
 \title{Geyer estimator}
 \usage{
-nse.geyer(x, type = c("iseq", "bm", "obm", "iseq.bm"), nbatch = 30,
-  iseq.type = c("pos", "dec", "con"))
+nse.geyer(
+  x,
+  type = c("iseq", "bm", "obm", "iseq.bm"),
+  nbatch = 30,
+  iseq.type = c("pos", "dec", "con")
+)
 }
 \arguments{
 \item{x}{A numeric vector.}

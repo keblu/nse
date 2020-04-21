@@ -4,8 +4,7 @@
 \alias{nse.boot}
 \title{Bootstrap estimator}
 \usage{
-nse.boot(x, nb, type = c("stationary", "circular"), b = NULL,
-  lag.prewhite = 0)
+nse.boot(x, nb, type = c("stationary", "circular"), b = NULL, lag.prewhite = 0)
 }
 \arguments{
 \item{x}{A numeric vector.}

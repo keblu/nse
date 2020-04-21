@@ -22,8 +22,11 @@
 #' \item \code{\link{nse.boot}}: Bootstrap NSE estimator.
 #' }
 #' @author David Ardia and Keven Bluteau
+#' @note By using \code{nse} you agree to the following rules: (1) You must cite Ardia and Bluteau (2017) in 
+#' working papers and published papers that use \code{nse} (use \code{citation("nse")}), (2) you 
+#' must place the URL \url{https://CRAN.R-project.org/package=nse} in a footnote to help 
+#' others find \code{nse}, and (3) you assume all risk for the use of \code{nse}.
 #' @note Functions rely on the packages \code{coda}, \code{mcmc},\code{mcmcse}, \code{np}, and \code{sandwich}.
-#' @note Please cite the package in publications. Use \code{citation("nse")}.
 #' @references
 #' Andrews, D.W.K. (1991).
 #' Heteroskedasticity and autocorrelation consistent covariance matrix estimation.
@@ -34,17 +37,16 @@
 #' An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator.
 #' \emph{Econometrica} \bold{60}(4),  953-966.
 #' \doi{10.2307/2951574}
-#'
-#' Ardia, D., Bluteau, K., Hoogerheide, L. (2018).
-#' Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.
-#' \emph{Journal of Time Series Econometrics} \bold{10}(2), 1-9.
-#' \doi{10.2139/ssrn.2741587}
-#'
+#' 
 #' Ardia, D., Bluteau, K. (2017).
 #' nse: Computation of numerical standard errors in R.
 #' \emph{Journal of Open Source Software} \bold{10}(2).
 #' \doi{10.21105/joss.00172}
-#'
+#' 
+#' Ardia, D., Bluteau, K., Hoogerheide, L. (2018).
+#' Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.
+#' \emph{Journal of Time Series Econometrics} \bold{10}(2), 1-9.
+#' \doi{10.2139/ssrn.2741587}
 #'
 #' Geyer, C.J. (1992).
 #' Practical Markov chain Monte Carlo.
@@ -252,7 +254,7 @@ nse.geyer = function(x,
 #' set.seed(1234)
 #' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 #'
-#' nse.spec0(x = x, type = "parzen", lag.prewhite = 0, welch = TRUE, steep = TRUE)
+#' #nse.spec0(x = x)
 nse.spec0 = function(x,
                      type = c(
                        "ar",

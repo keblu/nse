@@ -18,9 +18,12 @@ Romano (1992, 1994); Politis and White (2004). The full set of estimators is des
 Ardia et al. (2018).
 }
 \note{
-Functions rely on the packages \code{coda}, \code{mcmc},\code{mcmcse}, \code{np}, and \code{sandwich}.
+By using \code{nse} you agree to the following rules: (1) You must cite Ardia and Bluteau (2017) in 
+working papers and published papers that use \code{nse} (use \code{citation("nse")}), (2) you 
+must place the URL \url{https://CRAN.R-project.org/package=nse} in a footnote to help 
+others find \code{nse}, and (3) you assume all risk for the use of \code{nse}.
 
-Please cite the package in publications. Use \code{citation("nse")}.
+Functions rely on the packages \code{coda}, \code{mcmc},\code{mcmcse}, \code{np}, and \code{sandwich}.
 }
 \section{Functions}{
 
@@ -45,16 +48,15 @@ An improved heteroskedasticity and autocorrelation consistent covariance matrix 
 \emph{Econometrica} \bold{60}(4),  953-966.
 \doi{10.2307/2951574}
 
-Ardia, D., Bluteau, K., Hoogerheide, L. (2018).
-Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.
-\emph{Journal of Time Series Econometrics} \bold{10}(2), 1-9.
-\doi{10.2139/ssrn.2741587}
-
 Ardia, D., Bluteau, K. (2017).
 nse: Computation of numerical standard errors in R.
 \emph{Journal of Open Source Software} \bold{10}(2).
 \doi{10.21105/joss.00172}
 
+Ardia, D., Bluteau, K., Hoogerheide, L. (2018).
+Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.
+\emph{Journal of Time Series Econometrics} \bold{10}(2), 1-9.
+\doi{10.2139/ssrn.2741587}
 
 Geyer, C.J. (1992).
 Practical Markov chain Monte Carlo.

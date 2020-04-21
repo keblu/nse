@@ -1,4 +1,4 @@
-library(testthat)
-library(nse)
+library("testthat")
+library("nse")
 
-test_check("nse")
+#test_check("nse")
