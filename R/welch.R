@@ -15,9 +15,9 @@ f.welch = function(y,
   for (i in 1:length(start)) {
     m = f.optimal_h(y[start[i]:end[i]], type = type)
     kern = f.kernel_addon(type = type,
-                          m,
-                          steep = steep,
-                          y = y[start[i]:end[i]])
+                                m,
+                                steep = steep,
+                                y = y[start[i]:end[i]])
     value[i] = spectrum(y[start[i]:end[i]] ,
                         kernel = kern,
                         taper = 0.5,

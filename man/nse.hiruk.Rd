@@ -26,21 +26,22 @@ the \code{\link{sandwich}} package and uses Hirukawa (2010) bandwidth estimator.
 See the documentation of \code{\link{sandwich}} for details.
 }
 \examples{
+\dontrun{
 n    = 1000
 ar   = 0.9
 mean = 1
 sd   = 1
 
 set.seed(1234)
-x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
+x = c(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 nse.hiruk(x = x, type = "parzen", lag.prewhite = 0)
 nse.hiruk(x = x, type = "bartlett", lag.prewhite = NULL)
+}
 }
 \references{
 Hirukawa, M. (2010).
 A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
 \emph{Econometric Theory} \bold{26}(3),  710-743.
-\doi{10.1017/s0266466609990089}
 }
 \author{
 David Ardia and Keven Bluteau

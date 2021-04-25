@@ -22,31 +22,27 @@
 #' \item \code{\link{nse.boot}}: Bootstrap NSE estimator.
 #' }
 #' @author David Ardia and Keven Bluteau
-#' @note By using \code{nse} you agree to the following rules: (1) You must cite Ardia and Bluteau (2017) in 
-#' working papers and published papers that use \code{nse} (use \code{citation("nse")}), (2) you 
-#' must place the URL \url{https://CRAN.R-project.org/package=nse} in a footnote to help 
-#' others find \code{nse}, and (3) you assume all risk for the use of \code{nse}.
 #' @note Functions rely on the packages \code{coda}, \code{mcmc},\code{mcmcse}, \code{np}, and \code{sandwich}.
+#' @note Please cite the package in publications. Use \code{citation("nse")}.
 #' @references
 #' Andrews, D.W.K. (1991).
 #' Heteroskedasticity and autocorrelation consistent covariance matrix estimation.
 #' \emph{Econometrica} \bold{59}(3),  817-858.
-#' \doi{10.2307/2938229}
 #'
 #' Andrews, D.W.K, Monahan, J.C. (1992).
 #' An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator.
 #' \emph{Econometrica} \bold{60}(4),  953-966.
-#' \doi{10.2307/2951574}
-#' 
+#'
+#' Ardia, D., Bluteau, K., Hoogerheide, L. (2018).
+#' Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.
+#' \emph{Journal of Time Series Econometrics} \bold{10}(2), 1-9.
+#' \doi{10.1515/jtse-2017-0011}
+#' \doi{10.2139/ssrn.2741587}
+#'
 #' Ardia, D., Bluteau, K. (2017).
 #' nse: Computation of numerical standard errors in R.
 #' \emph{Journal of Open Source Software} \bold{10}(2).
 #' \doi{10.21105/joss.00172}
-#' 
-#' Ardia, D., Bluteau, K., Hoogerheide, L. (2018).
-#' Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.
-#' \emph{Journal of Time Series Econometrics} \bold{10}(2), 1-9.
-#' \doi{10.2139/ssrn.2741587}
 #'
 #' Geyer, C.J. (1992).
 #' Practical Markov chain Monte Carlo.
@@ -55,22 +51,18 @@
 #' Heidelberger, P., Welch, Peter D. (1981).
 #' A spectral method for confidence interval generation and run length control in simulations.
 #' \emph{Communications of the ACM} \bold{24}(4),  233-245.
-#' \doi{10.1145/358598.358630}
 #'
 #' Hirukawa, M. (2010).
 #' A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
 #' \emph{Econometric Theory} \bold{26}(3),  710-743.
-#' \doi{10.1017/s0266466609990089}
 #'
 #' Newey, W.K., West, K.D. (1987).
 #' A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix.
 #' \emph{Econometrica} \bold{55}(3),  703-708.
-#' \doi{10.2307/1913610}
 #'
 #' Newey, W.K., West, K.D. (1994) .
 #' Automatic lag selection in covariance matrix estimation.
 #' \emph{Review of Economic Studies} \bold{61}(4), 631-653.
-#' \doi{10.3386/t0144}
 #'
 #' Politis, D.N., Romano, and J.P. (1992).
 #' A circular block-resampling procedure for stationary data.
@@ -79,12 +71,10 @@
 #' Politis, D.N., Romano, and J.P. (1994).
 #' The stationary bootstrap.
 #' \emph{Journal of the American Statistical Association} \bold{89}(428), 1303-1313.
-#' \doi{10.2307/2290993}
 #'
 #' Politis, D.N., White, H. (2004).
 #' Automatic block-length selection for the dependent bootstrap.
 #' \emph{Econometric Reviews} \bold{23}(1), 53-70.
-#' \doi{10.1081/etc-120028836}
 #' @import coda mcmc mcmcse np sandwich
 #' @useDynLib nse, .registration = TRUE
 "_PACKAGE"
@@ -111,18 +101,20 @@
 #' @export
 #' @import mcmc mcmcse
 #' @examples
+#' \dontrun{
 #' n    = 1000
 #' ar   = 0.9
 #' mean = 1
 #' sd   = 1
 #
 #' set.seed(1234)
-#' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
+#' x = c(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 #
 #' nse.geyer(x = x, type = "bm", nbatch = 30)
 #' nse.geyer(x = x, type = "obm", nbatch = 30)
 #' nse.geyer(x = x, type = "iseq", iseq.type = "pos")
 #' nse.geyer(x = x, type = "iseq.bm", iseq.type = "con")
+#' }
 nse.geyer = function(x,
                      type = c("iseq", "bm", "obm", "iseq.bm"),
                      nbatch = 30,
@@ -161,11 +153,11 @@ nse.geyer = function(x,
     out   = stats::var(x = batch) / (nbatch - 1)
     
     if (is.matrix(out) && dim(out) == c(1, 1)) {
-      out = as.vector(out)
+      out = as.numeric(out)
     }
     
   } else if (type == "obm") {
-    out = as.vector(mcmcse::mcse(x, method = "obm")$se ^ 2)
+    out = as.numeric(mcmcse::mcse(x, method = "obm")$se ^ 2)
     
   } else if (type == "iseq.bm") {
     f.error.multivariate(x)
@@ -226,17 +218,14 @@ nse.geyer = function(x,
 #' Heidelberger, P., Welch, Peter D. (1981).
 #' A spectral method for confidence interval generation and run length control in simulations.
 #' \emph{Communications of the ACM} \bold{24}(4), 233-245.
-#' \doi{10.1145/358598.358630}
 #' 
 #' Phillips, P. C., Sun, Y., & Jin, S. (2006).
 #'Spectral density estimation and robust hypothesis testing using steep origin kernels without truncation.
 #'\emph{International Economic Review}, \bold{47}(3), 837-894.
-#'\doi{10.1111/j.1468-2354.2006.00398.x}
 #'  
 #' Welch, P. D. (1967),
 #' The use of Fast Fourier Transform for the estimation of power spectra: A method based on time averaging over short, modified periodograms.
 #' \emph{IEEE Transactions on Audio and Electroacoustics}, \bold{AU-15}(2): 70-73,
-#' \doi{10.1109/TAU.1967.1161901}
 #' 
 #' Hurvich, C. M. (1985).
 #'  Data-driven choice of a spectrum estimate: extending the applicability of cross-validation methods.
@@ -247,14 +236,16 @@ nse.geyer = function(x,
 #' @import coda
 #' @export
 #' @examples
+#' \dontrun{
 #' n    = 1000
 #' ar   = 0.9
 #' mean = 1
 #' sd   = 1
 #' set.seed(1234)
-#' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
+#' x = c(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 #'
-#' #nse.spec0(x = x)
+#' nse.spec0(x = x, type = "parzen", lag.prewhite = 0, welch = TRUE, steep = TRUE)
+#' }
 nse.spec0 = function(x,
                      type = c(
                        "ar",
@@ -334,26 +325,26 @@ nse.spec0 = function(x,
 #' Newey, W.K., West, K.D. (1987).
 #' A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix.
 #' \emph{Econometrica} \bold{55}(3),  .703-708.
-#' \doi{10.2307/1913610}
 #'
 #' Newey, W.K., West, K.D. (1994) .
 #' Automatic lag selection in covariance matrix estimation.
 #' \emph{Review of Economic Studies} \bold{61}(4), .631-653.
-#' \doi{10.3386/t0144}
 #' @import sandwich
 #' @export
 #' @examples
+#' \dontrun{
 #' n    = 1000
 #' ar   = 0.9
 #' mean = 1
 #' sd   = 1
 #'
 #' set.seed(1234)
-#' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
+#' x = c(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 #'
 #' nse.nw(x = x, lag.prewhite = 0)
 #' nse.nw(x = x, lag.prewhite = 1)
 #' nse.nw(x = x, lag.prewhite = NULL)
+#' }
 nse.nw <- function(x, lag.prewhite = 0) {
   f.error.multivariate(x)
   tmp = f.prewhite(x, ar.order = lag.prewhite)
@@ -387,37 +378,34 @@ nse.nw <- function(x, lag.prewhite = 0) {
 #' Andrews, D.W.K. (1991).
 #' Heteroskedasticity and autocorrelation consistent covariance matrix estimation.
 #' \emph{Econometrica} \bold{59}(3),  817-858.
-#' \doi{10.2307/2938229}
 #'
 #' Andrews, D.W.K, Monahan, J.C. (1992).
 #' An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator.
 #' \emph{Econometrica} \bold{60}(4),  953-966.
-#' \doi{10.2307/2951574}
 #'
 #' Newey, W.K., West, K.D. (1987).
 #' A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix.
 #' \emph{Econometrica} \bold{55}(3),  703-708.
-#' \doi{10.2307/1913610}
 #'
 #' Newey, W.K., West, K.D. (1994) .
 #' Automatic lag selection in covariance matrix estimation.
 #' \emph{Review of Economic Studies} \bold{61}(4),  631-653.
-#' \doi{10.3386/t0144}
 #' @import sandwich
 #' @export
 #' @examples
+#' \dontrun{
 #' n    = 1000
 #' ar   = 0.9
 #' mean = 1
 #' sd   = 1
 #'
 #' set.seed(1234)
-#' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
+#' x = c(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 #'
 #'nse.andrews(x = x, type = "parzen", lag.prewhite = 0)
 #'nse.andrews(x = x, type = "tukey", lag.prewhite = 1)
 #'nse.andrews(x = x, type = "qs", lag.prewhite = NULL)
-
+#'}
 nse.andrews <-
   function(x,
            type = c("bartlett", "parzen", "tukey", "qs", "trunc"),
@@ -458,19 +446,20 @@ nse.andrews <-
 #' Hirukawa, M. (2010).
 #' A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
 #' \emph{Econometric Theory} \bold{26}(3),  710-743.
-#' \doi{10.1017/s0266466609990089}
 #' @import sandwich
 #' @export
 #' @examples
+#' \dontrun{
 #' n    = 1000
 #' ar   = 0.9
 #' mean = 1
 #' sd   = 1
 #'
 #' set.seed(1234)
-#' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
+#' x = c(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 #' nse.hiruk(x = x, type = "parzen", lag.prewhite = 0)
 #' nse.hiruk(x = x, type = "bartlett", lag.prewhite = NULL)
+#' }
 nse.hiruk <-
   function(x,
            type = c("bartlett", "parzen"),
@@ -515,28 +504,28 @@ nse.hiruk <-
 #' Politis, D.N., Romano, and J.P. (1994).
 #' The stationary bootstrap.
 #' \emph{Journal of the American Statistical Association} \bold{89}(428),  1303-1313.
-#' \doi{10.2307/2290993}
 #'
 #' Politis, D.N., White, H. (2004).
 #' Automatic block-length selection for the dependent bootstrap.
 #' \emph{Econometric Reviews} \bold{23}(1),  53-70.
-#' \doi{10.1081/etc-120028836}
 #' @import np Rcpp stats
 #' @importFrom Rcpp evalCpp
 #' @export
 #' @examples
+#' \dontrun{
 #' n    = 1000
 #' ar   = 0.9
 #' mean = 1
 #' sd   = 1
 #'
 #' set.seed(1234)
-#' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
+#' x = c(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 #'
 #' set.seed(1234)
 #' nse.boot(x = x, nb = 1000, type = "stationary", b = NULL, lag.prewhite = 0)
 #' nse.boot(x = x, nb = 1000, type = "circular", b = NULL, lag.prewhite = NULL)
 #' nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = NULL)
+#' }
 nse.boot <-
   function(x,
            nb,
@@ -545,7 +534,7 @@ nse.boot <-
            lag.prewhite = 0) {
     scale = 1
     f.error.multivariate(x)
-    x = as.vector(x)
+    x = as.numeric(x)
     # prewhiteneing
     tmp   = f.prewhite(x, ar.order = lag.prewhite)
     x     = tmp$ar.resid
@@ -568,7 +557,7 @@ nse.boot <-
       b = b,
       type = type
     )$statistic)
-    out = as.vector(out)
+    out = as.numeric(out)
     out = unname(out)
     # nse
     out = sqrt(out)
@@ -590,18 +579,20 @@ nse.boot <-
 #' @author David Ardia and Keven Bluteau
 #' @export
 #' @examples
+#' \dontrun{
 #' n    = 1000
 #' ar   = 0.9
 #' mean = 1
 #' sd   = 1
 #' set.seed(1234)
-#' x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
+#' x = c(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 #'
 #' nse.cos(x = x, q = 12, lag.prewhite = 0)
-#' #' nse.cos(x = x, q = 12, lag.prewhite = NULL)
+#' nse.cos(x = x, q = 12, lag.prewhite = NULL)
+#' }
 nse.cos = function(x, q = 12, lag.prewhite = 0) {
   f.error.multivariate(x)
-  x = as.vector(x)
+  x = as.numeric(x)
   tmp   = f.prewhite(x, ar.order = lag.prewhite)
   x     = tmp$ar.resid
   scale = tmp$scale
@@ -610,7 +601,7 @@ nse.cos = function(x, q = 12, lag.prewhite = 0) {
   coef = lm(x ~ 1 + X)$coef[2:(q + 1)]
   SSX = N * sum(coef * coef)
   out = (scale * SSX / q / N)
-  out = as.vector(out)
+  out = as.numeric(out)
   out = sqrt(out)
   out = as.numeric(out)
   return(out)

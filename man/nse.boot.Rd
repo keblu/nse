@@ -28,18 +28,20 @@ Function which calculates the numerical standard error with bootstrap estimator.
 for the optimal block length selection.
 }
 \examples{
+\dontrun{
 n    = 1000
 ar   = 0.9
 mean = 1
 sd   = 1
 
 set.seed(1234)
-x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
+x = c(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 
 set.seed(1234)
 nse.boot(x = x, nb = 1000, type = "stationary", b = NULL, lag.prewhite = 0)
 nse.boot(x = x, nb = 1000, type = "circular", b = NULL, lag.prewhite = NULL)
 nse.boot(x = x, nb = 1000, type = "circular", b = 10, lag.prewhite = NULL)
+}
 }
 \references{
 Politis, D.N., Romano, and J.P. (1992).
@@ -49,12 +51,10 @@ In \emph{Exploring the limits of bootstrap}, John Wiley & Sons,  263-270.
 Politis, D.N., Romano, and J.P. (1994).
 The stationary bootstrap.
 \emph{Journal of the American Statistical Association} \bold{89}(428),  1303-1313.
-\doi{10.2307/2290993}
 
 Politis, D.N., White, H. (2004).
 Automatic block-length selection for the dependent bootstrap.
 \emph{Econometric Reviews} \bold{23}(1),  53-70.
-\doi{10.1081/etc-120028836}
 }
 \author{
 David Ardia and Keven Bluteau

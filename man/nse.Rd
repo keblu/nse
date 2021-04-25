@@ -18,12 +18,9 @@ Romano (1992, 1994); Politis and White (2004). The full set of estimators is des
 Ardia et al. (2018).
 }
 \note{
-By using \code{nse} you agree to the following rules: (1) You must cite Ardia and Bluteau (2017) in 
-working papers and published papers that use \code{nse} (use \code{citation("nse")}), (2) you 
-must place the URL \url{https://CRAN.R-project.org/package=nse} in a footnote to help 
-others find \code{nse}, and (3) you assume all risk for the use of \code{nse}.
-
 Functions rely on the packages \code{coda}, \code{mcmc},\code{mcmcse}, \code{np}, and \code{sandwich}.
+
+Please cite the package in publications. Use \code{citation("nse")}.
 }
 \section{Functions}{
 
@@ -41,22 +38,21 @@ Functions rely on the packages \code{coda}, \code{mcmc},\code{mcmcse}, \code{np}
 Andrews, D.W.K. (1991).
 Heteroskedasticity and autocorrelation consistent covariance matrix estimation.
 \emph{Econometrica} \bold{59}(3),  817-858.
-\doi{10.2307/2938229}
 
 Andrews, D.W.K, Monahan, J.C. (1992).
 An improved heteroskedasticity and autocorrelation consistent covariance matrix estimator.
 \emph{Econometrica} \bold{60}(4),  953-966.
-\doi{10.2307/2951574}
+
+Ardia, D., Bluteau, K., Hoogerheide, L. (2018).
+Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.
+\emph{Journal of Time Series Econometrics} \bold{10}(2), 1-9.
+\doi{10.1515/jtse-2017-0011}
+\doi{10.2139/ssrn.2741587}
 
 Ardia, D., Bluteau, K. (2017).
 nse: Computation of numerical standard errors in R.
 \emph{Journal of Open Source Software} \bold{10}(2).
 \doi{10.21105/joss.00172}
-
-Ardia, D., Bluteau, K., Hoogerheide, L. (2018).
-Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.
-\emph{Journal of Time Series Econometrics} \bold{10}(2), 1-9.
-\doi{10.2139/ssrn.2741587}
 
 Geyer, C.J. (1992).
 Practical Markov chain Monte Carlo.
@@ -65,22 +61,18 @@ Practical Markov chain Monte Carlo.
 Heidelberger, P., Welch, Peter D. (1981).
 A spectral method for confidence interval generation and run length control in simulations.
 \emph{Communications of the ACM} \bold{24}(4),  233-245.
-\doi{10.1145/358598.358630}
 
 Hirukawa, M. (2010).
 A two-stage plug-in bandwidth selection and its implementation for covariance estimation.
 \emph{Econometric Theory} \bold{26}(3),  710-743.
-\doi{10.1017/s0266466609990089}
 
 Newey, W.K., West, K.D. (1987).
 A simple, positive semi-definite, heteroskedasticity and autocorrelationconsistent covariance matrix.
 \emph{Econometrica} \bold{55}(3),  703-708.
-\doi{10.2307/1913610}
 
 Newey, W.K., West, K.D. (1994) .
 Automatic lag selection in covariance matrix estimation.
 \emph{Review of Economic Studies} \bold{61}(4), 631-653.
-\doi{10.3386/t0144}
 
 Politis, D.N., Romano, and J.P. (1992).
 A circular block-resampling procedure for stationary data.
@@ -89,12 +81,10 @@ In \emph{Exploring the limits of bootstrap}, John Wiley & Sons, 263-270.
 Politis, D.N., Romano, and J.P. (1994).
 The stationary bootstrap.
 \emph{Journal of the American Statistical Association} \bold{89}(428), 1303-1313.
-\doi{10.2307/2290993}
 
 Politis, D.N., White, H. (2004).
 Automatic block-length selection for the dependent bootstrap.
 \emph{Econometric Reviews} \bold{23}(1), 53-70.
-\doi{10.1081/etc-120028836}
 }
 \seealso{
 Useful links:

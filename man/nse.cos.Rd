@@ -23,15 +23,17 @@ Function which calculates the numerical standard error with low-frequency cosine
 The method estimate the series with a linear regression using cosine low frequency series. It than derived the NSE from the coefficient of the cosine series (Ulrich and Watson, 2017).
 }
 \examples{
+\dontrun{
 n    = 1000
 ar   = 0.9
 mean = 1
 sd   = 1
 set.seed(1234)
-x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
+x = c(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 
 nse.cos(x = x, q = 12, lag.prewhite = 0)
-#' nse.cos(x = x, q = 12, lag.prewhite = NULL)
+nse.cos(x = x, q = 12, lag.prewhite = NULL)
+}
 }
 \references{
 Muller, Ulrich K., and Mark W. Watson. (2015)

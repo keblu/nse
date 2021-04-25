@@ -67,7 +67,7 @@ f.kernel_addon = function(type,
       p = length(y) ^ (8 / 5) * g ^ -1 * (((sqrt(2 * pi)) * (1 - alpha) ^ 4) /
                                             (16 * alpha ^ 2)) ^ (2 / 5)
     }
-    k_temp = k_temp ^ p
+    k_temp = k_temp ^ as.vector(p)
   }
   k_temp = k_temp / sum(k_temp)
   k$coef = k_temp

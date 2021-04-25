@@ -4,10 +4,14 @@
 \alias{nse.spec0}
 \title{Spectral density at zero estimator}
 \usage{
-nse.spec0(x, type = c("ar", "glm", "daniell", "modified.daniell",
-  "tukey-hanning", "parzen", "triweight", "bartlett-priestley",
-  "triangular", "qs"), lag.prewhite = 0, welch = FALSE,
-  steep = FALSE)
+nse.spec0(
+  x,
+  type = c("ar", "glm", "daniell", "modified.daniell", "tukey-hanning", "parzen",
+    "triweight", "bartlett-priestley", "triangular", "qs"),
+  lag.prewhite = 0,
+  welch = FALSE,
+  steep = FALSE
+)
 }
 \arguments{
 \item{x}{A numeric vector.}
@@ -49,30 +53,29 @@ This kernel based variance estimator apply weights to smooth out the spectral de
 \code{nse.spec0} relies on the packages \code{coda}; see the documentation of this package for more details.
 }
 \examples{
+\dontrun{
 n    = 1000
 ar   = 0.9
 mean = 1
 sd   = 1
 set.seed(1234)
-x = as.vector(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
+x = c(arima.sim(n = n, list(ar = ar), sd = sd) + mean)
 
 nse.spec0(x = x, type = "parzen", lag.prewhite = 0, welch = TRUE, steep = TRUE)
+}
 }
 \references{
 Heidelberger, P., Welch, Peter D. (1981).
 A spectral method for confidence interval generation and run length control in simulations.
 \emph{Communications of the ACM} \bold{24}(4), 233-245.
-\doi{10.1145/358598.358630}
 
 Phillips, P. C., Sun, Y., & Jin, S. (2006).
 Spectral density estimation and robust hypothesis testing using steep origin kernels without truncation.
 \emph{International Economic Review}, \bold{47}(3), 837-894.
-\doi{10.1111/j.1468-2354.2006.00398.x}
  
 Welch, P. D. (1967),
 The use of Fast Fourier Transform for the estimation of power spectra: A method based on time averaging over short, modified periodograms.
 \emph{IEEE Transactions on Audio and Electroacoustics}, \bold{AU-15}(2): 70-73,
-\doi{10.1109/TAU.1967.1161901}
 
 Hurvich, C. M. (1985).
  Data-driven choice of a spectrum estimate: extending the applicability of cross-validation methods.
