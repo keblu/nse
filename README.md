@@ -11,7 +11,7 @@ consistent (HAC) kernel estimators and bootstrap estimators.See [Ardia and Blute
 
 The latest stable version of `nse` is available at [https://cran.r-project.org/package=nse](https://cran.r-project.org/package=nse).
 
-The latest development version of `nse` is available at [https://github.com/keblu/nse)](https://github.com/keblu/nse).
+The latest development version of `nse` is available at [https://github.com/keblu/nse](https://github.com/keblu/nse).
 
 ## Please cite the package in publications!
 
