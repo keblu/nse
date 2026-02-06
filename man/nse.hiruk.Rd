@@ -22,8 +22,8 @@ by Andrews (1991) using Hirukawa (2010) automatic bandwidth estimator.
 }
 \note{
 \code{nse.hiruk} is a wrapper around \code{\link[sandwich]{lrvar}} from
-the \code{\link{sandwich}} package and uses Hirukawa (2010) bandwidth estimator.
-See the documentation of \code{\link{sandwich}} for details.
+the \pkg{sandwich} package and uses Hirukawa (2010) bandwidth estimator.
+See the documentation of \pkg{sandwich} for details.
 }
 \examples{
 \dontrun{

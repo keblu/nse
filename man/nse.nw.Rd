@@ -19,7 +19,7 @@ Function which calculates the numerical standard error with the Newey West (1987
 }
 \note{
 \code{nse.nw} is a wrapper around \code{\link[sandwich]{lrvar}} from
-the \code{\link{sandwich}} package. See the documentation of \code{\link{sandwich}} for details.
+the \pkg{sandwich} package. See the documentation of \pkg{sandwich} for details.
 }
 \examples{
 \dontrun{
