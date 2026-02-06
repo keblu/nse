@@ -597,7 +597,7 @@ nse.cos = function(x, q = 12, lag.prewhite = 0) {
   x     = tmp$ar.resid
   scale = tmp$scale
   N = length(x)
-  X = cos.basis(q, N)
+  X = cos_basis(q, N)
   coef = lm(x ~ 1 + X)$coef[2:(q + 1)]
   SSX = N * sum(coef * coef)
   out = (scale * SSX / q / N)

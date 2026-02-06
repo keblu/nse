@@ -1,4 +1,4 @@
-cos.basis = function(q,N){
+cos_basis = function(q,N){
   basis.matrix = matrix(data = NA, nrow = N, ncol = q)
   s = (1:N-0.5)/N
   for(i in 1:q){
