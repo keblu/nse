@@ -1,33 +1,26 @@
-citHeader("To cite 'nse' in publications use:")
-
-citEntry(entry = "article",
-  title   = "{nse}: {C}omputation of numerical standard errors in {R}",
-  author  = personList(person("David","Ardia"),
-			      person("Keven","Bluteau")),
+bibentry("Article",
+  title   = "{nse}: {C}omputation of Numerical Standard Errors in {R}",
+  author  = c(person(given = "David", family = "Ardia", email = "david.ardia.ch@gmail.com", comment = c(ORCID = "0000-0003-2823-782X")),
+              person(given = "Keven", family = "Bluteau", email = "keven.bluteau@usherbrooke.ca", comment = c(ORCID = "0000-0003-2990-4807"))),
   journal = "Journal of Open Source Software",
   year    = "2017",
-  volume  = "10",
-  number  = "2",
+  volume  = "2",
+  number  = "10",
+  pages   = "172",
   doi     = "10.21105/joss.00172",
-	textVersion = paste("Ardia, D., Bluteau, K. (2017).",
-    "'nse': Numerical standard errors computation in 'R'",
-    "Journal of Open Source Software 10(2).",
-    "doi:10.21105/joss.00172")
+  header  = "To cite 'nse' in publications use:"
 )
 
-citEntry(entry = "article",
-  title  = "Methods for computing numerical standard errors: Review and application to {V}alue-at-{R}isk estimation",
-  author = personList(person("David","Ardia"),
-			     person("Keven","Bluteau"),
-           person("Lennart","Hoogerheide")),
-  year = "2018",
+bibentry("Article",
+  title   = "Methods for Computing Numerical Standard Errors: Review and Application to {V}alue-at-{R}isk Estimation",
+  author  = c(person(given = "David", family = "Ardia", email = "david.ardia.ch@gmail.com", comment = c(ORCID = "0000-0003-2823-782X")),
+              person(given = "Keven", family = "Bluteau", email = "keven.bluteau@usherbrooke.ca", comment = c(ORCID = "0000-0003-2990-4807")),
+              person(given = c("Lennart", "F."), family = "Hoogerheide", email = "l.f.hoogerheide@vu.nl", comment = c(ORCID = "0000-0002-3318-1202"))),
+  year    = "2018",
   journal = "Journal of Time Series Econometrics",
-  volume = "10",
-  number = "2",
-  pages  = "1-9",
-  doi  = "10.1515/jtse-2017-0011",
-  textVersion = paste("Ardia, D., Bluteau, K., Hoogerheide, L.F. (2018).",
-    "Methods for computing numerical standard errors: Review and application to Value-at-Risk estimation.",
-    "Journal of Time Series Econometrics 10(2), pp.1-9.",
-    "doi:10.1515/jtse-2017-0011")
+  volume  = "10",
+  number  = "2",
+  pages   = "20170011",
+  doi     = "10.1515/jtse-2017-0011",
+  header  = "For the corresponding methods please cite:"
 )
