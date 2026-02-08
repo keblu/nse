@@ -24,7 +24,7 @@ The NSE estimator.
 Function which calculates the numerical standard error with bootstrap estimator.
 }
 \note{
-\code{nse.boot} uses \code{\link[np]{b.star}} of the \code{\link{np}} package
+\code{nse.boot} uses \code{\link[np]{b.star}} of the \pkg{np} package
 for the optimal block length selection.
 }
 \examples{

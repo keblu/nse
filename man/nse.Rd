@@ -2,8 +2,8 @@
 % Please edit documentation in R/nse.R
 \docType{package}
 \name{nse}
-\alias{nse}
 \alias{nse-package}
+\alias{nse}
 \title{nse: Computation of numerical standard errors in R}
 \description{
 \code{nse} (Ardia and Bluteau, 2017) is an \R package for computing the numerical standard error (NSE), an estimate

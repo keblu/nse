@@ -33,7 +33,7 @@ The type \code{"iseq"} gives the positive intial sequence estimator, \code{"bm"}
 \code{"obm"} is the overlapping batch mean estimator and \code{"iseq.bm"} is a combination of \code{"iseq"} and \code{"bm"}.
 }
 \note{
-\code{nse.geyer} relies on the packages \code{\link{mcmc}} and \code{\link{mcmcse}}; see
+\code{nse.geyer} relies on the functions \code{\link[mcmc]{initseq}} from the \pkg{mcmc} package and \code{\link[mcmcse]{mcse}} from the package \pkg{mcmcse}; see
 the documentation of these packages for more details.
 }
 \examples{

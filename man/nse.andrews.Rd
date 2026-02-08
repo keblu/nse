@@ -31,7 +31,7 @@ based variance estimator by Andrews (1991).
 This kernel based variance estimation apply weight to the auto-covariance function with a kernel and sums up the value.
 }
 \note{
-\code{nse.andrews} is a wrapper around \code{\link[sandwich]{lrvar}} from the \code{\link{sandwich}} package and uses Andrews (1991) automatic bandwidth estimator. See the documentation of \code{\link{sandwich}} for details.
+\code{nse.andrews} is a wrapper around \code{\link[sandwich]{lrvar}} from the \pkg{sandwich} package and uses Andrews (1991) automatic bandwidth estimator. See the documentation of \pkg{sandwich} for details.
 }
 \examples{
 \dontrun{

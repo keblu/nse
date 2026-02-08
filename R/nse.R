@@ -91,7 +91,7 @@
 #' @details The type \code{"iseq"} gives the positive intial sequence estimator, \code{"bm"} is the batch mean estimator,
 #' \code{"obm"} is the overlapping batch mean estimator and \code{"iseq.bm"} is a combination of \code{"iseq"} and \code{"bm"}.
 #' @return  The NSE estimator.
-#' @note \code{nse.geyer} relies on the packages \code{\link{mcmc}} and \code{\link{mcmcse}}; see
+#' @note \code{nse.geyer} relies on the functions \code{\link[mcmc]{initseq}} from the \pkg{mcmc} package and \code{\link[mcmcse]{mcse}} from the package \pkg{mcmcse}; see
 #' the documentation of these packages for more details.
 #' @author David Ardia and Keven Bluteau
 #' @references
@@ -319,7 +319,7 @@ nse.spec0 = function(x,
 #' @param lag.prewhite Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
 #' @return The NSE estimator.
 #' @note \code{nse.nw} is a wrapper around \code{\link[sandwich]{lrvar}} from
-#' the \code{\link{sandwich}} package. See the documentation of \code{\link{sandwich}} for details.
+#' the \pkg{sandwich} package. See the documentation of \pkg{sandwich} for details.
 #' @author David Ardia and Keven Bluteau
 #' @references
 #' Newey, W.K., West, K.D. (1987).
@@ -372,7 +372,7 @@ nse.nw <- function(x, lag.prewhite = 0) {
 #' @param lag.prewhite Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
 #' @param approx Andrews approximation, either \code{"AR(1)"} or \code{"ARMA(1,1)"}. Default is \code{approx = "AR(1)"}.
 #' @return The NSE estimator.
-#' @note \code{nse.andrews} is a wrapper around \code{\link[sandwich]{lrvar}} from the \code{\link{sandwich}} package and uses Andrews (1991) automatic bandwidth estimator. See the documentation of \code{\link{sandwich}} for details.
+#' @note \code{nse.andrews} is a wrapper around \code{\link[sandwich]{lrvar}} from the \pkg{sandwich} package and uses Andrews (1991) automatic bandwidth estimator. See the documentation of \pkg{sandwich} for details.
 #' @author David Ardia and Keven Bluteau
 #' @references
 #' Andrews, D.W.K. (1991).
@@ -439,8 +439,8 @@ nse.andrews <-
 #' @param type The type of kernel used among \code{"bartlett"} and \code{"parzen"}. Default is \code{type = "Bartlett"}.
 #' @return The NSE estimator.
 #' @note \code{nse.hiruk} is a wrapper around \code{\link[sandwich]{lrvar}} from
-#' the \code{\link{sandwich}} package and uses Hirukawa (2010) bandwidth estimator.
-#' See the documentation of \code{\link{sandwich}} for details.
+#' the \pkg{sandwich} package and uses Hirukawa (2010) bandwidth estimator.
+#' See the documentation of \pkg{sandwich} for details.
 #' @author David Ardia and Keven Bluteau
 #' @references
 #' Hirukawa, M. (2010).
@@ -493,7 +493,7 @@ nse.hiruk <-
 #' @param b The block length for the block bootstrap. If \code{NULL} automatic block length selection. Default is \code{b = NULL}.
 #' @param lag.prewhite Prewhite the series before analysis (integer or \code{NULL}). When \code{lag.prewhite = NULL} this performs automatic lag selection. Default is \code{lag.prewhite = 0} that is no prewhitening.
 #' @return The NSE estimator.
-#' @note \code{nse.boot} uses \code{\link[np]{b.star}} of the \code{\link{np}} package
+#' @note \code{nse.boot} uses \code{\link[np]{b.star}} of the \pkg{np} package
 #' for the optimal block length selection.
 #' @author David Ardia and Keven Bluteau
 #' @references
@@ -597,7 +597,7 @@ nse.cos = function(x, q = 12, lag.prewhite = 0) {
   x     = tmp$ar.resid
   scale = tmp$scale
   N = length(x)
-  X = cos.basis(q, N)
+  X = cos_basis(q, N)
   coef = lm(x ~ 1 + X)$coef[2:(q + 1)]
   SSX = N * sum(coef * coef)
   out = (scale * SSX / q / N)
